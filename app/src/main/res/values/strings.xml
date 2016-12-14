@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">菁彩校园</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="btn_experience">立即体验</string>
+    <!-- <string name="bottom_des">版权所有  copy@2011-2015 顶联信息产业股份公司</string> -->
+    <string name="user_name">账号：</string>
+    <string name="user_password">密码：</string>
+    <string name="btn_login">登录</string>
+    <string name="logo">C+校园</string>
+    <string name="register"><Data><![CDATA[我没有账号，我要<font color="#91b122"><a href="#">注册</a></font>]]></Data></string>
+    <string name="forget"><Data><![CDATA[<font color="#91b122"><a href="#">忘记密码?</a></font>]]></Data></string>
+    <string name="login_trip">您输入的账号或密码有误，请重新输入</string>
+    <string name="bottom_tab_know">操场</string>
+    <string name="bottom_tab_wantknow">我想知道</string>
+    <string name="bottom_tab_my">设置</string>
+    <string name="upate_password"><a href="#">修改密码</a></string>
+    <string name="change_account"><a href="#">更换账号</a></string>
+    <string name="register_info">填写注册信息</string>
+    <string name="register_name">注册</string>
+    <string name="top_des">我</string>
+    <string name="meal_choice">套餐选择</string>
+    <string name="order_confirm">订单支付</string>
+
+    <!-- 通用 -->
+    <string name="my_order">我的订单</string>
+    <string name="my_order_detail">订单详情</string>
+
+    <string name="question">常见问题与解决方案</string>
+    <string name="tv_resolved">已解决</string>
+    <string name="tv_repair_go">未解决,我要报修</string>
+    <string name="my_repair">我的报修</string>
+    <string name="add_repair">新建报修单</string>
+    <string name="add_repair_question_type_title">故障现象:</string>
+    <string name="add_repair_question_type_hint">请选择您的故障现象</string>
+    <string name="add_repair_equipment_type_title">设备类型:</string>
+    <string name="add_repair_internet_type_title">上网方式:</string>
+    <string name="add_repair_fault_address_title">故障地点:</string>
+    <string name="add_repair_fault_address_hint">请输入房间号</string>
+    <string name="add_repair_fault_ip_title">故障主机IP:</string>
+    <string name="add_repair_fault_ip_hint">请选择故障主机IP</string>
+    <string name="add_repair_internet_near_title">周围朋友上网网速:</string>
+    <string name="add_repair_fault_code_title">故障提示码:</string>
+    <string name="add_repair_fault_code_hint">请选择故障提示码</string>
+    <string name="add_repair_fault_description_title">故障补充描述:</string>
+    <string name="add_repair_fault_description_hint">请简单描述一下您遇到的问题</string>
+    <string name="add_repair_bitianxiang">必填项</string>
+    <string name="next">下一步</string>
+    <string name="repair_person">填写报修人信息</string>
+    <string name="repair_person_name">联系人:</string>
+    <string name="repair_person_name_hint">请输入您的姓名</string>
+    <string name="repair_person_phone">联系电话:</string>
+    <string name="repair_person_phone_hint">请填写11位手机号码</string>
+    <string name="repair_person_address">维修地点:</string>
+    <string name="repair_person_address_hint">请选择维修地点</string>
+    <string name="repair_person_date">验证码:</string>
+    <string name="repair_person_date_hint">请输入验证码</string>
+    <string name="confirm_repair">详情</string>
+    <string name="confirm_repair_info">报修信息</string>
+    <string name="confirm_repair_person_info">报修人信息</string>
+    <string name="confirm_repair_person_name">报修人姓名:</string>
+    <string name="confirm_repair_person_phone">报修人电话:</string>
+    <string name="confirm_repair_person_submit">提交</string>
+
+    <string name="repair_number">报修单号:</string>
+    <string name="repair_state">目前状态:</string>
+    <string name="repair_date">报修时间:</string>
+    <string name="tv_edit">编辑</string>
+    <string name="tv_pj">评价</string>
+    <string name="tv_cd">催单</string>
+    <string name="tv_cancle">撤销</string>
+    <string name="use_help">使用帮助</string>
+    <string name="this_soft">关于本软件</string>
+    <string name="soft_up">软件升级</string>
+    <string name="logout">退出系统</string>
+    <string name="pay"><Data><![CDATA[<font color="#91b122"><a href="#">续费</a></font>]]></Data></string>
+    <string name="meal_open"><Data><![CDATA[<font color="#91b122"><a href="#">开通</a></font>]]></Data></string>
+    <string name="start_pay"><Data><![CDATA[<font color="#91b122"><a href="#">支付</a></font>]]></Data></string>
+    <string name="wait_pay"><Data><![CDATA[<font color="#ee780c"><a href="#">支付</a></font>]]></Data></string>
+    <string name="waitforpay"><Data><![CDATA[<font color="#ee780c">待支付</font>]]></Data></string>
+    <string name="see_no"><Data><![CDATA[<font color="#91b122"><a href="#">看不清</a></font>]]></Data></string>
+    <string name="register_agreement"><Data><![CDATA[我已阅读并同意<font color="#91b122"><a href="#">购买协议</a></font>]]></Data></string>
+    <string name="trip_account">请输入您的上网帐号</string>
+    <string name="trip_password">请输入您的上网密码</string>
+    <string name="sch_trip">请选择您的学校名称</string>
+    <string name="custom_return">返回</string>
+    <string name="settings">设置</string>
+    <string name="update">升级</string>
+    <string name="check_update">查询升级</string>
+    <string name="download">下载</string>
+    <string name="install">安装</string>
+    <string name="result">返回值</string>
+    <string name="launch_preferences">启动设置</string>
+    <string name="preference_attributes">属性设置</string>
+    <string name="global_preference">全局设置</string>
+    <string name="global_preference_summary">安全支付服务和DEMO的通用设置</string>
+    <string name="remote_call_failed">Failure calling remote service</string>
+
+    <string-array name="launch_list_entries">
+        <item>外部商户订单</item>
+        <item>远程订单</item>
+    </string-array>
+
+    <string name="order_mode">订单模式</string>
+    <string name="popup_result">显示返回值</string>
+    <string name="result_status_title">Result Status : </string>
+    <string name="memo_title">Memo : </string>
+    <string name="result_title">Result : </string>
+    <string name="check_result_title">Check Sign Result : </string>
+    <string name="external_token_title">External Token</string>
+    <string name="trade_number_title">Trade Number</string>
+    <string name="payPhaseId_title">Pay PhaseId</string>
+    <string name="taobao_pay">订单支付</string>
+    <string name="taobao_add">增加订单</string>
+    <string name="taobao_reset">订单重置</string>
+    <string name="start_order">打开订单页面</string>
+    <string name="not_null">不能为空</string>
+    <string name="extern_partner">外部商户订单</string>
+    <string name="user_id">USER ID</string>
+    <string name="btn_logon">快速登录</string>
+    <string name="data_auth">数据授权</string>
+    <string name="name">姓名</string>
+    <string name="gender">性别</string>
+    <string name="certinfo">证件</string>
+    <string name="email">邮箱</string>
+    <string name="mobile">电话</string>
+    <string name="address">地址</string>
+    <string name="logonId">LogonId</string>
+    <string name="usehelp">使用帮助</string>
+    <string name="aboutsoft">关于本软件</string>
+    <string name="agreement">购买协议</string>
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新…</string>
+    <string name="not_updated_yet">暂未更新过</string>
+    <string name="updated_at">上次更新于%1$s前</string>
+    <string name="updated_just_now">刚刚更新</string>
+    <string name="time_error">时间有问题</string>
+    <string name="loading">正在请求,请稍等…</string>
+    <string name="tv_meal_tishi">温馨提示:  由于技术本身的特点,凡办理高带宽套餐的同学请确认自己的终端可支持连接5.8G信道。</string>
+
+
+
+    <string name="tag_hint">Tag为大小写字母，数字，下划线,中文， 多个用以逗号分隔</string>
+    <string name="alias_hint">Alias为大小写字母，数字，下划线</string>
+    <string name="style_hint">style为数字</string>
+    <string name="error_style_empty">style不能为空</string>
+    <string name="error_alias_empty">alias不能为空</string>
+    <string name="error_tag_empty">tag不能为空</string>
+    <string name="error_tag_gs_empty">格式不对</string>
+    <string name="error_network">网络连接异常,初始化失败 请检查网络！</string>
+    <string name="logining">程序在后台执行, 请查看日志！</string>
+    <string name="setting_su">设置成功</string>
+
+
+    <string name="empty_class_room">空教室查询</string>
+    <string name="empty_floor">选择教学楼</string>
+    <string name="test_list">考试安排</string>
+    <string name="class_room_str">空教室信息暂未开放!</string>
+    <string name="class_room_tishi">本功能旨在方便学生更好的选择教室上自习，由于数据同步有延时，教室情况请以实际为准。</string>
+    <string name="old_pwd">请输入原密码</string>
+    <string name="login_pwd_lable">请输入新密码(至少三位)</string>
+    <string name="login_repwd_lable">请再次输入新密码(至少三位)</string>
+    <string name="tv_repair_evaluate">评价</string>
+    <string name="tv_repair_edit">编辑</string>
+    <string name="tv_repair_cancle">撤销</string>
+    <string name="login_timeout">登录超时,请重新登录!</string>
+    <string name="gradle_list_str">成绩查询</string>
+    <!-- 一卡通 -->
+    <string name="one_card_wx">微信一卡通充值说明</string>
+    <string name="one_card_zfb">支付宝一卡通充值说明</string>
+    <string name="viewpager_indicator">%1$d/%2$d</string>
+    <string name="release_des">温馨提示:为维持本版块正常秩序,本次发布内容为实名发布,请勿发布任何反动、色情等违规的言论或图片,谢谢!</string>
+</resources>

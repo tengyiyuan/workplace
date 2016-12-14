@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/type_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:focusable="false"
+        android:gravity="left"
+        android:padding="10dp"
+        android:text="商品种类"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider_list" />
+
+    <com.toplion.cplusschool.widget.MyGridView
+        android:id="@+id/mGridView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:focusableInTouchMode="true"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:padding="5dp"
+        android:scrollbars="none"
+        android:verticalSpacing="6dp" />
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 常用Dialog -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/bt_dialog_top"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
+        android:background="@mipmap/btn_orange"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/bt_dialog_bottom"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/btn_orange"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>

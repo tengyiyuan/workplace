@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/ll_contacts_child_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/list_item_back"
+        android:drawableTop="@mipmap/txl_call"
+        android:gravity="center"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_contacts_child_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@mipmap/duanxin" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="0.1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_contacts_child_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/list_item_back"
+        android:drawableTop="@mipmap/txl_call"
+        android:gravity="center"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_contacts_child_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@mipmap/fuzhi" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0.1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_contacts_child_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/list_item_back"
+        android:drawableTop="@mipmap/txl_call"
+        android:gravity="center"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_contacts_child_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@mipmap/baocun" />
+    </LinearLayout>
+</LinearLayout>

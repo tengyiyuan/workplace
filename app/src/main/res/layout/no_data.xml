@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_nodata"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="30dp"
+    android:visibility="visible">
+
+    <ImageView
+        android:id="@+id/iv_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/img_disappoint" />
+
+    <TextView
+        android:id="@+id/tv_disa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_dis"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="暂无数据,点击刷新"
+        android:textColor="@color/gray666"
+        android:textSize="16sp" />
+</RelativeLayout>

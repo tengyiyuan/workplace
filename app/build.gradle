@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.1.0'
+
+    defaultConfig {
+        applicationId "com.toplion.cplusschool"
+        minSdkVersion 8
+        targetSdkVersion 18
+        versionCode 1
+        versionName "2.1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+        destinationDir file("$projectDir/libs")
+        baseName "Native_Libs2"
+        extension "jar"
+        from fileTree(dir: "libs", include: "**/*.so")
+        into "lib"
+    }
+
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn(nativeLibsToJar)
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':andBase')
+    compile project(':alipay_lib ')
+    compile 'com.facebook.rebound:rebound:0.3.8'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+}
+

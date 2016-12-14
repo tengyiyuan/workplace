@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 订单确认 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 页头 -->
+
+    <LinearLayout
+        android:id="@+id/order_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color" >
+
+        <ImageView
+            android:id="@+id/order_iv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:layout_marginLeft="14dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/order_iv_Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/order_confirm"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+    <!-- 订单编号 ，状态 -->
+
+    <RelativeLayout
+        android:id="@+id/order_ll_os"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="24dp" >
+
+        <TextView
+            android:id="@+id/order_os_time"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:text="剩余时间：" />
+        <!-- 时 -->
+
+        <TextView
+            android:id="@+id/order_os_time_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/order_os_time" />
+
+        <!-- 状态 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/order_os_time_hour"
+            android:gravity="right" >
+
+            <TextView
+                android:id="@+id/order_tv_wait_pay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="待支付"
+                android:textColor="@color/logo_color" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- 订单信息 -->
+
+    <LinearLayout
+        android:id="@+id/order_rl_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:orientation="vertical">
+
+        <!-- 价格 -->
+
+        <RelativeLayout
+            android:id="@+id/order_rl_info_num"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" >
+
+            <TextView
+                android:id="@+id/order_rl_info_tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="订单编号:"
+                android:textColor="@color/light_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/order_rl_info_tv_num" >
+
+                <TextView
+                    android:id="@+id/order_tv_ordernum"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/light_gray" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- 金额 -->
+
+        <RelativeLayout
+            android:id="@+id/order_rl_info_band"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:id="@+id/order_rl_info_bdes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="金额:"
+                android:textColor="@color/light_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/order_rl_info_bdes" >
+
+                <TextView
+                    android:id="@+id/order_tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/logo_color" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/order_tv_money"
+                    android:text="元"
+                    android:textColor="@color/light_gray" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- 带宽 -->
+
+        <RelativeLayout
+            android:id="@+id/order_rl_info_intent"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/order_rl_info_tv_intent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="带宽:"
+                android:textColor="@color/light_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/order_rl_info_tv_intent" >
+
+                <TextView
+                    android:id="@+id/order_tv_wlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="4M"
+                    android:textColor="@color/light_gray" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- 时间 -->
+
+        <RelativeLayout
+            android:id="@+id/order_rl_info_time"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="30dp">
+
+            <TextView
+                android:id="@+id/order_rl_info_tdes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="时长:"
+                android:textColor="@color/light_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/order_rl_info_tdes" >
+
+                <TextView
+                    android:id="@+id/order_tv_tlength"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/light_gray" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- 支付方式 -->
+
+        <RelativeLayout
+            android:id="@+id/order_rl_info_function"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/order_rl_info_fdes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="支付方式："
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/order_rl_info_fdes" >
+
+                <RadioGroup
+                    android:id="@+id/order_rg_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/order_rb_zfb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="支付宝"
+                        android:textColor="@color/light_gray"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/order_rb_wxzf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="微信支付"
+                        android:textColor="@color/light_gray"
+                        android:textSize="14sp" 
+                        android:visibility="visible"/>
+                </RadioGroup>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- 按钮 -->
+
+        <LinearLayout
+            android:id="@+id/order_ll_btn_pay"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="50dp" >
+
+            <Button
+                android:id="@+id/order_pay"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@mipmap/btn_orange"
+                android:text="支付"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

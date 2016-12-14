@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 学校ListView Item -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:background="@drawable/bg_table_yes"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/newtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/newimg"
+        android:paddingBottom="5dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:singleLine="true"
+        android:text="啊大大"
+        android:textColor="@color/height_gray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/newimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="new"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/newbumen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newtitle"
+        android:paddingBottom="5dp"
+        android:paddingLeft="18dp"
+        android:text="发布部门:"
+        android:textColor="#A6a6a6"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/newtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newbumen"
+        android:paddingBottom="10dp"
+        android:paddingLeft="18dp"
+        android:text="发布时间:"
+        android:textColor="#A6a6a6"
+        android:textSize="14sp" />
+
+</RelativeLayout>

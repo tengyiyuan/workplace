@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 我的订单ListView Item  android:background="@drawable/listitem_selector" -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_back"
+    android:orientation="vertical" >
+
+    <!-- 头部显示订单编号和订单状态 -->
+
+    <RelativeLayout
+        android:id="@+id/list_my_order_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         >
+        <TextView
+            android:id="@+id/list_my_order_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="1dp"
+            android:text="订单编号：" />
+
+        <TextView
+            android:id="@+id/list_my_order_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            android:textColor="@color/gray666"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_toRightOf="@id/list_my_order_des" />
+
+        <TextView
+            android:id="@+id/list_my_order_pkgName"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/list_my_order_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:text="待付款"
+            android:textColor="@color/logo_color" />
+    </RelativeLayout>
+    <!-- 虚线 -->
+
+    <TextView
+        android:id="@+id/list_my_order_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@mipmap/divider_horizontal_line"
+        android:gravity="center" />
+
+    <!-- 订单金额 -->
+
+    <RelativeLayout
+        android:id="@+id/list_my_order_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/list_my_order_money_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="1dp"
+            android:textColor="@color/black"
+            android:text="金额：" />
+
+        <TextView
+            android:id="@+id/list_my_order_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:layout_toRightOf="@id/list_my_order_money_des"
+            android:textColor="@color/logo_color" />
+
+        <TextView
+            android:id="@+id/list_my_order_money_ms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="1dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/gray666"
+            android:layout_toRightOf="@id/list_my_order_money"
+            android:text="元" />
+        <TextView
+            android:id="@+id/list_my_order_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/list_my_order_money_ms"
+            android:gravity="right"
+            android:text="@string/wait_pay"
+            android:textColor="@color/logo_color"
+            android:visibility="visible" />
+    </RelativeLayout>
+    <!-- 宽带类型 -->
+
+    <RelativeLayout
+        android:id="@+id/list_my_order_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/list_my_order_type_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="1dp"
+            android:textColor="@color/black"
+            android:text="带宽：" />
+
+        <TextView
+            android:id="@+id/list_my_order_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1M"
+            android:textColor="@color/gray666"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:layout_toRightOf="@id/list_my_order_type_des" />
+    </RelativeLayout>
+    <!-- 时间 -->
+
+    <RelativeLayout
+        android:id="@+id/list_my_order_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/list_my_order_time_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="1dp"
+            android:textColor="@color/black"
+            android:text="时长：" />
+
+        <TextView
+            android:id="@+id/list_my_order_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:text="0.00"
+            android:textColor="@color/gray666"
+            android:layout_toRightOf="@id/list_my_order_time_des" />
+
+        <TextView
+            android:id="@+id/list_my_order_btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/list_my_order_time"
+            android:gravity="right"
+            android:text="@string/wait_pay"
+            android:textColor="@color/logo_color"
+            android:visibility="visible" />
+    </RelativeLayout>
+    <!-- 按钮 -->
+
+    <RelativeLayout
+        android:id="@+id/list_my_order_five"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="15dp"
+        android:gravity="center" >
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GirdView 使用 多个 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:gravity="center"
+    android:background="@mipmap/dashed_f"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/gridview_image"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:text="文字"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/gridview_text"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:text="文字"
+        android:textColor="@color/red" />
+
+</LinearLayout>

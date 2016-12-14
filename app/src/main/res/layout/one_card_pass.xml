@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!-- 页头 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_one_card_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="一卡通查询"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include layout="@layout/tv_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/wallet_ico"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text=" 当前余额(元)" />
+
+        <TextView
+            android:id="@+id/tv_one_card_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="0.00"
+            android:textColor="@color/logo_color"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+
+        <View
+            style="@style/list_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <TextView
+            android:id="@+id/weixin_sm"
+            style="@style/my_text_defult_title_000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_back"
+            android:drawableLeft="@mipmap/weixin"
+            android:drawableRight="@mipmap/jiantou_right"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="	微信一卡通充值说明" />
+
+        <View
+            style="@style/list_line_color"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:id="@+id/zhifubao_sm"
+            style="@style/my_text_defult_title_000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_back"
+            android:drawableLeft="@mipmap/zhifubao"
+            android:drawableRight="@mipmap/jiantou_right"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="	支付宝一卡通充值说明" />
+
+        <View
+            style="@style/list_line_color"
+            android:layout_width="wrap_content"
+            android:layout_height="1px" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/list_line_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_one_card_slogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@mipmap/c_logo_touming" />
+
+        <TextView
+            android:id="@+id/tv_one_card_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="姓名"
+            android:textColor="@color/gray333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="您的一卡通余额为:"
+            android:textColor="@color/gray999" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="0.00"
+                android:textColor="@color/red"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="元"
+                android:textColor="@color/gray666"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_one_card_wx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_back"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/one_card_wx"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_one_card_zfb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_back"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/one_card_zfb"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

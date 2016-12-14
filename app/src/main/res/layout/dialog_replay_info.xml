@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 重新登录常用Dialog -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginTop="14dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/replay_tv_dialog_des"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="left"
+        android:layout_marginLeft="14dp"
+    	android:layout_marginRight="14dp"
+        android:textColor="@color/height_gray"
+        android:text="请重新输入学号/密码"
+        android:textSize="14dp"/>
+	
+    <!-- 学号 -->
+	<RelativeLayout 
+	    android:id="@+id/replay_dialog_account_info"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+    	android:layout_height="32dp"
+    	android:layout_marginLeft="14dp"
+    	android:layout_marginRight="14dp"
+    	android:gravity="center"
+    	android:layout_gravity="center"
+	    >
+	    <TextView 
+            android:id="@+id/replay_dialog_account"
+            android:layout_width="wrap_content"
+            android:text="学号："
+            android:textSize="14dp"
+            android:gravity="center"
+            android:textColor="@color/light_gray"
+         	android:layout_height="match_parent"
+            />
+	     <EditText 
+	         android:id="@+id/replay_dialog_account_des"
+	         android:layout_toRightOf="@id/replay_dialog_account"
+	         android:layout_width="match_parent"
+	         android:hint="@string/trip_account"
+	         android:background="@drawable/edit_shape"
+    	 	 android:layout_height="match_parent"
+    	 	 android:textSize="14dp"
+	         />
+	        	        
+	</RelativeLayout>
+	<!-- 密码  -->
+	<RelativeLayout 
+	    android:id="@+id/replay_dialog_pwd_info"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+    	android:layout_height="32dp"
+    	android:layout_marginLeft="14dp"
+    	android:layout_marginRight="14dp"
+    	android:gravity="center"
+	    >
+	    <TextView 
+            android:id="@+id/replay_dialog_pwd"
+            android:layout_width="wrap_content"
+            android:text="密码："
+            android:textSize="14dp"
+            android:textColor="@color/light_gray"
+            android:gravity="center"
+         	android:layout_height="match_parent"
+            />
+	     <EditText 
+	         android:id="@+id/replay_dialog_pwd_des"
+	         android:layout_toRightOf="@id/replay_dialog_pwd"
+	         android:hint="@string/trip_password"
+	         android:background="@drawable/edit_shape"
+	         android:textSize="14dp"
+	         android:password="true"
+	         android:layout_width="match_parent"
+    	 	 android:layout_height="match_parent"
+	         />
+	        	        
+	</RelativeLayout>
+	
+	<!-- 验证码 -->
+	<RelativeLayout 
+	    android:id="@+id/replay_dialog_validate"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+    	android:layout_height="32dp"
+    	android:layout_marginLeft="14dp"
+    	android:layout_marginRight="14dp"
+	    >
+	    <TextView 
+            android:id="@+id/replay_dialog_validate_name"
+            android:layout_width="60dp"
+            android:text="验证码："
+            android:textSize="14dp"
+            android:visibility="gone"
+         	android:layout_height="match_parent"
+            />
+	     <RelativeLayout 
+	         android:id="@+id/replay_dialog_valdata_rl_des"
+	         android:layout_toRightOf="@id/replay_dialog_validate_name"
+	         android:layout_width="match_parent"
+    	 	 android:layout_height="32dp"
+	         >
+	         <!-- 输入框 -->
+	        <com.toplion.cplusschool.View.ChangeIconEditText
+	            android:id="@+id/replay_dialog_validate_input"
+	            android:layout_width="100dp"
+	            android:width="100dp"
+	            android:textSize="14sp"
+	            android:maxLength="4"
+	            android:background="@drawable/edit_shape"
+	            android:drawableRight="@mipmap/error"
+	         	android:layout_height="32dp"
+	            />
+	        
+	        <!-- 验证码 -->
+	        <ImageView 
+	            android:id="@+id/replay_dialog_validate_image"
+	            android:layout_toRightOf="@id/replay_dialog_validate_input"
+	            android:layout_marginLeft="5dp"
+	            android:src="@drawable/loading"
+	            android:layout_width="100dp"
+	         	android:layout_height="match_parent"
+	            />
+	        <!-- 看不清 -->
+	        <Button 
+	            android:id="@+id/replay_dialog_validate_image_see"
+	            android:layout_toRightOf="@id/replay_dialog_validate_image"
+	            android:layout_width="40dp"
+	            android:text="@string/see_no"
+	            android:gravity="right|bottom"
+	            android:layout_marginLeft="5dp"
+	            android:textSize="12sp"
+	            android:onClick="downImage"
+	            android:background="@null"
+	         	android:layout_height="match_parent"/>
+	     </RelativeLayout>   
+	        
+	</RelativeLayout>
+	
+    <RelativeLayout 
+         android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:gravity="center"
+	     android:layout_margin="14dp">
+		<Button 
+		    android:id="@+id/replay_dialog_btn_ok"
+	        android:layout_width="70dp"
+	        android:layout_height="32dp"
+	        android:layout_marginRight="14dp"
+	        android:text="确定"
+	        android:background="@mipmap/btn_orange"
+	        android:textSize="14dp"
+	        android:textColor="@color/white"
+		    />
+		
+	</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_yuanjiaobottom_dioa"
+        android:orientation="horizontal" >
+
+        <Button
+             android:id="@+id/custom_dialog_cancel"
+               style="@style/text_tanchuang"
+            android:background="@drawable/button_login_dia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+             android:layout_marginTop="8dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginBottom="8dp"
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:textColor="@color/white"
+             android:text="呼叫"
+           />
+
+        <Button
+              android:id="@+id/custom_dialog_ensure"
+               style="@style/text_tanchuang"
+             android:background="@drawable/button_channel_dia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+             android:layout_marginTop="8dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginBottom="8dp"
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:textColor="#bababa"
+              android:text="取消"
+            />
+</LinearLayout>

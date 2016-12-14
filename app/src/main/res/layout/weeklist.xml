@@ -1,0 +1,278 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!-- 页头 -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/logo_color">
+        <ImageView
+            android:id="@+id/about_iv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/about_iv_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="课程表"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/weektoday"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="日/周"
+            />
+    </RelativeLayout>
+<include layout="@layout/tv_title"/>
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/leftweek"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/leftjiantou"
+            />
+        <TextView
+            android:id="@+id/textweek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="2015年第3周(本周)"
+            />
+        <ImageView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/rightweek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/rightjian"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/weekName"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/weektop"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal|center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/top_monday"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="周一"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/top_tuesday"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="周二"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/top_wendesday"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="周三"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/top_thursday"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="周四"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/top_firday"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="周五"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/top_saturday"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="周六"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/top_sunday"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="周日"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <ScrollView
+        android:id="@+id/scrollPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:id="@+id/contentPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/weekPanel_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical"></LinearLayout>
+            <!-- 周一到周日的排列 -->
+            <LinearLayout
+                android:id="@+id/weekPanel_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weekPanel_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weekPanel_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weekPanel_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weekPanel_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weekPanel_6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weekPanel_7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/noweek"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp">
+        <ImageView
+            android:id="@+id/noimg"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_disappoint" />
+        <TextView
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/noimg"
+            android:text="暂无课表信息"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <include layout="@layout/no_data"/>
+    </RelativeLayout>
+</LinearLayout>

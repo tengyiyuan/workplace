@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toptitle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/newtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的报销"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/addbaoxiao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/addbaoxiao" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/topyuyue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="全部预约" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/divider_list" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/daiban"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="待办预约" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/divider_list" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/quxiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="已经取消" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/divider_list" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/yuqi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="逾期预约" />
+    </LinearLayout>
+
+   <LinearLayout
+       android:id="@+id/yuyueline"
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <TextView
+           android:visibility="invisible"
+           android:id="@+id/allimg"
+           android:background="@color/logo_color"
+           android:layout_weight="1"
+           android:layout_width="match_parent"
+           android:layout_height="1dp"/>
+       <TextView
+           android:visibility="invisible"
+           android:id="@+id/daibanimg"
+           android:background="@color/logo_color"
+           android:layout_weight="1"
+           android:layout_width="match_parent"
+           android:layout_height="1dp"/>
+       <TextView
+           android:visibility="invisible"
+           android:id="@+id/quxiaoimg"
+           android:background="@color/logo_color"
+           android:layout_weight="1"
+           android:layout_width="match_parent"
+           android:layout_height="1dp"/>
+       <TextView
+           android:visibility="invisible"
+           android:id="@+id/yuqiimg"
+           android:background="@color/logo_color"
+           android:layout_weight="1"
+           android:layout_width="match_parent"
+           android:layout_height="1dp"/>
+   </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider_list" />
+    <ListView
+        android:id="@+id/mylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#F1F1F1"
+        android:dividerHeight="3dp" />
+
+    <LinearLayout
+        android:id="@+id/noresult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="30dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/nobaoxiao" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

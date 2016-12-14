@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_yuanjiao_dioa_list"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_wm_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="标题"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_wm_detail_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/weektime"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:text="会议时间"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_wm_detail_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/weeklocation"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:text="会议地点"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_wmg_detail_host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/weekhost"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:text="主持人"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_wm_detail_department"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/weekdepartment"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:text="承办部门"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/tv_wm_detail_g"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/weekgroup"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:text="参加人员:"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_wm_detail_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/v_weekmeeting_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_color" />
+
+    <RelativeLayout
+        android:id="@+id/rl_weekmeeting_tixing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="我需参加,请提醒"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/btn_wm_detail_closeoropen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/btn_off2"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!-- 头部显示信息 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_repair_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_repair_confirm_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/confirm_repair"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_repair_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/repair_number"
+                        android:textColor="@color/gray666"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_repair_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@color/gray666"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/repair_state"
+                    android:textColor="@color/gray666"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray666"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/repair_date"
+                    android:textColor="@color/gray666"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray666"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/confirm_repair_info"
+                android:textColor="@color/gray666"
+                android:textSize="14sp" />
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/add_repair_question_type_title"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/add_repair_equipment_type_title"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_equipment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/add_repair_internet_type_title"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_internet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/add_repair_fault_address_title"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/add_repair_internet_near_title"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_internet_near"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/add_repair_fault_description_title"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <View
+                    style="@style/line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/confirm_repair_person_info"
+                android:textColor="@color/gray666"
+                android:textSize="14sp" />
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/confirm_repair_person_name"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_person_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/confirm_repair_person_phone"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_repair_confirm_person_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/gray999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/view_repair_line"
+        style="@style/line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/ll_repair_bottom"/>
+
+    <LinearLayout
+        android:id="@+id/ll_repair_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_cd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/gridview_item_back"
+            android:gravity="center"
+            android:textColor="@color/light_green"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="@string/tv_cd" />
+
+        <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/light_green"
+            android:background="@drawable/gridview_item_back"
+            android:gravity="center"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="@string/tv_edit" />
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/gridview_item_back"
+            android:gravity="center"
+            android:textColor="@color/light_green"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="@string/tv_cancle" />
+        <TextView
+            android:id="@+id/tv_pj"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/gridview_item_back"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/light_green"
+            android:visibility="gone"
+            android:text="@string/tv_pj" />
+    </LinearLayout>
+</RelativeLayout>

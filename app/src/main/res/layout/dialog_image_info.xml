@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 验证码常用Dialog -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginTop="14dp"
+    android:gravity="center"
+	android:paddingTop="10dp"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="left"
+        android:layout_marginLeft="14dp"
+    	android:layout_marginRight="14dp"
+        android:textColor="@color/height_gray"
+        android:text="请输入验证码"
+        android:textSize="14dp"/>
+	
+    <!-- 验证码 -->
+	<RelativeLayout 
+	    android:id="@+id/dialog_validate"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+    	android:layout_height="32dp"
+    	android:layout_marginLeft="14dp"
+    	android:layout_marginRight="14dp"
+	    >
+	    <TextView 
+            android:id="@+id/dialog_validate_name"
+            android:layout_width="60dp"
+            android:text="验证码："
+            android:textSize="14dp"
+            android:visibility="gone"
+         	android:layout_height="match_parent"
+            />
+	     <RelativeLayout 
+	         android:id="@+id/dialog_valdata_rl_des"
+	         android:layout_toRightOf="@id/dialog_validate_name"
+	         android:layout_width="match_parent"
+    	 	 android:layout_height="32dp"
+	         >
+	         <!-- 输入框 -->
+	        <com.toplion.cplusschool.View.ChangeIconEditText
+	            android:id="@+id/dialog_validate_input"
+	            android:layout_width="100dp"
+	            android:width="100dp"
+	            android:textSize="14sp"
+	            android:maxLength="4"
+	            android:background="@drawable/edit_shape"
+	            android:drawableRight="@mipmap/error"
+	         	android:layout_height="32dp"
+	            />
+	        
+	        <!-- 验证码 -->
+	        <ImageView 
+	            android:id="@+id/dialog_validate_image"
+	            android:layout_toRightOf="@id/dialog_validate_input"
+	            android:layout_marginLeft="5dp"
+	            android:src="@drawable/loading"
+	            android:layout_width="100dp"
+	         	android:layout_height="match_parent"
+	            />
+	        <!-- 看不清 -->
+	        <Button 
+	            android:id="@+id/dialog_validate_image_see"
+	            android:layout_toRightOf="@id/dialog_validate_image"
+	            android:layout_width="40dp"
+	            android:text="@string/see_no"
+	            android:gravity="right|bottom"
+	            android:layout_marginLeft="5dp"
+	            android:textSize="12sp"
+	            android:onClick="downImage"
+	            android:background="@null"
+	         	android:layout_height="match_parent"/>
+	     </RelativeLayout>   
+	        
+	</RelativeLayout>
+	
+    <RelativeLayout 
+         android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_marginTop="14dp"
+	     android:gravity="center"
+	     android:layout_marginLeft="14dp"
+    	 android:layout_marginRight="14dp"
+	     android:layout_marginBottom="14dp"
+        >
+		<Button 
+		    android:id="@+id/tv_dialog_image_btn"
+	        android:layout_width="70dp"
+	        android:layout_height="32dp"
+	        android:layout_marginRight="14dp"
+	        android:text="确定"
+	        android:background="@mipmap/btn_orange"
+	        android:textSize="14dp"
+	        android:textColor="@color/white"
+		    />
+		
+	</RelativeLayout>
+</LinearLayout>

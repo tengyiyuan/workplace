@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_select_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="查询类型"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_select_replace"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="切换绑定"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/xuanzetubiao">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/xuanzewenzi" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/xuanze_xingming"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:text="姓名:"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_select_xm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <View
+            style="@style/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/xuanze_zhicheng"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:text="职称:"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_select_zc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"></View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/xuanze_bumenx"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:text="部门:"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_select_bm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/xuanze_zhanghao"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:text="已绑账号:"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_select_zh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/tv_select_gjj"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_yellow"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="公积金查询"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_select_gz"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="工资查询"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

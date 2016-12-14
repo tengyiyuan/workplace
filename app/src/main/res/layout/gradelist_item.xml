@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/tv_subject_type"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:text="计算机科学与技术" />
+
+        <TextView
+            android:id="@+id/tv_subject_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:layout_toLeftOf="@+id/tv_subject_grade"
+            android:textColor="@color/black"
+            android:text="必修" />
+
+        <TextView
+            android:id="@+id/tv_subject_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/tv_credit"
+            android:textColor="@color/black"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/tv_credit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="0分" />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.1dp"
+        android:background="@color/gray" />
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="9.9"
+        android:gravity="center"
+        android:background="@drawable/list_item_back"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/ground_iv_pay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:src="@mipmap/btn_network_pay" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ground_iv_pay"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="更多"
+            android:textColor="@color/light_gray"
+            android:paddingBottom="10dp"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_color"
+            android:layout_alignParentBottom="true"
+            android:padding="0.1dp"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/line_color"/>
+
+</LinearLayout>

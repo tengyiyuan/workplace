@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_back">
+    <TextView
+        android:id="@+id/tv_contacts_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="张三"
+        android:textColor="@color/gray333"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_contacts_number_str"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_contacts_name"
+        android:padding="5dp"
+        android:text="学号:"
+        android:textColor="@color/gray666"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_contacts_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_contacts_number_str"
+        android:layout_toLeftOf="@+id/iv_call_detail"
+        android:padding="5dp"
+        android:text="201505150325"
+        android:textColor="@color/gray333"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_contacts_phone_str"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_contacts_name"
+        android:padding="5dp"
+        android:text="电话:"
+        android:textColor="@color/gray666"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_contacts_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_contacts_name"
+        android:layout_toRightOf="@+id/tv_contacts_phone_str"
+        android:layout_toLeftOf="@+id/iv_call_detail"
+        android:padding="5dp"
+        android:text="15528711452"
+        android:textColor="@color/gray333"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/iv_call_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:src="@mipmap/contact_dianhua" />
+
+    <ImageView
+        android:id="@+id/iv_call_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/iv_call_phone"
+        android:padding="10dp"
+        android:src="@mipmap/contacts_xiangqing"
+        android:visibility="gone" />
+</RelativeLayout>

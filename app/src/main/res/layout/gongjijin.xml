@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/weektop"
+    android:orientation="vertical">
+    <!-- 页头 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_one_card_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="35dp"
+            android:gravity="center"
+            android:text="公积金"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/wallet_ico"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text=" 当前余额(元)" />
+
+        <TextView
+            android:id="@+id/tv_gjj_dqye"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="0.00"
+            android:textColor="@color/logo_color"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="公积金账号:"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@mipmap/gjjzh"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_gjj_zh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <View
+            style="@style/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="本月余额:"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@mipmap/ye"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_gjj_ye"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="本月缴存:"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@mipmap/byjc"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_gjj_byjc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <View
+            style="@style/line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="年度:"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@mipmap/nd"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_gjj_nd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/gray333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

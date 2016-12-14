@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 我的订单  交易成功 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/line"
+        style="@style/line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <LinearLayout
+        android:layout_below="@+id/line"
+        android:id="@+id/my_order_datas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        <com.ab.view.pullview.AbPullToRefreshView
+            android:id="@+id/mPullRefreshView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white">
+
+            <ListView
+                android:id="@+id/my_order_success_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#cfcfcf"
+                android:dividerHeight="1px"
+                android:scrollbars="none"  />
+        </com.ab.view.pullview.AbPullToRefreshView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/my_order_nodatas"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="暂无订单"
+            android:textColor="@color/logo_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</RelativeLayout>

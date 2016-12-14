@@ -1,0 +1,79 @@
+<!-- 项目主页面 登录页面 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 头部显示信息 -->
+
+    <RelativeLayout
+        android:id="@+id/login_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="14dp"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="选择学校"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <!-- 输入文本框 -->
+
+    <RelativeLayout
+        android:id="@+id/login_input"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_below="@id/login_top"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="10dp" >
+
+        <EditText
+            android:id="@+id/login_et_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_shape"
+            android:hint="@string/sch_trip"
+            android:singleLine="true"
+            android:textColor="@color/light_gray"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <!-- 学校ListView -->
+
+    <ListView
+        android:id="@+id/login_school_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/login_input"
+        android:layout_above="@+id/login_btn_next"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp" />
+    <!-- 下一步 -->
+
+    <Button
+        android:id="@+id/login_btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:background="@mipmap/btn_gray"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</RelativeLayout>

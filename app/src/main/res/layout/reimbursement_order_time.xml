@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_reimbursement_top"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_reimburse_order_time_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="预约时间"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/line_color" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="预约时间:" />
+
+            <TextView
+                android:id="@+id/tv_order_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_time"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/logo_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_order_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_order_time"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textColor="@color/logo_color"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tv_reimburse_change_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bt_logo_selector"
+                android:gravity="center"
+                android:text="换个时间"
+                android:textColor="@color/logo_color" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_color"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="预约窗口:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_chuangkou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_color" />
+
+        <LinearLayout
+            android:id="@+id/ll_lxfs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="联系方式:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_shape"
+                android:hint="请填写手机号"
+                android:padding="7dp"
+                android:inputType="phone"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_lxfs_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="要代办人:"
+                android:textSize="16sp" />
+
+            <com.ab.view.sliding.AbSlidingButton
+                android:id="@+id/btn_closeoropen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp">
+
+            </com.ab.view.sliding.AbSlidingButton>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_color" />
+
+        <RelativeLayout
+            android:id="@+id/rl_daiban"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_dbrxm_str"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="代办人姓名:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_dbrxm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/tv_dbrxm_str"
+                android:background="@drawable/edit_shape"
+                android:hint="请填写代办人姓名"
+                android:padding="7dp"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_dbrdh_str"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_dbrxm_str"
+                android:padding="10dp"
+                android:text="代办人电话:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_dbrdh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_dbrxm_str"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/tv_dbrdh_str"
+                android:background="@drawable/edit_shape"
+                android:hint="请填写代办人电话"
+                android:inputType="phone"
+                android:padding="7dp"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_color" />
+
+        <Button
+            android:id="@+id/btn_confirm_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/button_login"
+            android:text="确定预约"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

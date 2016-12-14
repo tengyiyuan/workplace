@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/actionBarText"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_select_time_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_select_time_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/tv_select_time_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="选择时间"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_select_time_tishi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_select_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="5dp"
+                android:drawableRight="@mipmap/xiala"
+                android:padding="10dp"
+                android:text=" 更换日期"
+                android:textColor="@color/logo_color"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/juxing_huangse"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="已选" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:drawableLeft="@mipmap/juxing_baise"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="可选" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/juxing_huise"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="不可选"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/gv_select_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ll_select_time_bottom"
+            android:layout_below="@+id/ll_select_time_tishi"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:horizontalSpacing="1dp"
+            android:numColumns="5"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="3dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_select_time_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
+                android:text="预约时间"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_color" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/tv_select_datetime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/tv_select_confirm_time"
+                    android:padding="5dp"
+                    android:text="您还未选择预约报销时间，赶紧点击选择吧!"
+                    android:textColor="@color/gray666" />
+
+                <TextView
+                    android:id="@+id/tv_select_confirm_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/button_login"
+                    android:padding="10dp"
+                    android:text="请选择时间"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/no_data" />
+</LinearLayout>

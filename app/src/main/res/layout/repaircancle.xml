@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/button_yuanjiao_diawhile"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="撤销原因:"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/et_repair_cancle_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="请填写撤销原因"
+        android:textColorHint="@color/grayccc"
+        android:background="@drawable/tv_repair_bg"
+        android:visibility="gone"
+        android:textSize="15sp"
+        android:padding="10dp" />
+    <RadioGroup
+        android:id="@+id/et_repair_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="5dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/et_repair_cancle_zdhf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自动恢复"
+            android:checked="true"
+            android:layout_marginRight="10dp"
+            android:singleLine="true"
+            android:textColor="@color/light_gray"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/et_repair_cancle_qt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他原因"
+            android:textColor="@color/light_gray"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:visibility="visible"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/bt_repair_cancle_commit"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_yuanjiao_dia"
+        android:text="提交"
+        android:textColor="#fff" />
+</LinearLayout>

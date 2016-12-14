@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_item_back"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_huiyi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/huiyi" />
+
+    <TextView
+        android:id="@+id/tv_weekmeeting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_huiyi"
+        android:paddingLeft="10dp"
+        android:text="会议标题"
+        android:textColor="@color/gray333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_weekmeeting_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_weekmeeting_title"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/iv_huiyi"
+        android:paddingLeft="10dp"
+        android:text="时间"
+        android:textColor="@color/gray666"
+        android:textSize="14sp" />
+
+</RelativeLayout>

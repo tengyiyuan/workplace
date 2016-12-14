@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!-- 图片轮播 -->
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+
+            <!-- 显示图片 -->
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent" >
+            </android.support.v4.view.ViewPager>
+            <!-- 显示图片 -->
+            <!-- 滚动条 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="381dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <!-- 页数轮播 -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="340dip"
+                    android:orientation="horizontal" >
+
+                    <!-- <View
+                        android:id="@+id/dot_0"
+                        android:layout_width="5dip"
+                        android:layout_height="5dip"
+                        android:layout_marginLeft="2dip"
+                        android:layout_marginRight="2dip"
+                        android:layout_marginTop="0dip"
+                        android:background="@drawable/dot_focused" />
+
+                    <View
+                        android:id="@+id/dot_1"
+                        android:layout_width="5dip"
+                        android:layout_height="5dip"
+                        android:layout_marginLeft="2dip"
+                        android:layout_marginRight="2dip"
+                        android:background="@drawable/dot_normal" />
+
+                    <View
+                        android:id="@+id/dot_2"
+                        android:layout_width="5dip"
+                        android:layout_height="5dip"
+                        android:layout_marginLeft="2dip"
+                        android:layout_marginRight="2dip"
+                        android:layout_marginTop="0dip"
+                        android:background="@drawable/dot_normal" /> -->
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+  
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:id="@+id/rl_meal_item"
+    android:background="@drawable/gridview_item">
+
+    <TextView
+        android:id="@+id/tv_meal_item_banwidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textColor="@color/gray333"
+        android:text="10M无线+20M有线" />
+
+    <ImageView
+        android:id="@+id/iv_meal_item_yh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:visibility="visible"
+        android:src="@mipmap/youhui" />
+</RelativeLayout>

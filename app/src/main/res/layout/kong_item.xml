@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 学校ListView Item -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:background="@drawable/bg_table_yes"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/newtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/newimg"
+        android:paddingLeft="18dp"
+        android:paddingTop="10dp"
+        android:singleLine="true"
+        android:text="啊大大"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/height_gray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/newimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="new"
+        android:textColor="@color/red"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newtitle"
+        android:paddingLeft="18dp"
+        android:text="当前状态:"
+        android:drawableLeft="@mipmap/dangqianstate"
+        android:visibility="visible"
+        android:paddingBottom="5dp"
+        android:textColor="#A6a6a6"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/bumen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/state"
+        android:paddingLeft="18dp"
+        android:text="牵头部门:"
+        android:drawableLeft="@mipmap/qiantou"
+        android:paddingBottom="10dp"
+        android:textColor="#A6a6a6"
+        android:textSize="14sp" />
+<View
+    android:layout_marginLeft="18dp"
+    android:layout_marginRight="10dp"
+    android:layout_below="@+id/bumen"
+    android:background="@color/divider_list"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"/>
+</RelativeLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_feek_back_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/tv_webview_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="意见反馈"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_suggestion_content1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="PS:这里写提示语"
+        android:visibility="gone"
+        android:textColor="@color/gray333" />
+
+    <EditText
+        android:id="@+id/et_add_suggest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_yuanjiao_dioa_your"
+        android:gravity="top|left"
+        android:hint="亲,您遇到什么问题或有任何建议,请都告诉我们,谢谢!"
+        android:minHeight="150dip"
+        android:padding="10dp"
+        android:maxLength="100"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/et_feekback_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_yuanjiao_dioa_your"
+        android:hint="请留下您的联系方式"
+        android:minHeight="30dip"
+        android:padding="10dp"
+        android:inputType="number"
+        android:maxLength="11"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/tv_suggestion_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_login"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

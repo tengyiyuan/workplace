@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 只用一个按钮的Dialog -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_gravity="center"
+	android:background="@drawable/bg_yuanjiao_dioa_your"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_dialog_sign_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="14sp"
+        android:textColor="@color/height_gray"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tv_dialog_sign_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_margin="14dp"
+        android:textColor="@color/light_gray"
+        android:gravity="center"/>
+	<Button 
+	    android:id="@+id/tv_dialog_sign_btn"
+		android:layout_width="100dp"
+		android:layout_height="32dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/button_login_dia"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+	    />
+</LinearLayout>

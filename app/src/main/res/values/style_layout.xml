@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @author Arthur Lee -->
+<resources>
+  <!-- 本处重写了android:layout中的两个关于布局分布格局的参数，分别是：
+       @param layout_horizontal
+       @param layout_vertical 
+                    自定义了两个参数，分别是：
+       @param layout_full
+       @param layout_wrap-->
+  <!-- 全屏幕拉伸-->
+  <!-- 控制当前布局为全屏分布 -->
+  <style name="layout_full"> 
+    <!-- match_parent：即表示匹配当前父类的数据，和fill_parent一样 -->
+    <!-- 布局的宽度为父类的宽度 --> 
+    <item name="android:layout_width">match_parent</item>
+    <!-- 布局的高度为父类的高度 -->  
+    <item name="android:layout_height">match_parent</item>  
+  </style>  
+  <!-- 固定自身大小-->
+  <!-- 控制当前布局，正常显示当前布局的大小 -->
+  <style name="layout_wrap">  
+    <!-- wrap_content：即表示匹配当前自身的大小 -->
+    <!-- 布局的宽度为自己的宽度 -->
+    <item name="android:layout_width">wrap_content</item> 
+    <!-- 布局的高度为自己的高度 --> 
+    <item name="android:layout_height">wrap_content</item>  
+  </style>
+  <!-- 横向分布-->
+  <!-- 控制当前布局为横向分布，是对原有layout_horizontal的重写 -->
+  <!-- 首先让其继承于我们之前定义的layout_full,即处于全屏幕拉伸的状态 -->
+  <style name="layout_horizontal" parent="layout_full"> 
+   <!-- 然后在其处于全屏幕拉伸的状态下，将其宽度定义成0px,即可适应屏幕分辨率 --> 
+   <!-- 在Android的XML中调用horizontal，
+                        放置控件时是要让其高度匹配当前Layout,而宽度随意-->
+   <!-- 所以定义成0px，是为了让布局中的控件依靠当前高度进行缩放 -->
+    <item name="android:layout_width">0px</item>  
+  </style>    
+  <!-- 纵向分布-->
+  <!-- 控制当前布局为横向分布，是对原有layout_vertical的重写 -->
+  <!-- 首先让其继承于我们之前定义的layout_full,即处于全屏幕拉伸的状态 -->
+  <style name="layout_vertical" parent="layout_full">  
+   <!-- 然后在其处于全屏幕拉伸的状态下，将其高度定义成0px,即可适应屏幕分辨率 -->
+   <!-- 在Android的XML中调用vertical，
+                        放置控件时是要让其宽度匹配当前Layout,而高度随意--> 
+   <!-- 所以定义成0px，是为了让布局中的控件依靠当前宽度进行缩放 -->
+    <item name="android:layout_height">0px</item>  
+  </style>
+</resources>

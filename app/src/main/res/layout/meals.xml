@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 套餐选择 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="服务器异常"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:visibility="gone" />
+    <!-- 页头 -->
+    <LinearLayout
+        android:id="@+id/meal_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/meal_iv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/meal_iv_Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/meal_choice"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- 类型选择 -->
+        <LinearLayout
+            android:id="@+id/meal_type_des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="带宽选择"
+                android:textSize="14sp" />
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+        </LinearLayout>
+        <!-- 迭代类型选择  -->
+        <LinearLayout
+            android:id="@+id/meal_type_gridData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center">
+
+            <GridView
+                android:id="@+id/gview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnWidth="44dp"
+                android:gravity="center"
+                android:horizontalSpacing="20dp"
+                android:listSelector="@mipmap/dashed_orange"
+                android:numColumns="auto_fit"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/meal_type_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="时长选择"
+                android:textSize="14sp" />
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+        </LinearLayout>
+
+
+        <!-- 迭代时间选择  -->
+        <LinearLayout
+            android:id="@+id/meal_type_gridtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="14dp">
+
+            <GridView
+                android:id="@+id/gview_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnWidth="120dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:horizontalSpacing="4dp"
+                android:numColumns="auto_fit"
+                android:padding="10dp"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="4dp">
+
+            </GridView>
+        </LinearLayout>
+
+        <!-- 订单详细信息  -->
+        <RelativeLayout
+            android:id="@+id/meal_rl_info_band"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="20dp">
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+
+            <TextView
+                android:id="@+id/meal_rl_info_tv_des"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="1sp"
+                android:text="金额：" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="1sp"
+                android:layout_toRightOf="@id/meal_rl_info_tv_des">
+
+                <TextView
+                    android:id="@+id/meal_tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="1sp"
+                    android:text=" "
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/meal_tv_money_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="1sp"
+                    android:layout_toRightOf="@id/meal_tv_money"
+                    android:gravity="left"
+                    android:text="元" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/meal_rl_info_tlength"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/meal_rl_info_tlength_des"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1sp"
+                android:text="带宽：" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="1sp"
+                android:layout_toRightOf="@id/meal_rl_info_tlength_des">
+
+                <TextView
+                    android:id="@+id/meal_tv_info_wlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="1sp"
+                    android:text="" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/meal_rl_info_price"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/meal_rl_info_price_des"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1sp"
+                android:text="时长：" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/meal_rl_info_price_des">
+
+                <TextView
+                    android:id="@+id/meal_tv_tlength"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_meal_tishi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:text="@string/tv_meal_tishi"
+            android:textColor="@color/red"
+            android:visibility="gone" />
+        <!-- 下一步 -->
+        <RelativeLayout
+            android:id="@+id/meal_rl_next"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btn_meal_next"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@mipmap/btn_orange"
+                android:text="下一步"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+        <!-- 购买协议 -->
+        <RelativeLayout
+            android:id="@+id/meal_rl_buy"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="15dp">
+
+            <CheckBox
+                android:id="@+id/meal_ck_cb"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:checked="true" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/meal_ck_cb">
+
+                <TextView
+                    android:id="@+id/meal_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/register_agreement"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

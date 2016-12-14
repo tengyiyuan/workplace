@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- 头部显示信息 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_fault_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_repair_question_detail_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/question"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_fault_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_fault_top"
+        android:layout_margin="10dp"
+        android:textColor="@color/light_green"
+        android:textSize="15sp" />
+
+    <WebView
+        android:id="@+id/wv_fault_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_fault_name"
+        android:layout_marginLeft="10dp"
+        android:layout_above="@+id/rl_bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp">
+
+    </WebView>
+
+    <TextView
+        android:id="@+id/tv_fault_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_fault_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/gray666"
+        android:visibility="gone"
+        android:textSize="15sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_resolved"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/tv_resolved"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_repair_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_resolved"
+            android:background="@drawable/bg_table_yes"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/tv_repair_go"
+            android:textColor="@color/gray666"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

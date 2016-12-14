@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 常见问题及解决方案 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/repair_question_info_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="常见问题及解决方案"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/repair_question_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/v_repair_line"
+            android:layout_alignParentTop="true"
+            android:divider="@color/line_color"
+            android:dividerHeight="0.1dp" />
+
+        <View
+            android:id="@+id/v_repair_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_above="@+id/tv_go_repair"
+            android:background="@color/line_color"/>
+
+        <TextView
+            android:id="@+id/tv_go_repair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:background="@drawable/bg_table_yes"
+            android:padding="10dp"
+            android:textColor="@color/logo_color"
+            android:text="去报修"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:id="@+id/iv_flower_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:src="@mipmap/btn_meal_up" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/ll_flower_number"
+        android:layout_toRightOf="@+id/iv_flower_icon"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/tv_flower_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:padding="5dp"
+            android:text="一剑隔世"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_flower_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:padding="5dp"
+            android:text="齐鲁师范学院"
+            android:textColor="@color/gray999" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_flower_mc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/one" />
+
+    <LinearLayout
+        android:id="@+id/ll_flower_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/iv_flower_mc"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="鲜花数:"
+            android:textColor="@color/logo_color" />
+
+        <TextView
+            android:id="@+id/tv_flower_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="999"
+            android:textColor="@color/logo_color" />
+    </LinearLayout>
+</RelativeLayout>

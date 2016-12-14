@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_phone_release_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="30dp"
+            android:text="照片发布"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_photo_release_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:src="@mipmap/c_logo"/>
+
+    <Button
+        android:id="@+id/bt_photo_release_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认发布"
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_login_dia"/>
+    <Button
+        android:id="@+id/bt_photo_release_reselect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="重新选择"
+        android:textColor="@color/logo_color"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bt_logo_selector"/>
+</LinearLayout>

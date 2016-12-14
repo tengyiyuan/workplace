@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/leftimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/leftimg" />
+
+        <TextView
+            android:id="@+id/mapname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/leftimg"
+            android:text="龙德鑫源餐厅"
+            android:textSize="18sp" />
+
+        <TextView
+            android:textColor="#616161"
+            android:drawableLeft="@mipmap/maptel"
+            android:id="@+id/maptel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapname"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/leftimg"
+            android:text=" 0531-8888888"
+            android:textSize="14sp" />
+
+        <TextView
+            android:textColor="#616161"
+            android:drawableLeft="@mipmap/mapaddress"
+            android:id="@+id/mapaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/maptel"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/leftimg"
+            android:text=" 山东省济南市高新区草山岭小区"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简介:"
+            android:textSize="14sp" />
+
+        <TextView
+            android:textColor="#616161"
+            android:id="@+id/maptext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="山东省济南市高新区草山岭小区山东省济南市高新区草山岭小区山东省济南市高新区草山岭小区山东省济南市高新区草山岭小区"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

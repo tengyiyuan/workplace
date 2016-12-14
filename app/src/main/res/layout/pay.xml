@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/NavPage"
+    android:orientation="vertical" >
+
+    <Button
+            android:id="@+id/appay_btn"
+            style="@style/MMLineActionButton"
+            android:layout_margin="10dp"
+            android:text="支付"
+            android:visibility="gone" />
+
+
+
+    <TextView
+        android:id="@+id/editText_prepay_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </TextView>
+
+    
+
+</LinearLayout>

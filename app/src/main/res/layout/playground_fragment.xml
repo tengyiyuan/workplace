@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 操场 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/layout_full"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/myscrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.toplion.cplusschool.View.BannerImg
+                    android:id="@+id/ssv_slid_show_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </com.toplion.cplusschool.View.BannerImg>
+                <!-- 图片 -->
+            </FrameLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <com.toplion.cplusschool.widget.BannerViewPager
+                    android:id="@+id/layout_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+                </com.toplion.cplusschool.widget.BannerViewPager>
+                <LinearLayout
+                    android:id="@+id/layout_dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/layout_image"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp" >
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <!-- 图片轮播 -->
+
+            <View
+                style="@style/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+            <!-- 中间条 -->
+
+            <LinearLayout
+                style="@style/layout_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="14dp"
+                        android:orientation="horizontal">
+
+                        <!-- 左布局 -->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="账户："
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/ground_tv_account"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="14dp"
+                                    android:text=""
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="14sp" />
+                                <TextView
+                                    android:id="@+id/qiandao"
+                                    android:background="@mipmap/meiriqiandao"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="14dp"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                            <!-- 余额 -->
+
+                            <LinearLayout
+                                android:id="@+id/ground_ll_balance"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="余额："
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/ground_tv_balance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="14dp"
+                                    android:text="0.00"
+                                    android:textColor="@color/logo_color"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="元"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="15sp" />
+                                <!-- 付费 -->
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/ground_ll_meal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="套餐："
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/ground_tv_meal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="14dp"
+                                    android:text=""
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/ground_tv_pay"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="right"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/pay" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ground_ll_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="到期时间："
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/ground_tv_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:text=""
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/ground_tv_pay1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="right"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/pay" />
+                                <!-- 付费 -->
+                            </LinearLayout>
+                            <!-- 开通 -->
+
+                            <LinearLayout
+                                android:id="@+id/ground_ll_open"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="您还没有开通上网套餐，请"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/ground_tv_open"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/meal_open"
+                                    android:textSize="14sp" />
+                                <!-- 付费 -->
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- 右布局 -->
+                    </LinearLayout>
+
+                    <View
+                        style="@style/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginTop="5dp" />
+
+                    <!-- 结束描述 -->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <!-- 缴费 -->
+                    <RelativeLayout
+                        android:id="@+id/ground_rl_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/ground_iv_pay"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/btn_network_pay" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ground_iv_pay"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="缴费"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <!-- 报修 -->
+
+                    <RelativeLayout
+                        android:id="@+id/ground_rl_repair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/ground_iv_repair"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/btn_repair" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ground_iv_repair"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="报修"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <!-- 一键上网 -->
+
+                    <RelativeLayout
+                        android:id="@+id/ground_rl_net"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/ground_iv_buy"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/btn_key_intenet" />
+
+                        <TextView
+                            android:id="@+id/ground_tv_buy_des"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ground_iv_buy"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="一键上网"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/coustlist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_custlist"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/btn_week" />
+
+                        <TextView
+                            android:id="@+id/custlist"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/iv_custlist"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="课程表"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/iv_grade"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/btn_grade" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iv_grade"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="查成绩"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/iv_test"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/btn_test" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iv_test"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="考试安排"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_empty_classroom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_room"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/btn_classroom" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/iv_room"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="空教室"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_school_bus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/gridview_item_back"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/iv_test11"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:src="@mipmap/school_bus" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iv_test11"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="校车时刻表"
+                            android:textColor="@color/light_gray"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <!-- 首页功能 -->
+                <com.toplion.cplusschool.widget.GridViewInScrollView
+                    android:id="@+id/gv_pgf_function"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:listSelector="@null"
+                    android:numColumns="4"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:scrollbars="none"/>
+                <!-- C+动态 -->
+
+                <View
+                    style="@style/line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px" />
+
+                <LinearLayout
+                    style="@style/layout_vertical"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ground_ll_buttom_tv_schgb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:padding="10dp"
+                        android:text="C+动态"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <View
+                        style="@style/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px" />
+
+                    <LinearLayout
+                        android:id="@+id/ground_ll_buttom_schgb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
+                        <!-- 校园广播集合  -->
+                        <com.toplion.cplusschool.widget.MyListViewFill
+                            android:id="@+id/ground_lv_schgb"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:divider="@null"
+
+                            android:drawSelectorOnTop="false"
+                            android:scrollbars="none" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

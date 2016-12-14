@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="对此联系人进行操作"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_list" />
+
+        <LinearLayout
+            android:id="@+id/lay_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_table_yes"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btn_bottom_call"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#007aff"
+                android:textSize="16sp"
+                android:text="呼叫" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_list" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/bg_table_yes"
+            android:id="@+id/lay_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btn_bottom_message"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#007aff"
+                android:textSize="16sp"
+                android:text="发短信" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_list" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/bg_table_yes"
+            android:id="@+id/lay_copy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btn_bottom_copy"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#007aff"
+                android:textSize="16sp"
+                android:text="复制" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_list" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/bg_table_yes"
+            android:id="@+id/lay_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btn_bottom_save"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#007aff"
+                android:textSize="16sp"
+                android:text="保存" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_list" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/bg_table_yes"
+            android:id="@+id/lay_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btn_bottom_detail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#007aff"
+                android:textSize="16sp"
+                android:text="查看详情" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_list" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10px"
+            android:background="@color/divider_list" />
+        <LinearLayout
+            android:background="@drawable/bg_table_yes"
+            android:id="@+id/lay_chnel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btn_bottom_chnel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#6F6F6F"
+                android:textSize="16sp"
+                android:text="取消" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_list" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,229 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!-- 页头 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_classroom_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/tv_classroom_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="@string/empty_class_room"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/leftdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@mipmap/leftjiantou"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/textdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/logo_color" />
+
+            <ImageView
+                android:id="@+id/rightdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@mipmap/rightjian" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_floor_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_floor_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tv_repair_bg"
+                android:gravity="center"
+                android:drawableRight="@mipmap/img_xiala"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:text="1层"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_marginBottom="20dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_dis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:src="@mipmap/img_disappoint" />
+
+        <TextView
+            android:id="@+id/tv_disa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_dis"
+            android:gravity="center"
+            android:text="@string/class_room_str"
+            android:textColor="@color/gray666"
+            android:visibility="gone"
+            android:textSize="16sp" />
+        <include layout="@layout/no_data"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/ll_havedata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/tv_title"
+            android:layout_width="@dimen/weekItemWidth"
+            android:layout_height="@dimen/weekItemHeight"
+            android:background="@drawable/bg_table_yes"
+            android:src="@mipmap/img_jieshi" />
+
+        <com.toplion.cplusschool.widget.MyHorizontalScrollView
+            android:id="@+id/hsl_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_title"
+            android:background="@color/white"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/ll_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+        </com.toplion.cplusschool.widget.MyHorizontalScrollView>
+
+        <com.toplion.cplusschool.widget.MyScrollView
+            android:id="@+id/sl_column"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_title"
+            android:background="@color/white"
+            android:layout_marginBottom="40dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/ll_column"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </com.toplion.cplusschool.widget.MyScrollView>
+
+        <com.toplion.cplusschool.widget.MyScrollView
+            android:id="@+id/msv_table"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/hsl_row"
+            android:layout_toRightOf="@+id/sl_column"
+            android:background="@color/white"
+            android:layout_marginBottom="40dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <com.toplion.cplusschool.widget.MyHorizontalScrollView
+                android:id="@+id/mhsv_table"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <TableLayout
+                    android:id="@+id/tl_table"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/hsl_row"
+                    android:layout_toRightOf="@+id/sl_column"
+                    android:background="@color/white">
+
+                </TableLayout>
+            </com.toplion.cplusschool.widget.MyHorizontalScrollView>
+        </com.toplion.cplusschool.widget.MyScrollView>
+
+        <FrameLayout
+            android:id="@+id/fl_floor_tishi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:visibility="gone"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_room_tishi"
+                android:padding="5dp"
+                android:textColor="@color/gray666"
+                android:textSize="14sp" />
+        </FrameLayout>
+    </RelativeLayout>
+
+</LinearLayout>

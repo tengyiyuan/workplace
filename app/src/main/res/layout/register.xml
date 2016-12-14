@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 注册页面  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    >
+    
+	<LinearLayout 
+	    android:id="@+id/register_top"
+	    android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:background="@color/logo_color"
+	    >
+	    <ImageView android:id="@+id/register_iv_return"
+	        android:layout_width="20dp"
+	        android:layout_marginLeft="10dp"
+    		android:layout_height="match_parent"
+    		android:src="@mipmap/btn_return" />
+	    <TextView android:id="@+id/register_iv_Title"
+	        android:layout_width="match_parent"
+    		android:layout_height="match_parent"
+    		android:textSize="20sp"
+    		android:textColor="@color/white"
+    		android:gravity="center"
+    		android:text="@string/register_info" />
+	</LinearLayout>
+	
+	<RelativeLayout 
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_marginLeft="44dp"
+         android:layout_marginRight="44dp"
+         android:layout_below="@id/register_top"
+        >
+		<!-- 用户名 -->
+	    <LinearLayout 
+	         android:id="@+id/register_username"
+	         android:layout_width="match_parent"
+	         android:layout_height="40dp"
+	        >
+	        <!-- <TextView 
+	            android:id="@+id/register_tv_username"
+	            android:layout_width="60dp"
+	            android:layout_gravity="center"
+	            android:layout_marginTop="10dp" 
+	            android:layout_marginLeft="10dp"
+	         	android:layout_height="match_parent"
+	            android:text="@string/user_name"/> -->
+	        <EditText
+	            android:id="@+id/register_et_user_name"
+	            android:layout_width="wrap_content"
+	            android:hint="@string/trip_account"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            style="@style/InputTheme"
+	            android:inputType="number"
+	            android:ems="10" >
+				<!-- 默认光标选中 -->
+	            <requestFocus />
+	        </EditText>
+	    </LinearLayout>
+		
+	    <!-- 密码 -->
+	    <LinearLayout 
+	         android:id="@+id/register_password"
+	         android:layout_width="match_parent"
+	         android:layout_height="40dp"
+	         android:layout_below="@id/register_username"
+	        >
+	        <!-- <TextView 
+	            android:id="@+id/register_tv_password"
+	            android:layout_width="60dp"
+	            android:layout_gravity="center"
+	            android:layout_marginTop="10dp" 
+	            android:layout_marginLeft="10dp"
+	         	android:layout_height="match_parent"
+	            android:text="@string/user_password"/> -->
+	        <EditText
+	            android:id="@+id/register_et_password"
+	            android:hint="@string/trip_password"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            style="@style/InputTheme"
+	            android:inputType="textPassword" 
+	            >
+	
+	        </EditText>
+	    </LinearLayout>
+	    
+	    <!-- 验证码 -->
+	    <RelativeLayout 
+	        android:id="@+id/register_rl_image"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_below="@id/register_password"
+	        >
+	        
+	        <TextView 
+	            android:id="@+id/register_rl_image_tv"
+	            android:layout_width="50dp"
+	            style="@style/InputTheme"
+	            android:layout_marginTop="10dp"
+	            android:text="验证码："
+	         	android:layout_height="match_parent"
+	            />
+	        
+	        <!-- 输入框 -->
+	        <EditText 
+	            android:id="@+id/register_rl_image_et"
+	            android:layout_width="80dp"
+	            android:textSize="12sp"
+	            android:layout_toRightOf="@+id/register_rl_image_tv"
+	         	android:layout_height="30dp"
+	            />
+	        <!-- 小提示图片 -->
+	        <ImageView 
+	            android:id="@+id/register_rl_image_iv_trip"
+	            android:layout_width="10dp"
+	            android:layout_toRightOf="@+id/register_rl_image_et"
+	            android:src="@drawable/loading"
+	         	android:layout_height="40dp"
+	         	android:paddingBottom="1dp"
+	            />
+	        <!-- 验证码 -->
+	        <ImageView 
+	            android:id="@+id/register_rl_image_iv"
+	            android:layout_width="60dp"
+	            android:layout_toRightOf="@+id/register_rl_image_iv_trip"
+	            android:src="@drawable/loading"
+	         	android:layout_height="30dp"
+	            />
+	        <!-- 看不清 -->
+	        <Button 
+	            android:id="@+id/register_rl_image_tv_see"
+	            android:layout_toRightOf="@+id/register_rl_image_iv"
+	            android:layout_width="40dp"
+	            android:layout_marginTop="10dp"
+	            android:text="@string/see_no"
+	            android:textSize="10sp"
+	            android:onClick="downImage"
+	            android:background="@mipmap/btn_gray"
+	         	android:layout_height="20dp"
+	            />
+	    </RelativeLayout>
+	    
+	    <!-- 注册按钮 -->
+	    <LinearLayout 
+	        android:id="@+id/register_login"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:gravity="center_horizontal"
+	        android:layout_below="@id/register_rl_image"
+	        >
+	
+	        <TextView
+	            android:id="@+id/btn_register"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/register_name"
+	            android:gravity="center"
+	            android:textColor="#FFFFFF"
+	            android:textSize="24sp"
+	            android:background="@mipmap/btn_gray">
+	            </TextView>
+	
+	    </LinearLayout>
+		
+	    <!-- 购买协议 -->
+	    <LinearLayout 
+	        android:id="@+id/register_buy"
+	        android:layout_width="match_parent"
+	        android:layout_height="20dp"
+	        android:layout_below="@id/register_login"
+	        >
+	
+	        <CheckBox
+	            android:id="@+id/register_buy_ck"
+	            android:width="15dp"
+	            android:height="15dp"
+	            android:layout_width="30dp"
+	            android:layout_height="match_parent"
+	            android:checked="true"
+	            android:text="" />
+	        <TextView android:id="@+id/register_buy_tv"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            style="@style/InputTheme"
+	            android:text="@string/register_agreement"
+	            />
+	    </LinearLayout>
+	</RelativeLayout>
+</RelativeLayout>

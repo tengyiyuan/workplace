@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/toptitle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:id="@+id/newtitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="类别选择"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/listView1"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txt_6"
+        android:divider="#cfcfcf"
+        android:dividerHeight="1px" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/txt_1"
+        android:textSize="18sp"
+        style="@style/list_line_color"
+        android:textColor="@color/logo_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toptitle"
+        android:background="#d5d5d5"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txt_2"
+        android:textSize="18sp"
+        style="@style/text_content_defaut"
+        android:textColor="@color/logo_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_1"
+        android:background="#e5e5e5"
+        android:paddingBottom="10dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/txt_3"
+        android:textSize="18sp"
+        style="@style/text_content_defaut"
+        android:textColor="@color/logo_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_2"
+        android:background="#e5e5e5"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/txt_4"
+        android:textSize="18sp"
+        style="@style/text_content_defaut"
+        android:textColor="@color/logo_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_3"
+        android:background="#e5e5e5"
+        android:paddingBottom="10dp"
+        android:paddingLeft="45dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/txt_5"
+        android:textSize="18sp"
+        style="@style/text_content_defaut"
+        android:textColor="@color/logo_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_4"
+        android:background="#e5e5e5"
+        android:paddingBottom="10dp"
+        android:paddingLeft="55dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/txt_6"
+        android:textSize="18sp"
+        style="@style/text_content_defaut"
+        android:textColor="@color/logo_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_5"
+        android:background="#e5e5e5"
+        android:paddingBottom="10dp"
+        android:paddingLeft="65dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:visibility="gone" />
+</RelativeLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!-- 页头 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_test_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="35dp"
+            android:text="@string/test_list"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_test_term"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择学期 :"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_select_term"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/tv_repair_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="所有学期"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+
+    <com.ab.view.pullview.AbPullToRefreshView
+        android:id="@+id/abPullToRefreshView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:overScrollMode="never">
+            <include layout="@layout/tv_title"/>
+            <ListView
+                android:id="@+id/lv_testlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+
+    </com.ab.view.pullview.AbPullToRefreshView>
+
+    <RelativeLayout
+        android:id="@+id/rl_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_dis"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/img_disappoint" />
+
+        <TextView
+            android:id="@+id/tv_disa"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/iv_dis"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="本学期考试安排暂未开放,请稍后重试"
+            android:textColor="@color/gray666"
+            android:textSize="16sp" />
+        <include layout="@layout/no_data"/>
+    </RelativeLayout>
+</LinearLayout>

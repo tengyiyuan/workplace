@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- 头部显示信息 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_reimbursement_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_reimbursement_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="报销资料准备"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <WebView
+        android:id="@+id/wv_reimbursement_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_reimbursement_bottom"
+        android:layout_below="@+id/rl_reimbursement_top"
+        android:background="@color/white"
+        android:visibility="visible">
+
+    </WebView>
+
+    <RelativeLayout
+        android:id="@+id/rl_reimbursement_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_reimbursement_bottom"
+        android:layout_below="@+id/rl_reimbursement_top"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_dis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_disa"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/img_disappoint"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_reimbursement_disa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_dis"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/gray666"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <include layout="@layout/no_data" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_reimbursement_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_reimbursement_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/line_color"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="取消"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_reimbursement_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@color/logo_color"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="材料齐全,添加"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </LinearLayout>
+</RelativeLayout>

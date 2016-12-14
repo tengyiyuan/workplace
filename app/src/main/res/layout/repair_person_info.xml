@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 头部显示信息 -->
+
+    <RelativeLayout
+        android:id="@+id/signin_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color" >
+
+        <ImageView
+            android:id="@+id/iv_repair_person_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/repair_person"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/tv_repair_person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:drawableLeft="@mipmap/xinghao"
+            android:drawablePadding="3dp"
+            android:text="@string/repair_person_name"
+            android:textColor="@color/gray333"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_repair_person_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:padding="6dp"
+            android:layout_toRightOf="@+id/tv_repair_person_name"
+            android:background="@drawable/tv_repair_bg"
+            android:hint="@string/repair_person_name_hint"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/tv_repair_person_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:drawableLeft="@mipmap/xinghao"
+            android:drawablePadding="3dp"
+            android:text="@string/repair_person_phone"
+            android:textColor="@color/gray333"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_repair_person_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:padding="6dp"
+            android:layout_toRightOf="@+id/tv_repair_person_phone"
+            android:background="@drawable/tv_repair_bg"
+            android:hint="@string/repair_person_phone_hint"
+            android:inputType="phone"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/tv_repair_person_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:drawablePadding="3dp"
+            android:text="@string/repair_person_date"
+            android:drawableLeft="@mipmap/xinghao"
+            android:textColor="@color/gray333"
+            android:textSize="14sp" />
+
+       <RelativeLayout
+            android:id="@+id/signin_valdata_rl_des"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_toRightOf="@id/tv_repair_person_code" >
+
+            <!-- 输入框 -->
+            <com.toplion.cplusschool.View.ChangeIconEditText
+                android:id="@+id/et_repair_validate_input"
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/edit_shape"
+                android:drawableRight="@mipmap/error"
+                android:maxLength="4"
+                android:singleLine="true"
+                android:textSize="14sp"
+                android:width="80dp" />
+
+            <!-- 验证码 -->
+
+            <ImageView
+                android:id="@+id/iv_repair_validate_image"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/et_repair_validate_input"
+                android:src="@drawable/loading" />
+            <!-- 看不清 -->
+
+            <Button
+                android:id="@+id/bt_repair_validate_image_see"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_repair_validate_image"
+                android:background="@null"
+                android:gravity="right|bottom"
+                android:onClick="downImage"
+                android:textColor="@color/light_green"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/tv_repair_person_next"
+            style="@style/loing_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/confirm_repair_person_submit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_repair_person_next"
+            android:text="@string/add_repair_bitianxiang"
+            android:drawableLeft="@mipmap/xinghao"
+            android:drawablePadding="3dp"
+            android:textColor="@color/gray666"
+            android:layout_marginLeft="20dp"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 登录界面 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- 头部显示信息 -->
+
+    <RelativeLayout
+        android:id="@+id/signin_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/signin_return"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:paddingLeft="14dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/btn_return"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <!-- 学校 -->
+
+    <RelativeLayout
+        android:id="@+id/signin_sch"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/signin_top"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/signin_sch_name"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="学校："
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/signin_sch_name">
+
+            <TextView
+                android:id="@+id/signin_sch_des"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- 学号 -->
+
+    <RelativeLayout
+        android:id="@+id/signin_account"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_below="@id/signin_sch"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/signin_account_name"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/user_name"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/signin_account_name">
+
+            <EditText
+                android:id="@+id/signin_account_des"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@drawable/edit_shape"
+                android:hint="@string/trip_account"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- 密码 -->
+
+    <RelativeLayout
+        android:id="@+id/signin_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_below="@id/signin_account"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/signin_pwd_name"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/user_password"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/signin_pwd_name">
+
+            <EditText
+                android:id="@+id/signin_pwd_des"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@drawable/edit_shape"
+                android:hint="@string/trip_password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- 验证码 -->
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/signin_validate"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_below="@id/signin_pwd"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/signin_validate_name"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="验证码："
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/signin_valdata_rl_des"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_toRightOf="@id/signin_validate_name">
+
+            <!-- 输入框 -->
+            <com.toplion.cplusschool.View.ChangeIconEditText
+                android:id="@+id/signin_validate_input"
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:width="80dp"
+                android:background="@drawable/edit_shape"
+                android:drawableRight="@mipmap/error"
+                android:maxLength="4"
+                android:singleLine="true"
+                android:textSize="14sp" />
+
+            <!-- 验证码 -->
+
+            <ImageView
+                android:id="@+id/signin_validate_image"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/signin_validate_input"
+                android:src="@drawable/loading" />
+            <!-- 看不清 -->
+
+            <Button
+                android:id="@+id/signin_validate_image_see"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/signin_validate_image"
+                android:background="@null"
+                android:gravity="right|bottom"
+                android:onClick="downImage"
+                android:text="@string/see_no"
+                android:textColor="@color/light_green"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- 登录 -->
+
+    <RelativeLayout
+        android:id="@+id/signin_btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/signin_validate"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/sign_btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@mipmap/btn_gray"
+            android:text="@string/btn_login"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <!-- 注册协议 -->
+
+    <RelativeLayout
+        android:id="@+id/signin_ck_register"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_below="@id/signin_btn_login"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <CheckBox
+            android:id="@+id/signin_cb"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:checked="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/signin_cb">
+
+            <TextView
+                android:id="@+id/signin_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/register_agreement"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

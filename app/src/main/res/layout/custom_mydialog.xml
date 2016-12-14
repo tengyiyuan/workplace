@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_yuanjiao_dioa"
+    >
+    <TextView
+        android:id="@+id/custom_dialog_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:paddingTop="6dp"
+         android:paddingBottom="6dp"
+        android:text="生成标题"
+        android:paddingLeft="20dp"
+        android:paddingRight="0dp"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+    </LinearLayout>
+       <View 
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#E4E4E4"
+        />
+    <TextView
+        android:background="@color/white"
+        android:id="@+id/custom_dialog_detial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:text="是否退出系统?"
+        android:textSize="16sp" />
+     <include layout="@layout/tan_bottom"/>
+</LinearLayout>

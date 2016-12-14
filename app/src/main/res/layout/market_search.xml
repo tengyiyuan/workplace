@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_search_market_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <EditText
+            android:id="@+id/et_search_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/iv_search_market_return"
+            android:background="@drawable/bg_yuanjiao_dioa_your"
+            android:drawableLeft="@mipmap/seacher"
+            android:drawablePadding="10dp"
+            android:hint="请输入您要搜索的关键字"
+            android:paddingBottom="7dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="7dp"
+            android:textColorHint="@color/gray_pressed"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sousuo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="搜"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+<TextView
+    android:visibility="gone"
+    android:id="@+id/noresult"
+    android:textSize="18sp"
+    android:text="没有相关的内容,试试别的关键字吧~~"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent" />
+    <ListView
+        android:id="@+id/lv_search_market"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/transparent" />
+</LinearLayout>

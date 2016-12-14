@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 我 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/me_ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="32dp" >
+
+        <TextView
+            android:id="@+id/me_tv_updpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textColor="@color/light_gray"
+            android:text="账户信息"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- 账号 -->
+
+    <RelativeLayout
+        android:id="@+id/me_ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/me_ll_top"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp" >
+
+        <RelativeLayout
+            android:id="@+id/me_ll_myAccount"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" >
+
+            <TextView
+                android:id="@+id/set_my_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的学校："
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/set_my_school_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@id/set_my_school"
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/me_ll_mySchool"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/me_ll_myAccount" >
+
+            <TextView
+                android:id="@+id/set_my_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账户："
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/set_my_account_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="43dp"
+                android:layout_toRightOf="@id/set_my_account"
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/me_ll_balance"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/me_ll_mySchool"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/set_my_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账户余额："
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/set_my_balance_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@id/set_my_balance"
+                android:text="0.00"
+                android:textColor="@color/logo_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/set_my_balance_des"
+                android:text="元"
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/me_rl_wlan"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/me_ll_balance"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/set_my_wlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="套餐类型："
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/set_my_wlan_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@id/set_my_wlan"
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_rl_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/me_rl_wlan"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/set_my_tv_endtime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="到期时间："
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/set_my_tv_endtime_des"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@id/set_my_tv_endtime"
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/set_my_tv_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/set_my_tv_endtime_des"
+                android:gravity="right"
+                android:text="@string/pay" />
+            <!-- 付费 -->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/set_my_no"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/my_rl_end_time" >
+
+            <TextView
+                android:id="@+id/set_my_tv_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="您还没有开通上网套餐，请"
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/set_open"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/set_my_tv_no"
+                android:text="@string/meal_open"
+                android:textColor="@color/light_gray"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <View
+        android:id="@+id/line"
+        android:layout_below="@id/me_ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:background="@color/gray" />
+    <!-- 通用 -->
+
+    <RelativeLayout
+        android:id="@+id/me_ll_common"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        >
+
+        <ListView
+            android:id="@+id/list_setting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#e9e9e9"
+            android:background="@color/gray"
+            android:dividerHeight="1px"
+            android:scrollbars="none">
+        </ListView>
+    </RelativeLayout>
+
+</RelativeLayout>

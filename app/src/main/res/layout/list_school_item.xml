@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 学校ListView Item -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_back"
+    android:orientation="vertical" >
+	<TextView
+        android:id="@+id/list_school_tv_id"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" 
+        android:visibility="gone"
+        />
+	<TextView
+        android:id="@+id/list_school_tv_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" 
+        android:visibility="gone"
+        />
+	<TextView
+        android:id="@+id/list_school_tv_ip"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" 
+        android:visibility="gone"
+        />
+	<TextView 
+	    android:id="@+id/list_school_tv_schoolCode"
+	    android:layout_width="match_parent"
+	    android:layout_height="40dp"
+	    android:visibility="gone"
+	    />
+	<TextView
+        android:id="@+id/list_school_tv_jc"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" 
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/list_school_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+		android:padding="10dp"
+        android:textColor="@drawable/font_selector"
+		android:duplicateParentState="true"
+        android:text="TextView"
+        android:textSize="16sp" />
+	
+</RelativeLayout>
