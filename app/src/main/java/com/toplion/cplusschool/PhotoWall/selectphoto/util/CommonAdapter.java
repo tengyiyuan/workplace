@@ -1,4 +1,4 @@
-package com.toplion.cplusschool.PhotoWall.selectphoto.util;
+package com.toplion.cplusschool.PhotoWall.SelectPhoto.util;
 
 import java.util.List;
 
@@ -38,8 +38,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder viewHolder = getViewHolder(position, convertView,
-                parent);
+        final ViewHolder viewHolder = getViewHolder(position, convertView,parent);
         convert(viewHolder, position);
         return viewHolder.getConvertView();
 

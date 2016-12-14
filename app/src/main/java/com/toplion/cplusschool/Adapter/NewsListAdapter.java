@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.ab.util.AbDateUtil;
 import com.toplion.cplusschool.Bean.NewBean;
 import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.TimeUtils;
@@ -63,8 +64,9 @@ public class NewsListAdapter extends BaseAdapter {
         }
 
         viewHolder.newtitle.setText(mlist.get(position).getNews_title());
-        viewHolder.newtime.setText("发布时间:"+mlist.get(position).getTime());
-        double days = TimeUtils.getDistanceOfTwoDate(TimeUtils.stringToDate(mlist.get(position).getTime(), "yyyy-MM-dd"), new Date());
+        viewHolder.newtime.setText("发布日期:"+ AbDateUtil.getStringByFormat(mlist.get(position).getTime(),"yyyy-MM-dd"));
+        Date beforeDate = TimeUtils.stringToDate(mlist.get(position).getTime(), "yyyy-MM-dd");
+        double days = TimeUtils.getDistanceOfTwoDate(beforeDate, new Date());
         if (days == 0) {
             viewHolder.newimg.setVisibility(View.VISIBLE);
         }

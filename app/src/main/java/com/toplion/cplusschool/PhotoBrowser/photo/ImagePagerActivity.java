@@ -56,6 +56,10 @@ public class ImagePagerActivity extends FragmentActivity {
         mPager.setAdapter(mAdapter);
         indicator = (TextView) findViewById(R.id.indicator);
         saveimg = (TextView) findViewById(R.id.saveimg);
+        String isShowSave = getIntent().getStringExtra("isShowSave");
+        if(isShowSave!=null&&isShowSave.equals("0")){
+            saveimg.setVisibility(View.GONE);
+        }
         CharSequence text = getString(R.string.viewpager_indicator, 1, mPager.getAdapter().getCount());
         indicator.setText(text);
         // 更新下标

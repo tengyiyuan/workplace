@@ -71,7 +71,10 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 				postparams.put("orderId", orderId);
 
 				try {
+					String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getOrderById")+Constants.BASEPARAMS;
+					Log.e("url",url);
 					json = HttpUtils.httpClientPost(Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getOrderById")+Constants.BASEPARAMS, postparams);
+
 					json = new JSONObject(json.getString("result"));
 					String code = json.getString("code");
 					messageStr = json.getString("msg");

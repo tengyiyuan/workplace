@@ -305,6 +305,7 @@ public class CommonUtil {
         share.put("samUserInfo", "");
         share.put("order", "");
         share.put("serverIp", "");
+        share.clear();
         new Thread() {
             public void run() {
                 if (Constants.userIndex == null || Constants.baseUrl == null

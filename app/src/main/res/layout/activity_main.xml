@@ -33,7 +33,7 @@
     <RelativeLayout
         android:id="@+id/login_input"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/login_top"
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
@@ -42,38 +42,40 @@
         <EditText
             android:id="@+id/login_et_input"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:background="@drawable/edit_shape"
             android:hint="@string/sch_trip"
             android:singleLine="true"
             android:textColor="@color/light_gray"
             android:textSize="14sp" />
+
+        <!-- 学校ListView -->
+
+        <ListView
+            android:id="@+id/login_school_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/login_et_input"
+            android:layout_above="@+id/login_btn_next"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp" />
+        <!-- 下一步 -->
+
+        <Button
+            android:id="@+id/login_btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="90dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:background="@mipmap/btn_gray"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
     </RelativeLayout>
+    <include layout="@layout/no_data"/>
 
-    <!-- 学校ListView -->
-
-    <ListView
-        android:id="@+id/login_school_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/login_input"
-        android:layout_above="@+id/login_btn_next"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp" />
-    <!-- 下一步 -->
-
-    <Button
-        android:id="@+id/login_btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="90dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
-        android:background="@mipmap/btn_gray"
-        android:text="下一步"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
 
 </RelativeLayout>

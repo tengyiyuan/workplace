@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/rentou"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@mipmap/rentou" />
 
@@ -32,7 +32,7 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="张同学"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -40,7 +40,7 @@
                 android:id="@+id/school"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="山东建筑大学 08-20"
+                android:text=""
                 android:textSize="12sp" />
         </LinearLayout>
 

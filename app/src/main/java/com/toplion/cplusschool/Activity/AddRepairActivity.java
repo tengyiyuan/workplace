@@ -50,7 +50,7 @@ public class AddRepairActivity extends BaseActivity {
     private RadioButton rbt_equipment_yidong;//移动设备
     private RadioButton rbt_equipment_diannao;//电脑
     private RadioGroup radio_internet_group;//上网方式
-    private RadioButton rbt_internet_wuxian;//无线ddddddd
+    private RadioButton rbt_internet_wuxian;//无线
     private RadioButton rbt_internet_youxian;//有线
     private RadioGroup radio_internet_near_group;///周围朋友上网网速
     private RadioButton rbt_internet_near_normal;//正常

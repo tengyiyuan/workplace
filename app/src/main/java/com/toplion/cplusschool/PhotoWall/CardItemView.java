@@ -2,6 +2,8 @@ package com.toplion.cplusschool.PhotoWall;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,12 +11,15 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ab.image.AbImageLoader;
+import com.ab.util.AbImageUtil;
 import com.bumptech.glide.Glide;
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.toplion.cplusschool.PhotoWall.bean.PhotoInfoBean;
 import com.toplion.cplusschool.R;
 
 /**
@@ -30,6 +35,9 @@ public class CardItemView extends FrameLayout {
     private TextView userNameTv;
     private TextView imageNumTv;
     private TextView likeNumTv;
+    private TextView tvSchoolName;//学校
+    private ImageView iv_sex;//性别
+    private ImageView rentou;//头像
     private CardSlidePanel parentView;
     private View topLayout, bottomLayout;
     private Context context;
@@ -51,6 +59,9 @@ public class CardItemView extends FrameLayout {
         maskView = findViewById(R.id.maskView);
         userNameTv = (TextView) findViewById(R.id.card_user_name);
         imageNumTv = (TextView) findViewById(R.id.card_pic_num);
+        tvSchoolName = (TextView) findViewById(R.id.card_other_description);
+        iv_sex = (ImageView) findViewById(R.id.iv_sex);
+        rentou = (ImageView) findViewById(R.id.rentou);
         likeNumTv = (TextView) findViewById(R.id.card_like);
         topLayout = findViewById(R.id.card_top_layout);
         bottomLayout = findViewById(R.id.card_bottom_layout);
@@ -83,17 +94,50 @@ public class CardItemView extends FrameLayout {
         });
     }
 
-    public void fillData(CardDataItem itemData) {
-        ImageLoader.getInstance().displayImage(itemData.imagePath, imageView);
-
-        Glide.with(context)
-                .load(itemData.imagePath)
-                .into(imageView);
-        userNameTv.setText(itemData.userName);
-        imageNumTv.setText(itemData.imageNum + "");
-        likeNumTv.setText(itemData.likeNum + "");
+    public void fillData(PhotoInfoBean itemData) {
+        ImageLoader.getInstance().displayImage(itemData.getPWBURL(), imageView);
+//        Glide.with(context).load(itemData.imagePath).into(imageView);
+        userNameTv.setText(itemData.getNC());
+        imageNumTv.setText("");
+        likeNumTv.setText(itemData.getPWBFLOWERSNUMBER()+"");
+        tvSchoolName.setText(itemData.getSDS_NAME());
+        if(itemData.getXBM().equals("2")){
+            iv_sex.setImageResource(R.mipmap.girl);
+        }else if(itemData.getXBM().equals("1")){
+            iv_sex.setImageResource(R.mipmap.boy);
+        }
+        loadHead(itemData.getTXDZ());
     }
+    /**
+     * 加载头像
+     * @param url
+     */
+    private void loadHead(String url) {
+        Bitmap bt = BitmapFactory.decodeResource(getResources(), R.mipmap.rentou);
+        final int roundPx = bt.getWidth()/2;
+        AbImageLoader.getInstance(context).download(url, bt.getWidth(), bt.getWidth(), new AbImageLoader.OnImageListener2() {
+            @Override
+            public void onEmpty() {
 
+            }
+
+            @Override
+            public void onLoading() {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+
+            @Override
+            public void onSuccess(Bitmap bitmap) {
+                bitmap = AbImageUtil.toRoundBitmap(bitmap, roundPx);
+                rentou.setImageBitmap(bitmap);
+            }
+        });
+    }
 
     /**
      * 动画移动到某个位置

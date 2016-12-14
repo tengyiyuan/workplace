@@ -95,5 +95,4 @@
             android:layout_height="wrap_content" />
 
     </com.toplion.cplusschool.PhotoWall.CardSlidePanel>
-
 </LinearLayout>

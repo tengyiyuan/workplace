@@ -54,18 +54,19 @@ public class QianDaoActivity extends BaseActivity implements View.OnClickListene
     private int intflows;
     private TextView qiandaodays;
     private TextView flowstext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qiandao);
         share = new SharePreferenceUtils(this);
-        days=share.getInt("SBICONSECUTIVEDAYS",0);
-        intflows=share.getInt("SBIFLOWERSNUMBER",0);
+        days = share.getInt("SBICONSECUTIVEDAYS", 0);
+        intflows = share.getInt("SBIFLOWERSNUMBER", 0);
         abHttpUtil = AbHttpUtil.getInstance(this);//初始化请求工具
         about_iv_return = (ImageView) findViewById(R.id.about_iv_return);
         mContainer = (ViewGroup) findViewById(R.id.container);
-        qiandaodays=(TextView)findViewById(R.id.days);
-        flowstext=(TextView)findViewById(R.id.flows);
+        qiandaodays = (TextView) findViewById(R.id.days);
+        flowstext = (TextView) findViewById(R.id.flows);
         mContainer.setPersistentDrawingCache(ViewGroup.PERSISTENT_ANIMATION_CACHE);
         rl_layout01 = (RelativeLayout) findViewById(R.id.rl_layout01);
         rl_layout02 = (RelativeLayout) findViewById(R.id.rl_layout02);
@@ -73,8 +74,8 @@ public class QianDaoActivity extends BaseActivity implements View.OnClickListene
         rl_layout01.setOnClickListener(this);
         rl_layout02.setOnClickListener(this);
         about_iv_return.setOnClickListener(this);
-        qiandaodays.setText("已经连续签到"+days+"天");
-        flowstext.setText(intflows+"");
+        qiandaodays.setText("已经连续签到" + days + "天");
+        flowstext.setText(intflows + "");
         getData();
     }
 
@@ -83,8 +84,8 @@ public class QianDaoActivity extends BaseActivity implements View.OnClickListene
         super.getData();
         AbRequestParams params = new AbRequestParams();
         params.put("schoolCode", Constants.SCHOOL_CODE);
-        params.put("username", share.getString("username", ""));
-        String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("getCurrentMonthSign") + Constants.BASEPARAMS;
+        params.put("username", share.getString("ROLE_ID", ""));
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getCurrentMonthSign") + Constants.BASEPARAMS;
         abHttpUtil.post(url, params, new CallBackParent(this, "正在加载数据...") {
             @Override
             public void Get_Result(String result) {
@@ -131,30 +132,32 @@ public class QianDaoActivity extends BaseActivity implements View.OnClickListene
         }
 
     }
+
     private void updateQiandao() {
         AbRequestParams params = new AbRequestParams();
         params.put("schoolCode", Constants.SCHOOL_CODE);
-        params.put("username", share.getString("username", ""));
+        params.put("username", share.getString("ROLE_ID", ""));
         params.put("module", 1);
-        String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("addSign") + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("addSign") + Constants.BASEPARAMS;
         abHttpUtil.post(url, params, new CallBackParent(this, "正在签到") {
             @Override
             public void Get_Result(String result) {
                 try {
                     JSONObject object = new JSONObject(result);
                     String data = Function.getInstance().getString(object, "data");
-                    String flows= Function.getInstance().getString(object, "flower");
-                    JSONObject flowobj=new JSONObject(flows);
-                    intflows=Function.getInstance().getInteger(flowobj,"SBIFLOWERSNUMBER");
-                    days=Function.getInstance().getInteger(flowobj,"SBICONSECUTIVEDAYS");
-                    if(!data.equals("")) {
+                    String flows = Function.getInstance().getString(object, "flower");
+                    JSONObject flowobj = new JSONObject(flows);
+                    intflows = Function.getInstance().getInteger(flowobj, "SBIFLOWERSNUMBER");
+                    days = Function.getInstance().getInteger(flowobj, "SBICONSECUTIVEDAYS");
+                    if (!data.equals("")) {
                         list.add(data);
                         calendar.addMarks(list, 0);
-                        qiandaodays.setText("已经连续签到"+days+"天");
-                        share.put("SBIFLOWERSNUMBER",intflows);
-                        flowstext.setText(intflows+"");
+                        qiandaodays.setText("已经连续签到" + days + "天");
+                        share.put("SBICONSECUTIVEDAYS", days);
+                        share.put("SBIFLOWERSNUMBER", intflows);
+                        flowstext.setText(intflows + "");
                         applyRotation(0, 0, 90);
-                    }else{
+                    } else {
                         ToastManager.getInstance().showToast(QianDaoActivity.this, "签到失败");
                     }
                 } catch (JSONException e) {

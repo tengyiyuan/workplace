@@ -97,8 +97,6 @@ public class NewsListActivity extends BaseActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
     }

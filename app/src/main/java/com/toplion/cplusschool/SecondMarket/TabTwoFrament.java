@@ -132,7 +132,7 @@ public class TabTwoFrament extends Fragment implements AbPullToRefreshView.OnHea
         params.put("reltype",type);
         params.put("page", page);
         params.put("pageCount", 10);
-        String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("showReleaseInfoByModule") + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("showReleaseInfoByModule") + Constants.BASEPARAMS;
         abHttpUtil.post(url, params, new CallBackParent(getActivity(), false) {
             @Override
             public void Get_Result(String result) {
@@ -166,12 +166,16 @@ public class TabTwoFrament extends Fragment implements AbPullToRefreshView.OnHea
                                 marketBean.setAUIQQ(Function.getInstance().getString(arr_obj, "AUIQQ"));
                                 marketBean.setAUIWEIXIN(Function.getInstance().getString(arr_obj, "AUIWEIXIN"));
                                 marketBean.setAUIADDRESS(Function.getInstance().getString(arr_obj, "AUIADDRESS"));
-                                marketBean.setAUIPRICE(Function.getInstance().getInteger(arr_obj, "AUIPRICE"));
+                                marketBean.setAUIPRICE(Function.getInstance().getDouble(arr_obj, "AUIPRICE"));
                                 marketBean.setAUIID(Function.getInstance().getString(arr_obj, "AUIID"));
                                 marketBean.setAUIRELEASETIME(Function.getInstance().getString(arr_obj, "AUIRELEASETIME"));
                                 marketBean.setAUISTATUS(Function.getInstance().getInteger(arr_obj, "AUISTATUS"));
                                 marketBean.setCINAME(Function.getInstance().getString(arr_obj, "CINAME"));
                                 marketBean.setAUICONTACTNAME(Function.getInstance().getString(arr_obj, "AUICONTACTNAME"));
+                                marketBean.setNC(Function.getInstance().getString(arr_obj,"NC"));
+                                marketBean.setTXDZ(Function.getInstance().getString(arr_obj,"TXDZ"));
+                                marketBean.setUINAME(Function.getInstance().getString(arr_obj,"UINAME"));
+                                marketBean.setUIID(Function.getInstance().getInteger(arr_obj, "UIID"));
                                 mlist.add(marketBean);
                             }
                             if (mlist.size() < 10) {
@@ -220,7 +224,7 @@ public class TabTwoFrament extends Fragment implements AbPullToRefreshView.OnHea
         params.put("reltype",type);
         params.put("page", page);
         params.put("pageCount", 10);
-        String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("showReleaseInfoByModule") + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("showReleaseInfoByModule") + Constants.BASEPARAMS;
         abHttpUtil.post(url, params, new CallBackParent(getActivity(), false) {
             @Override
             public void Get_Result(String result) {
@@ -253,12 +257,16 @@ public class TabTwoFrament extends Fragment implements AbPullToRefreshView.OnHea
                                 marketBean.setAUIQQ(Function.getInstance().getString(arr_obj, "AUIQQ"));
                                 marketBean.setAUIWEIXIN(Function.getInstance().getString(arr_obj, "AUIWEIXIN"));
                                 marketBean.setAUIADDRESS(Function.getInstance().getString(arr_obj, "AUIADDRESS"));
-                                marketBean.setAUIPRICE(Function.getInstance().getInteger(arr_obj, "AUIPRICE"));
+                                marketBean.setAUIPRICE(Function.getInstance().getDouble(arr_obj, "AUIPRICE"));
                                 marketBean.setAUIID(Function.getInstance().getString(arr_obj, "AUIID"));
                                 marketBean.setAUIRELEASETIME(Function.getInstance().getString(arr_obj, "AUIRELEASETIME"));
                                 marketBean.setAUISTATUS(Function.getInstance().getInteger(arr_obj, "AUISTATUS"));
                                 marketBean.setCINAME(Function.getInstance().getString(arr_obj, "CINAME"));
                                 marketBean.setAUICONTACTNAME(Function.getInstance().getString(arr_obj, "AUICONTACTNAME"));
+                                marketBean.setNC(Function.getInstance().getString(arr_obj,"NC"));
+                                marketBean.setTXDZ(Function.getInstance().getString(arr_obj,"TXDZ"));
+                                marketBean.setUINAME(Function.getInstance().getString(arr_obj,"UINAME"));
+                                marketBean.setUIID(Function.getInstance().getInteger(arr_obj, "UIID"));
                                 otherlist.add(marketBean);
                             }
                             if (otherlist.size() > 0) {

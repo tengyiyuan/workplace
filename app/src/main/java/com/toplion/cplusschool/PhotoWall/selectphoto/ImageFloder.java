@@ -1,4 +1,4 @@
-package com.toplion.cplusschool.PhotoWall.selectphoto;
+package com.toplion.cplusschool.PhotoWall.SelectPhoto;
 
 public class ImageFloder{
 	/**

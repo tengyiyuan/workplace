@@ -73,7 +73,7 @@ public class BaseApplication extends Application {
         SaveException mSaveException = SaveException.getInstance();
         mSaveException.init(getApplicationContext());
 
-//         CrashHandler handler = CrashHandler.getInstance();
+//        CrashHandler handler = CrashHandler.getInstance();
 //        handler.init(getApplicationContext()); //在Appliction里面设置我们的异常处理器为UncaughtExceptionHandler处理器
         /**
          * -------end-------

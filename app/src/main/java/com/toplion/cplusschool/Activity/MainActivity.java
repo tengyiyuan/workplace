@@ -19,7 +19,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ab.global.AbActivityManager;
@@ -58,6 +60,9 @@ public class MainActivity extends BaseActivity {
     private ListView login_school_list;                  // 学校ListView
     private EditText login_et_input;            // 输入框
     private Button login_btn_next;              // 下一步
+    private RelativeLayout login_input;//
+    private RelativeLayout no_data;
+    private ImageView iv_dis;
     // 表中必须有一个名称是 _id的字段
     private String[] from = {"_id", "name", "serverIpAddress", "wifiName", "schoolCode"};  // 指定的是字段
     private int[] to = {R.id.list_school_tv_id, R.id.list_school_tv_content, R.id.list_school_tv_ip, R.id.list_school_tv_wifi, R.id.list_school_tv_schoolCode}; // 指定的id
@@ -98,6 +103,10 @@ public class MainActivity extends BaseActivity {
         login_school_list = (ListView) findViewById(R.id.login_school_list);
         login_et_input = (EditText) findViewById(R.id.login_et_input);
         login_btn_next = (Button) findViewById(R.id.login_btn_next);
+        login_input = (RelativeLayout) findViewById(R.id.login_input);
+        iv_dis = (ImageView) findViewById(R.id.iv_dis);
+        no_data = (RelativeLayout) findViewById(R.id.rl_nodata);
+        no_data.setVisibility(View.GONE);
         login_btn_next.setEnabled(false);
         login_btn_next.setBackgroundResource(R.mipmap.btn_gray);
         slist = new ArrayList<SchoolBean>();
@@ -124,9 +133,13 @@ public class MainActivity extends BaseActivity {
                     schoolsDao.deleteAll();
                     schoolsDao.insertList(slist);
                     schoolsDao.closeDatabase();
+                    login_input.setVisibility(View.VISIBLE);
+                    no_data.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     ToastManager.getInstance().showToast(MainActivity.this, Constants.NETWORK_ERROR);
+                    login_input.setVisibility(View.GONE);
+                    no_data.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -156,10 +169,20 @@ public class MainActivity extends BaseActivity {
                     schoolsDao.deleteAll();
                     schoolsDao.insertList(slist);
                     schoolsDao.closeDatabase();
+                    login_input.setVisibility(View.VISIBLE);
+                    no_data.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     ToastManager.getInstance().showToast(MainActivity.this, Constants.NETWORK_ERROR);
+                    login_input.setVisibility(View.GONE);
+                    no_data.setVisibility(View.VISIBLE);
                 }
+            }
+            @Override
+            public void onFailure(int statusCode, String content, Throwable error) {
+                AbDialogUtil.removeDialog(context,"getSchoolInfo");
+                login_input.setVisibility(View.GONE);
+                no_data.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -196,6 +219,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void setListener() {
         super.setListener();
+        iv_dis.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Constants.BASE_URL = "http://111.14.210.46:12100/index.php";
+                getSchoolData();
+            }
+        });
         login_school_list.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -205,6 +235,9 @@ public class MainActivity extends BaseActivity {
                 if (!TextUtils.isEmpty(isp) && isp.equals("lt")) {
                     serverIp = slist.get(position).getLtServerIpAddress();
                 } else {
+                    serverIp = slist.get(position).getServerIpAddress();
+                }
+                if(TextUtils.isEmpty(serverIp)){
                     serverIp = slist.get(position).getServerIpAddress();
                 }
                 // 获取WIFI信息

@@ -49,7 +49,6 @@
 			android:text="订单编号："
 	        />
 	    <TextView
-			android:text="000000"
 	        android:id="@+id/my_order_detail_num_des"
 	        android:layout_toRightOf="@id/my_order_detail_num"
 	        android:layout_width="wrap_content"
@@ -98,7 +97,6 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:textColor="@color/light_gray"
-			android:text="0000"
 			android:textSize="14sp"
 			android:paddingTop="3dp"
 			android:paddingBottom="3dp"
@@ -131,7 +129,6 @@
 	        android:layout_height="wrap_content"
 	        android:textColor="@color/logo_color"
 			android:textSize="14sp"
-			android:text="0.00"
 			android:paddingTop="3dp"
 			android:paddingBottom="3dp"
 	        />
@@ -238,7 +235,6 @@
 	        android:layout_height="wrap_content"
 	        android:textColor="@color/light_gray"
 			android:textSize="14sp"
-			android:text="支付宝"
 			android:paddingTop="3dp"
 			android:paddingBottom="3dp"
 	        />

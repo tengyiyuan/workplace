@@ -8,18 +8,26 @@
         android:id="@+id/id_item_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_gravity="right"
         android:src="@mipmap/zhanwei"
-        android:scaleType="fitXY" />
+        android:visibility="gone"
+        android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/id_item_image_camera"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="visible"
+        android:scaleType="centerInside"
+        android:background="@color/common_bg"
+        android:src="@mipmap/ic_select_camera"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/id_item_select"
         android:clickable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|top"
-        android:paddingRight="3dp"
-        android:paddingTop="3dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
         android:background="@null"
         android:src="@mipmap/photo_check_default" />
 

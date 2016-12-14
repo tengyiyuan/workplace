@@ -31,7 +31,7 @@
             android:paddingTop="8dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="周华健"
+            android:text=""
             android:textColor="@color/gray333"
             android:textSize="15sp" />
 
@@ -42,15 +42,17 @@
             android:layout_below="@+id/tv_lv_item_name"
             android:layout_marginLeft="5dip"
             android:padding="8dp"
-            android:text="15645654464/0531-6628534"
+            android:text=""
             android:textColor="@color/gray333"
             android:textSize="15sp" />
 
         <ImageView
+            android:id="@+id/iv_tea_contacts_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:padding="5dp"
             android:layout_marginRight="30dp"
             android:src="@mipmap/phone" />
     </RelativeLayout>

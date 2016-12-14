@@ -4,6 +4,7 @@ import com.ab.global.AbActivityManager;
 import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.BaseApplication;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -41,7 +42,7 @@ public class CommDialog{
 	 * @param callBack   回滚
 	 * @author liyb
 	 */
-	public void CreateDialog(String buttonText,String title,String message,Context context,final CallBack callBack){
+	public void CreateDialog(String buttonText, String title, String message, final Context context, final CallBack callBack){
 		LayoutInflater mInflater;
 		mDialog = new Dialog(context, R.style.edit_AlertDialog_style);
 		mInflater = LayoutInflater.from(context);
@@ -77,6 +78,19 @@ public class CommDialog{
 			public void onClick(View v) {
 				callBack.isConfirm(false);
 				mDialog.dismiss();
+			}
+		});
+		mDialog.setCanceledOnTouchOutside(false);
+		mDialog.setCancelable(false);
+		mDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+			@Override
+			public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
+				if (i == KeyEvent.KEYCODE_BACK&& keyEvent.getRepeatCount() == 0) {
+					if (mDialog.isShowing()){
+						AbActivityManager.getInstance().finishActivity((Activity) context);
+					}
+				}
+				return false;
 			}
 		});
 		mDialog.show();
@@ -211,7 +225,6 @@ public class CommDialog{
 	/**
 	 * 自定义Toasts带图标
 	 * @param message
-	 * @param inflater
 	 * @author liyb
 	 */
 	public void CreateToastsWithIcon(String message, int logo ,Context content){

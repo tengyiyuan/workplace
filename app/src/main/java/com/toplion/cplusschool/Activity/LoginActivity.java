@@ -412,7 +412,6 @@ public class LoginActivity extends BaseActivity {
         if (connection) {
             //保存初始化信息
             final Map<String, String> map = new HashMap<String, String>();
-            TelephoneUtils telephoneUtils = new TelephoneUtils(this);
             //信息需要Base64进行加密
             map.put("username", ReturnUtils.encode(account.getText().toString()));  //用户名
             map.put("password", ReturnUtils.encode(pwd.getText().toString()));      //密码加密
@@ -499,23 +498,23 @@ public class LoginActivity extends BaseActivity {
                             if (code.equals(CacheConstants.USR_SUCESS)) {
                                 // 登录成功，执行操作
                                 String token = updResult.getString("token");   // 获取token
-                                if (jsonArray != null && jsonArray.length() > 0) {
-                                    JSONObject obj = (JSONObject) jsonArray.get(0);
-                                    if (account.getText().toString().equals("wzw")) {
-                                        share.put("ROLE_TYPE", 1);
-                                    } else {
-                                        share.put("ROLE_TYPE", obj.getInt("ROLE_TYPE"));
-                                    }
-                                    share.put("ROLE_ID", obj.getString("ROLE_ID"));
-                                    Log.e("ROLE_ID", obj.getString("ROLE_ID"));
-                                    share.put("ROLE_USERNAME", obj.getString("ROLE_USERNAME"));
-                                } else {
-                                    if (account.getText().toString().equals("wzw")) {
-                                        share.put("ROLE_TYPE", 1);
-                                    } else {
-                                        share.put("ROLE_TYPE", 2);
-                                    }
-                                }
+//                                if (jsonArray != null && jsonArray.length() > 0) {
+//                                    JSONObject obj = (JSONObject) jsonArray.get(0);
+//                                    if (account.getText().toString().equals("wzw")) {
+//                                        share.put("ROLE_TYPE", 1);
+//                                    } else {
+//                                        share.put("ROLE_TYPE", obj.getInt("ROLE_TYPE"));
+//                                    }
+//                                    share.put("ROLE_ID", obj.getString("ROLE_ID"));
+//                                    Log.e("ROLE_ID", obj.getString("ROLE_ID"));
+//                                    share.put("ROLE_USERNAME", obj.getString("ROLE_USERNAME"));
+//                                } else {
+//                                    if (account.getText().toString().equals("wzw")) {
+//                                        share.put("ROLE_TYPE", 1);
+//                                    } else {
+//                                        share.put("ROLE_TYPE", 2);
+//                                    }
+//                                }
 //								Long tokenTim = Long.parseLong(updResult.getString("tokenExpTime").toString());
 //                                String tokenTim = updResult.getString("tokenExpTime").toString();.
                                 // 更换值,保存数据到本地，密码进行加密
@@ -688,7 +687,7 @@ public class LoginActivity extends BaseActivity {
     private void getMenu() {
         if (ConnectivityUtils.isNetworkAvailable(this)) {//有网络，进行自动登录
             MobclickAgent.onEvent(LoginActivity.this, "login");//友盟统计
-            String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("queryUserInfo") + Constants.BASEPARAMS;
+            String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("queryUserInfo") + Constants.BASEPARAMS;
             AbRequestParams params = new AbRequestParams();
             //信息需要Base64进行加密
             params.put("username", ReturnUtils.encode(account.getText().toString()));  //用户名
@@ -702,7 +701,11 @@ public class LoginActivity extends BaseActivity {
                         String code = json.getString("code");
                         if (code.equals(CacheConstants.LOCAL_SUCCESS) || code.equals(CacheConstants.SAM_SUCCESS)) {
                             String uploadUrl = Function.getInstance().getString(json, "uploadUrl");
-                            share.put("uploadUrl", uploadUrl);
+                            String personUrl = Function.getInstance().getString(json,"personUrl");
+                            String photowallUrl = Function.getInstance().getString(json,"photowallUrl");
+                            share.put("uploadUrl", uploadUrl);//上传照片路径
+                            share.put("personUrl",personUrl);//照片墙
+                            share.put("photowallUrl",photowallUrl);//照片墙上传照片路径
                             JSONArray roleInfo = new JSONArray(Function.getInstance().getString(json, "roleInfo"));
                             if (roleInfo != null && roleInfo.length() > 0) {//保存用户个人信息（签到等。。）
                                 JSONObject joRoleInfo = roleInfo.getJSONObject(0);
@@ -713,14 +716,17 @@ public class LoginActivity extends BaseActivity {
                                 share.put("NICKNAME", Function.getInstance().getString(joRoleInfo, "NICKNAME"));//昵称
                                 share.put("ROLE_ID", Function.getInstance().getString(joRoleInfo, "ROLE_ID"));//学号或者工号
                                 share.put("CSRQ", Function.getInstance().getString(joRoleInfo, "CSRQ"));//出生年月
+                                share.put("CSDM",Function.getInstance().getString(joRoleInfo,"CSDM"));//城市代码
                                 share.put("SJH", Function.getInstance().getString(joRoleInfo, "SJH"));//手机号
-                                share.put("HEADIMAGE", Function.getInstance().getString(joRoleInfo, "HEADIMAGE"));//头像
+                                share.put("HEADIMAGE", Function.getInstance().getString(joRoleInfo, "HEADIMAGE").replace("thumb/", ""));//头像
                                 share.put("SBIFLOWERSNUMBER", Function.getInstance().getInteger(joRoleInfo, "SBIFLOWERSNUMBER"));//鲜花数量
                                 share.put("SBICONSECUTIVEDAYS", Function.getInstance().getInteger(joRoleInfo, "SBICONSECUTIVEDAYS"));//签到日期
                                 share.put("STATUS", Function.getInstance().getInteger(joRoleInfo, "STATUS"));//今天签到状态 0表示没有签到 1表示已签到
                                 share.put("ZYMC", Function.getInstance().getString(joRoleInfo, "ZYMC"));//专业名
 
-                                share.put("ADDRESS", Function.getInstance().getString(joRoleInfo, "ADDRESS"));//住址
+                                share.put("CSDM", Function.getInstance().getString(joRoleInfo, "CSDM"));//住址
+                                share.put("XZZ", Function.getInstance().getString(joRoleInfo, "XZZ"));//现住址
+                                share.put("GRSM",Function.getInstance().getString(joRoleInfo,"GRSM"));//个人说明
                                 share.put("ZYJSZWM", Function.getInstance().getString(joRoleInfo, "ZYJSZWM"));//技术职称
 
                                 share.put("SENIORNAME", Function.getInstance().getString(joRoleInfo, "SENIORNAME"));//部门
@@ -819,7 +825,9 @@ public class LoginActivity extends BaseActivity {
             super.onPostExecute(result);
             if (result != null) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(result, 0, result.length);
-                imageView.setImageBitmap(bitmap);
+                if(bitmap!=null){
+                    imageView.setImageBitmap(bitmap);
+                }
             }
         }
     }

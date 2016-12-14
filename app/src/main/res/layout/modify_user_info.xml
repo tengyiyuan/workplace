@@ -13,7 +13,7 @@
         <ImageView
             android:id="@+id/iv_modify_return"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:contentDescription="@null"
             android:padding="10dp"
             android:src="@mipmap/btn_return" />
@@ -26,6 +26,18 @@
             android:text="修改个人信息"
             android:textColor="@color/white"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_modify_save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_login"
+            android:textSize="16sp"
+            android:text="保存"/>
     </RelativeLayout>
 
     <EditText
@@ -46,6 +58,7 @@
         android:id="@+id/ll_modify_sex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -71,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:src="@mipmap/yes" />
         </RelativeLayout>
 
@@ -106,36 +119,6 @@
                 android:src="@mipmap/yes" />
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/line_color" />
-
-        <RelativeLayout
-            android:id="@+id/rl_modify_baomi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:text="保密"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:id="@+id/iv_modify_baomi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                android:src="@mipmap/yes" />
-        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

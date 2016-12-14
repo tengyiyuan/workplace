@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.ab.global.AbActivityManager;
 import com.ab.http.AbHttpUtil;
 import com.ab.http.AbRequestParams;
@@ -43,6 +44,7 @@ import com.umeng.analytics.MobclickAgent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,6 +63,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
     private String version = "";
     private AbHttpUtil abHttpUtil;
     private ArrayList<Fragment> fragmentlist = new ArrayList<Fragment>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +74,9 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
         share = new SharePreferenceUtils(this);
         sysVersion = ConnectivityUtils.getAppVersionName(this);
         Constants.SYSVERSION = sysVersion;
-        my_viewpage=(ViewPager)findViewById(R.id.my_viewpage);
-        rl_playground=(RelativeLayout)findViewById(R.id.rl_playground);
-        rl_me=(RelativeLayout)findViewById(R.id.rl_me);
+        my_viewpage = (ViewPager) findViewById(R.id.my_viewpage);
+        rl_playground = (RelativeLayout) findViewById(R.id.rl_playground);
+        rl_me = (RelativeLayout) findViewById(R.id.rl_me);
         playgroundImg = (ImageView) findViewById(R.id.iv_playground);
         meImg = (ImageView) findViewById(R.id.iv_me);
         // 设置显示文字
@@ -87,18 +90,19 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
         init();
         UploadWif();//提交收集信息数据
     }
+
     private void ini_fragment() {
         PlayGroundFragment f1 = new PlayGroundFragment();
         fragmentlist.add(f1);
 //        MeFragment f2 = new MeFragment();
         MeFragmentNew f2 = new MeFragmentNew();
         fragmentlist.add(f2);
-        my_viewpage.setAdapter(new my_fragment_adpter(
-                getSupportFragmentManager()));
+        my_viewpage.setAdapter(new my_fragment_adpter(getSupportFragmentManager()));
         my_viewpage.setCurrentItem(0);
         my_viewpage.setOnPageChangeListener(my_OnPageChangeListener);
-        my_viewpage.setOffscreenPageLimit(1);
+        my_viewpage.setOffscreenPageLimit(0);
     }
+
     // 初始化界面， 检查是否首次登录和用户名以及token是否为空
     protected void init() {
         try {
@@ -110,7 +114,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
             AbSharedUtil abSharedUtil = new AbSharedUtil();
             // 是否首次登陆
 //            boolean isFirst = share.getBoolean("isFirst", true);
-            boolean isFirst = AbSharedUtil.getBoolean(MainTabActivity.this,"isFirst",true);
+            boolean isFirst = AbSharedUtil.getBoolean(MainTabActivity.this, "isFirst", true);
             if (isFirst) {
                 // 如果是首次登陆，跳转到滚动页面
                 Intent intent = new Intent(MainTabActivity.this, ScrollActivity.class);
@@ -123,7 +127,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                 startActivity(intent);
                 finish();
             } else {
-                String islogo=getIntent().getStringExtra("islogo");
+                String islogo = getIntent().getStringExtra("islogo");
 //                String serverIp = share.getString("serverIp", "");
                 Constants.BASE_URL = share.getString("BASE_URL", "");  //默认请求路径
                 if ("".equals(Constants.SCHOOL_CODE)) {
@@ -131,12 +135,12 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                     Constants.SCHOOL_CODE = school_code;
                 }
                 Constants.BASEPARAMS = "&schoolCode=" + Constants.SCHOOL_CODE + "&clientOSType=android" + "&clientVerNum=" + Constants.SYSVERSION
-                        + "&deviceId=" + deviceId +"&role="+share.getInt("ROLE_TYPE",2);
+                        + "&deviceId=" + deviceId + "&role=" + share.getInt("ROLE_TYPE", 2);
 //                        + "&userToken=" + token;
                 update();       // 更新文件
-                if(islogo==null||islogo.equals("")) {
+                if (islogo == null || islogo.equals("")) {
                     checkUserInfo(user_name);//检查用户登录token是否失效
-                }else {
+                } else {
                     ini_fragment();
                 }
                 // 初始化页面信息, 进入界面首先获取Cookie
@@ -169,6 +173,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
 //            }
 //        }
     }
+
     // 查看系统是否需要更新app
     private void update() {
         new Thread() {
@@ -179,12 +184,12 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                 JSONObject json = HttpUtils.httpClientPost(Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getAppUpdateInfo") + Constants.BASEPARAMS, postparams);
                 try {
                     json = new JSONObject(json.getString("result"));
-                    Log.e("json",json+"");
+                    Log.e("json", json + "");
                     String code = json.getString("code");
                     if (code.equals(CacheConstants.LOCAL_SUCCESS) || code.equals(CacheConstants.SAM_SUCCESS)) {
                         json = new JSONObject(json.getString("data"));
                         version = json.getString("versionNum");
-                        share.put("version",version);
+                        share.put("version", version);
                         Constants.ISBIND = json.getString("isBind");        // 是否强制更新
                         Constants.UPDATE_URL = json.getString("url");       // 获取系统更新路径
                         String noteStr = json.getString("note").toString();
@@ -217,6 +222,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
             }
         }.start();
     }
+
     Handler handler = new Handler() {
         @TargetApi(Build.VERSION_CODES.GINGERBREAD)
         public void handleMessage(Message msg) {
@@ -277,6 +283,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
             super.handleMessage(msg);
         }
     };
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -292,7 +299,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
             case R.id.rl_me:
                 // 设置底部未选中tab变化
                 playgroundImg.setImageResource(R.mipmap.btn_playground_nor);
-                playgroundTv.setTextColor(getResources().getColor( R.color.light_gray));
+                playgroundTv.setTextColor(getResources().getColor(R.color.light_gray));
                 // 设置底部选中tab变化
                 meImg.setImageResource(R.mipmap.btn_my_pre);
                 meTv.setTextColor(getResources().getColor(R.color.logo_color));
@@ -338,19 +345,22 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                     break;
             }
         }
+
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {
 
         }
+
         @Override
         public void onPageScrollStateChanged(int arg0) {
         }
     };
-    private void checkUserInfo(String userName){
+
+    private void checkUserInfo(String userName) {
         if (ConnectivityUtils.isNetworkAvailable(this)) {//有网络，进行自动登录
             UploadWif();//提交收集信息数据
             MobclickAgent.onEvent(MainTabActivity.this, "login");//友盟统计
-            String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("queryUserInfo") + Constants.BASEPARAMS;
+            String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("queryUserInfo") + Constants.BASEPARAMS;
             AbRequestParams params = new AbRequestParams();
             //信息需要Base64进行加密
             params.put("username", ReturnUtils.encode(userName));  //用户名
@@ -362,41 +372,51 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                         JSONObject json = new JSONObject(content);
                         String code = json.getString("code");
                         if (code.equals(CacheConstants.LOCAL_SUCCESS) || code.equals(CacheConstants.SAM_SUCCESS)) {
-                            JSONArray roleInfo = new JSONArray(Function.getInstance().getString(json,"roleInfo"));
-                            if(roleInfo!=null&&roleInfo.length()>0){//保存用户个人信息（签到等。。）
+                            String uploadUrl = Function.getInstance().getString(json, "uploadUrl");
+                            String personUrl = Function.getInstance().getString(json, "personUrl");
+                            String photowallUrl = Function.getInstance().getString(json, "photowallUrl");
+                            share.put("uploadUrl", uploadUrl);//二手发布上传照片路径
+                            share.put("personUrl", personUrl);//修改头像上传照片路径
+                            share.put("photowallUrl", photowallUrl);//照片墙上传照片路径
+                            JSONArray roleInfo = new JSONArray(Function.getInstance().getString(json, "roleInfo"));
+                            if (roleInfo != null && roleInfo.length() > 0) {//保存用户个人信息（签到等。。）
                                 JSONObject joRoleInfo = roleInfo.getJSONObject(0);
-                                share.put("ROLE_USERNAME",Function.getInstance().getString(joRoleInfo,"ROLE_USERNAME"));//姓名
-                                share.put("XB",Function.getInstance().getString(joRoleInfo,"XB"));//性别
-                                share.put("NICKNAME",Function.getInstance().getString(joRoleInfo,"NICKNAME"));//昵称
-                                share.put("ROLE_ID",Function.getInstance().getString(joRoleInfo,"ROLE_ID"));//学号或者工号
-                                share.put("CSRQ",Function.getInstance().getString(joRoleInfo,"CSRQ"));//出生年月
-                                share.put("SJH",Function.getInstance().getString(joRoleInfo,"SJH"));//手机号
-                                share.put("HEADIMAGE",Function.getInstance().getString(joRoleInfo,"HEADIMAGE"));//头像
-                                share.put("SBIFLOWERSNUMBER",Function.getInstance().getInteger(joRoleInfo,"SBIFLOWERSNUMBER"));//鲜花数量
-                                share.put("SBICONSECUTIVEDAYS",Function.getInstance().getInteger(joRoleInfo,"SBICONSECUTIVEDAYS"));//签到日期
-                                share.put("STATUS",Function.getInstance().getInteger(joRoleInfo,"STATUS"));//今天签到状态 0表示没有签到 1表示已签到
-                                share.put("ZYMC",Function.getInstance().getString(joRoleInfo,"ZYMC"));//专业名
+                                share.put("ROLE_USERNAME", Function.getInstance().getString(joRoleInfo, "ROLE_USERNAME"));//姓名
+                                share.put("XB", Function.getInstance().getString(joRoleInfo, "XB"));//性别
+                                share.put("NICKNAME", Function.getInstance().getString(joRoleInfo, "NICKNAME"));//昵称
+                                share.put("ROLE_ID", Function.getInstance().getString(joRoleInfo, "ROLE_ID"));//学号或者工号
+                                share.put("CSRQ", Function.getInstance().getString(joRoleInfo, "CSRQ"));//出生年月
+                                share.put("SJH", Function.getInstance().getString(joRoleInfo, "SJH"));//手机号
+                                share.put("HEADIMAGE", Function.getInstance().getString(joRoleInfo, "HEADIMAGE").replace("thumb/", ""));//头像
+                                share.put("SBIFLOWERSNUMBER", Function.getInstance().getInteger(joRoleInfo, "SBIFLOWERSNUMBER"));//鲜花数量
+                                share.put("SBICONSECUTIVEDAYS", Function.getInstance().getInteger(joRoleInfo, "SBICONSECUTIVEDAYS"));//签到日期
+                                share.put("STATUS", Function.getInstance().getInteger(joRoleInfo, "STATUS"));//今天签到状态 0表示没有签到 1表示已签到
+                                share.put("ZYMC", Function.getInstance().getString(joRoleInfo, "ZYMC"));//专业名
 
-                                share.put("ADDRESS",Function.getInstance().getString(joRoleInfo,"ADDRESS"));//住址
-                                share.put("ZYJSZWM",Function.getInstance().getString(joRoleInfo,"ZYJSZWM"));//技术职称
+                                share.put("CSDM", Function.getInstance().getString(joRoleInfo, "CSDM"));//住址
+                                share.put("XZZ", Function.getInstance().getString(joRoleInfo, "XZZ"));//现住址
+                                share.put("GRSM", Function.getInstance().getString(joRoleInfo, "GRSM"));//个人说明
+                                share.put("ZYJSZWM", Function.getInstance().getString(joRoleInfo, "ZYJSZWM"));//技术职称
 
-                                share.put("SENIORNAME",Function.getInstance().getString(joRoleInfo,"SENIORNAME"));//部门
-                                share.put("DEPARTNAME",Function.getInstance().getString(joRoleInfo,"DEPARTNAME"));//职位名
+                                share.put("SENIORNAME", Function.getInstance().getString(joRoleInfo, "SENIORNAME"));//部门
+                                share.put("DEPARTNAME", Function.getInstance().getString(joRoleInfo, "DEPARTNAME"));//职位名
 
                             }
                             json = new JSONObject(json.getString("data"));
                             share.put("samUserInfo", json.getString("samUserInfo") + "");
                             share.put("canModifyPassword", json.getBoolean("canModifyPassword"));
                             share.put("canPayNetFee", json.getBoolean("canPayNetFee"));
-                            share.put("menujson",content);
+                            share.put("menujson", content);
                             ini_fragment();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                         // 重新登录
-                        Intent intent = new Intent(MainTabActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+//                        Intent intent = new Intent(MainTabActivity.this, MainActivity.class);
+//                        startActivity(intent);
+//                        finish();
+                        CommonUtil.intoLogin(MainTabActivity.this, share, "");
+                        Log.e("gogogogogogogogo","MainTabActivity");
                     }
                 }
 
@@ -404,55 +424,54 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                 public void Get_Result_faile(String errormsg) {
                     super.Get_Result_faile(errormsg);
                     // 重新登录
-                    Intent intent = new Intent(MainTabActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    CommonUtil.intoLogin(MainTabActivity.this, share, "");
+                    Log.e("gogogogogogogogo","MainTabActivity");
                 }
 
                 @Override
                 public void onFailure(int statusCode, String content, Throwable error) {
                     super.onFailure(statusCode, content, error);
                     // 重新登录
-                    Intent intent = new Intent(MainTabActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    CommonUtil.intoLogin(MainTabActivity.this, share, "");
+                    Log.e("gogogogogogogogo","MainTabActivity");
                 }
             });
         } else {
             // 重新登录
-            Intent intent = new Intent(MainTabActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            CommonUtil.intoLogin(MainTabActivity.this, share, "");
+            Log.e("gogogogogogogogo","MainTabActivity");
         }
     }
+
     /**
      * 将wif信道的信息传入后台
      */
     public void UploadWif() {
-            AbRequestParams params = new AbRequestParams();
-            params.put("deviceInfo", CommonUtil.getCurrentChannel(MainTabActivity.this).toString());
-            params.put("deviceId", share.getString("deviceId", ""));
-            params.put("deviceTeleNum", new TelephoneUtils(MainTabActivity.this).getPhoneNumber());
-            String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("saveDeviceInfo") + Constants.BASEPARAMS;
-            abHttpUtil.post(url, params, new AbStringHttpResponseListener() {
-                @Override
-                public void onStart() {
-                }
+        AbRequestParams params = new AbRequestParams();
+        params.put("deviceInfo", CommonUtil.getCurrentChannel(MainTabActivity.this).toString());
+        params.put("deviceId", share.getString("deviceId", ""));
+        params.put("deviceTeleNum", new TelephoneUtils(MainTabActivity.this).getPhoneNumber());
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("saveDeviceInfo") + Constants.BASEPARAMS;
+        abHttpUtil.post(url, params, new AbStringHttpResponseListener() {
+            @Override
+            public void onStart() {
+            }
 
-                @Override
-                public void onSuccess(int statusCode, String content) {
-                }
+            @Override
+            public void onSuccess(int statusCode, String content) {
+            }
 
-                @Override
-                public void onFailure(int statusCode, String content, Throwable error) {
+            @Override
+            public void onFailure(int statusCode, String content, Throwable error) {
 
-                }
+            }
 
-                @Override
-                public void onFinish() {
-                }
-            });
+            @Override
+            public void onFinish() {
+            }
+        });
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -469,7 +488,9 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
         super.onPause();
         MobclickAgent.onPause(this);
     }
+
     long waitTime = 0;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {

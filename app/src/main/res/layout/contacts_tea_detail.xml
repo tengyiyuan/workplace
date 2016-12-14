@@ -42,7 +42,7 @@
                 android:id="@+id/ll_tea_contacts_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/txt_bg"
+                android:background="@color/gray"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="20dp">
@@ -67,6 +67,113 @@
                     android:textColor="@color/gray666"
                     android:textSize="15sp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_contacts_detail_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/iv_contacts_detai_call"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@null"
+                            android:drawablePadding="10dp"
+                            android:drawableTop="@mipmap/tea_call"
+                            android:text="呼叫"
+                            android:textColor="@color/logo_color" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0.1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginTop="7dp"
+                        android:visibility="gone"
+                        android:background="@color/line_color" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_contacts_detail_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/iv_contacts_detai_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@null"
+                            android:drawablePadding="10dp"
+                            android:textColor="@color/logo_color"
+                            android:drawableTop="@mipmap/tea_msg"
+                            android:text="短信" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0.1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginTop="7dp"
+                        android:visibility="gone"
+                        android:background="@color/line_color" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_contacts_detai_copy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/iv_contacts_detail_copy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@null"
+                            android:drawablePadding="10dp"
+                            android:textColor="@color/logo_color"
+                            android:drawableTop="@mipmap/tea_copy"
+                            android:text="复制" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0.1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginTop="7dp"
+                        android:visibility="gone"
+                        android:background="@color/line_color" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_contacts_detai_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/iv_contacts_detai_save"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@null"
+                            android:drawablePadding="10dp"
+                            android:textColor="@color/logo_color"
+                            android:drawableTop="@mipmap/tea_save"
+                            android:text="保存" />
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -99,13 +206,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:background="@color/line_color"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -276,109 +384,6 @@
                 android:layout_height="0.1dp"
                 android:background="@color/line_color" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/ll_contacts_detail_call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/list_item_back"
-                    android:gravity="center"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/iv_contacts_detai_call"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@null"
-                        android:drawablePadding="5dp"
-                        android:drawableTop="@mipmap/contact_dianhua"
-                        android:text="呼叫" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="0.1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@color/line_color" />
-
-                <LinearLayout
-                    android:id="@+id/ll_contacts_detail_message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/list_item_back"
-                    android:gravity="center"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/iv_contacts_detai_message"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@null"
-                        android:drawablePadding="5dp"
-                        android:drawableTop="@mipmap/duanxin"
-                        android:text="短信" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="0.1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@color/line_color" />
-
-                <LinearLayout
-                    android:id="@+id/ll_contacts_detai_copy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/list_item_back"
-                    android:gravity="center"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/iv_contacts_detail_copy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@null"
-                        android:drawablePadding="5dp"
-                        android:drawableTop="@mipmap/fuzhi"
-                        android:text="复制" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="0.1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@color/line_color" />
-
-                <LinearLayout
-                    android:id="@+id/ll_contacts_detai_save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/list_item_back"
-                    android:gravity="center"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/iv_contacts_detai_save"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@null"
-                        android:drawablePadding="5dp"
-                        android:drawableTop="@mipmap/baocun"
-                        android:text="保存" />
-                </LinearLayout>
-
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"

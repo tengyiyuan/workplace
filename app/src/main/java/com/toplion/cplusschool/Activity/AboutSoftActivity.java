@@ -16,7 +16,7 @@ import com.toplion.cplusschool.Utils.SharePreferenceUtils;
  * 关于本软件界面
  * 使用WebView
  * 加载页面Constants.ABOUT_SOFT_URL
- * @author tengyy
+ * @author liyb
  *
  */
 public class AboutSoftActivity extends BaseActivity{

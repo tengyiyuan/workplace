@@ -8,11 +8,10 @@ import java.util.Timer;
  * @author wang
  */
 public class Constants {
-    public static String NEWBASE_URL = "http://123.233.121.17:15100/index.php"; //建大测试地址
-//    public static String URL = "123.233.121.17:12100";
+    public static boolean isShowAllFunction = true;
+//    public static String NEWBASE_URL = "http://123.233.121.17:15100/index.php"; //建大测试地址
     public static String BASE_URL = "http://111.14.210.46:12100/index.php"; //移动地址
     public static String BASE_URLB = "http://123.233.121.17:12100/index.php"; //联通地址
-    public static String BASE_URLCS= "http://123.233.121.17:15100/index.php"; //测试地址
     public static String HELP_PHONE = "tel:4007661616";                   // 帮助电话
     public static String HELP_TRIP = "400-766-1616";                      // 帮助提示
     public static String ISBIND = "";                                     // 是否强制更新
@@ -139,6 +138,7 @@ public class Constants {
     public static String JIANZHI = "31";                                  //兼职
     public static String MUKE="32";                                      //慕课
     public static String GUIZHANGZHIDU="33";                              //规章制度
+    public static String ZHAOPIANQIANG="34";                              //照片墙
     public static String UPDATE_URL = "";                                 // 升级URL
 
     public static String UPDATE_CONTENT = "";                             // 升级内容

@@ -42,6 +42,7 @@ import com.toplion.cplusschool.Activity.FloorListActivity;
 import com.toplion.cplusschool.Activity.GradeListActivity;
 import com.toplion.cplusschool.Activity.HelpActivity;
 import com.toplion.cplusschool.Activity.MainActivity;
+import com.toplion.cplusschool.Activity.MainTabActivity;
 import com.toplion.cplusschool.Activity.MealsActivity;
 import com.toplion.cplusschool.Activity.NewsListActivity;
 import com.toplion.cplusschool.Activity.OneCardPassActivity;
@@ -50,6 +51,7 @@ import com.toplion.cplusschool.Activity.SchoolBusActivity;
 import com.toplion.cplusschool.Bean.Menus;
 import com.toplion.cplusschool.JianKong.KongMainActivity;
 import com.toplion.cplusschool.Map.LocationSourceActivity;
+import com.toplion.cplusschool.PhotoWall.PhotoMainActivity;
 import com.toplion.cplusschool.QianDao.QianDaoActivity;
 import com.toplion.cplusschool.Reimburse.BaomainActivity;
 import com.toplion.cplusschool.Activity.RepairQuestionListActivity;
@@ -66,6 +68,7 @@ import com.toplion.cplusschool.SecondMarket.MainMarket;
 import com.toplion.cplusschool.SendMessage.MessageActivity;
 import com.toplion.cplusschool.SerchFly.SearchFlyActivity;
 import com.toplion.cplusschool.TeacherContacts.TeaContactsListActivity;
+import com.toplion.cplusschool.TeacherContacts.TeacherContactsListActivity;
 import com.toplion.cplusschool.Utils.AESUtils;
 import com.toplion.cplusschool.Utils.BaseApplication;
 import com.toplion.cplusschool.Utils.CommonUtil;
@@ -151,20 +154,14 @@ public class PlayGroundFragment extends Fragment {
     private JSONArray bannerArray; // banner 图片列表
     private String messageStr = null;//提示
     private AbHttpUtil abHttpUtil;//网络请求工具
-    private boolean isShow = false; // 是否显示 "是不是规定wifi"或者是不是从本页面登录的提示
+//    private boolean isShow = false; // 是否显示 "是不是规定wifi"或者是不是从本页面登录的提示
     private JSONObject breakJson = null;//断开连接返回数据
 
     private GridView gv_pgf_function;//首页功能 2016-6-28
     private List<Map<String, Object>> functionData;//功能列表
     private FunctionListAdapter flistAdapter;
-
     private int netstate = -1;//一键上网的位置记录
-
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
+    private boolean  netFlag = false;//是否连接网络
 
     // 定义公共方法
     private static PlayGroundFragment play;
@@ -333,6 +330,7 @@ public class PlayGroundFragment extends Fragment {
         return view;
     }
 
+
     //首页功能列表添加
     private void addFunction() {
         if (!functionData.isEmpty()) {
@@ -362,7 +360,6 @@ public class PlayGroundFragment extends Fragment {
             functionMap.put("funDes", "一键上网");
             functionMap.put("flag", true);
             functionData.add(functionMap);
-
 
             //课程表
             functionMap = new HashMap<String, Object>();
@@ -454,7 +451,7 @@ public class PlayGroundFragment extends Fragment {
             functionMap = new HashMap<String, Object>();
             functionMap.put("funImage", R.mipmap.tongxun);
             functionMap.put("mid", Constants.TONGXUNLU);
-            functionMap.put("funDes", "通讯录");
+            functionMap.put("funDes", "班班通");
             functionMap.put("flag", true);
             functionData.add(functionMap);
             //办事指南
@@ -552,7 +549,7 @@ public class PlayGroundFragment extends Fragment {
             functionMap = new HashMap<String, Object>();
             functionMap.put("funImage", R.mipmap.parttime);
             functionMap.put("mid", Constants.JIANZHI);
-            functionMap.put("funDes", "兼职");
+            functionMap.put("funDes", "兼职招聘");
             functionMap.put("flag", true);
             functionData.add(functionMap);
             //水花墙
@@ -592,6 +589,13 @@ public class PlayGroundFragment extends Fragment {
             functionMap.put("funImage", R.mipmap.muke);
             functionMap.put("mid", Constants.MUKE);
             functionMap.put("funDes", "网易慕课");
+            functionMap.put("flag", true);
+            functionData.add(functionMap);
+            //照片墙
+            functionMap = new HashMap<String, Object>();
+            functionMap.put("funImage", R.mipmap.photo_wall);
+            functionMap.put("mid", Constants.ZHAOPIANQIANG);
+            functionMap.put("funDes", "照片墙");
             functionMap.put("flag", true);
             functionData.add(functionMap);
 
@@ -682,8 +686,9 @@ public class PlayGroundFragment extends Fragment {
                     }
                 } else if (functionType.equals(Constants.JSTXL)) {
                     if (flag) {
-                        Intent intent = new Intent(getActivity(), TeaContactsListActivity.class);
-                        intent.putExtra("type", 2);//教室通讯录
+//                        Intent intent = new Intent(getActivity(), TeaContactsListActivity.class);
+                        Intent intent = new Intent(getActivity(), TeacherContactsListActivity.class);
+                        intent.putExtra("type", 2);//教工通讯录
                         startActivity(intent);
                     } else {
                         ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
@@ -722,7 +727,11 @@ public class PlayGroundFragment extends Fragment {
                     }
                 } else if (functionType.equals(Constants.YIJIANNET)) {
                     if (flag) {
-                        EportalValidate();
+                        if(netFlag){//已经连接网络
+                            breakNet();
+                        }else{//未连接网络
+                            EportalValidate();
+                        }
                     } else {
                         ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
                     }
@@ -764,12 +773,6 @@ public class PlayGroundFragment extends Fragment {
                         Intent intent = new Intent(getActivity(), SchoolBusActivity.class);
                         intent.putExtra("style", 2);
                         startActivity(intent);
-                    } else {
-                        ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
-                    }
-                } else if (functionType.equals(Constants.DUANKAI)) {
-                    if (flag) {
-                        breakNet();
                     } else {
                         ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
                     }
@@ -891,6 +894,13 @@ public class PlayGroundFragment extends Fragment {
                         Intent intent = new Intent(getActivity(), MukeActivity.class);
                         startActivity(intent);
                         MobclickAgent.onEvent(context, "muke");
+                    } else {
+                        ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
+                    }
+                }else if (functionType.equals(Constants.ZHAOPIANQIANG)) {//照片墙
+                    if (flag) {
+                        Intent intent = new Intent(getActivity(), PhotoMainActivity.class);
+                        startActivity(intent);
                     } else {
                         ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
                     }
@@ -1098,6 +1108,126 @@ public class PlayGroundFragment extends Fragment {
         return wifiName.contains(ssid);
     }
 
+    Handler nethandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    final CommDialog dlog = new CommDialog(getActivity());
+                    dlog.CreateDialogOnlyOk("系统提示", "确定", "网络已连接", new CallBack() {
+                        @Override
+                        public void isConfirm(boolean flag) {
+                            if (netstate != -1) {
+                                functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
+                                functionData.get(netstate).put("funDes", "断开网络");
+                            }
+                            netFlag = true;
+//                            ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
+//                            ground_tv_buy_des.setText("断开网络");
+//                            ground_rl_net.setOnClickListener(new OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    breakNet();//断开网络
+//                                }
+//                            });
+                            dlog.cancelDialog();
+                            flistAdapter.notifyDataSetChanged();
+                        }
+                    });
+                    break;
+                case 2:
+                    check();//网络异常提示重试或保修
+                    break;
+                case 3:
+                    if (netstate != -1) {
+                        functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
+                        functionData.get(netstate).put("funDes", "断开网络");
+                    }
+                    netFlag = true;
+//                    ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
+//                    ground_tv_buy_des.setText("断开网络");
+                    final CommDialog dlog3 = new CommDialog(getActivity());
+                    dlog3.CreateDialogOnlyOk("系统提示", "确定", "网络连接成功", new CallBack() {
+                        @Override
+                        public void isConfirm(boolean flag) {
+                            if (flag) {
+//                                ground_rl_net.setOnClickListener(new OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View v) {
+//                                        breakNet();
+//                                    }
+//                                });
+                                dlog3.cancelDialog();
+                            }
+                        }
+                    });
+                    flistAdapter.notifyDataSetChanged();
+                    break;
+                case 4:
+                    String error = (String) msg.obj;
+                    final CommDialog dlog1 = new CommDialog(getActivity());
+                    dlog1.CreateDialogOnlyOk("系统提示", "确定", error, new CallBack() {
+                        @Override
+                        public void isConfirm(boolean flag) {
+                            if (flag) {
+                                if (netstate != -1) {
+                                    functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
+                                    functionData.get(netstate).put("funDes", "断开网络");
+                                }
+                                netFlag = true;
+//                                ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
+//                                ground_tv_buy_des.setText("断开网络");
+//                                ground_rl_net.setOnClickListener(new OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View v) {
+//                                        breakNet();
+//                                    }
+//                                });
+                                dlog1.cancelDialog();
+                                flistAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    });
+                    break;
+                case 5:
+                    final CommDialog dlog2 = new CommDialog(getActivity());
+                    dlog2.CreateDialogOnlyOk("系统提示", "确定", "网络已断开", new CallBack() {
+                        @Override
+                        public void isConfirm(boolean flag) {
+                            if (netstate != -1) {
+                                functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
+                                functionData.get(netstate).put("funDes", "一键上网");
+                            }
+                            netFlag = false;
+//                            ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
+//                            ground_tv_buy_des.setText("一键上网");
+//                            isShow = true;
+//                            ground_rl_net.setOnClickListener(new OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    showConn();//重新设置点击事件
+//                                }
+//                            });
+                            dlog2.cancelDialog();
+                            flistAdapter.notifyDataSetChanged();
+                        }
+                    });
+                    break;
+                case 6:
+                    String errorStr = (String) msg.obj;
+                    final CommDialog dlog4 = new CommDialog(getActivity());
+                    dlog4.CreateDialogOnlyOk("系统提示", "确定", errorStr, new CallBack() {
+                        @Override
+                        public void isConfirm(boolean flag) {
+                            dlog4.cancelDialog();
+                        }
+                    });
+                    break;
+            }
+        }
+    };
+
     /**
      * @author wang
      * @date 2016-5-23
@@ -1115,51 +1245,53 @@ public class PlayGroundFragment extends Fragment {
                             functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
                             functionData.get(netstate).put("funDes", "断开网络");
                         }
-                        ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
-                        ground_tv_buy_des.setText("断开网络");
-                        if (isShow) {
-                            final CommDialog dia = new CommDialog(getActivity());
-                            dia.CreateDialogOnlyOk("系统提示", "确定", "不是从本系统上网，请从上网验证的页面关闭网络", new CallBack() {
-                                @Override
-                                public void isConfirm(boolean flag) {
-                                    ground_rl_net.setOnClickListener(new OnClickListener() {
-                                        @Override
-                                        public void onClick(View arg0) {//请求断开连接
-//                                 `            NewBreakNet();//断开网络
-                                            breakNet();
-                                        }
-                                    });
-                                    dia.cancelDialog();
-                                }
-                            });
-                        } else {
-                            ground_rl_net.setOnClickListener(new OnClickListener() {
-                                @Override
-                                public void onClick(View arg0) {//请求断开连接
-//                                 `    NewBreakNet();//断开网络
-                                    breakNet();
-                                }
-                            });
-                        }
+//                        ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
+//                        ground_tv_buy_des.setText("断开网络");
+                        netFlag = true;
+//                        if (isShow) {
+//                            final CommDialog dia = new CommDialog(getActivity());
+//                            dia.CreateDialogOnlyOk("系统提示", "确定", "不是从本系统上网，请从上网验证的页面关闭网络", new CallBack() {
+//                                @Override
+//                                public void isConfirm(boolean flag) {
+////                                    ground_rl_net.setOnClickListener(new OnClickListener() {
+////                                        @Override
+////                                        public void onClick(View arg0) {//请求断开连接
+//////                                 `            NewBreakNet();//断开网络
+////                                            breakNet();
+////                                        }
+////                                    });
+//                                    dia.cancelDialog();
+//                                }
+//                            });
+//                        } else {
+//                            ground_rl_net.setOnClickListener(new OnClickListener() {
+//                                @Override
+//                                public void onClick(View arg0) {//请求断开连接
+////                                 `    NewBreakNet();//断开网络
+//                                    breakNet();
+//                                }
+//                            });
+//                        }
                     } else {//如果连接了wifi,并且访问百度重定向到其他界面，设置点击按钮显示一键上网
                         Constants.ISRUN = false;
-                        if (isShow) {
-                            EportalValidate();
-                        } else {
+                        netFlag = false;
+//                        if (isShow) {
+//                            EportalValidate();
+//                        } else {
                             if (netstate != -1) {
                                 functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
                                 functionData.get(netstate).put("funDes", "一键上网");
                             }
-                            ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
-                            ground_tv_buy_des.setText("一键上网");
-                            ground_rl_net.setOnClickListener(new OnClickListener() {
-                                @Override
-                                public void onClick(View arg0) {
-//                                  NewEportalValidate();//一键上网
-                                    EportalValidate();
-                                }
-                            });
-                        }
+//                            ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
+//                            ground_tv_buy_des.setText("一键上网");
+//                            ground_rl_net.setOnClickListener(new OnClickListener() {
+//                                @Override
+//                                public void onClick(View arg0) {
+////                                  NewEportalValidate();//一键上网
+//                                    EportalValidate();
+//                                }
+//                            });
+//                        }
                     }
                 }
                 flistAdapter.notifyDataSetChanged();
@@ -1179,122 +1311,6 @@ public class PlayGroundFragment extends Fragment {
             }
         });
     }
-
-    Handler nethandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 1:
-                    final CommDialog dlog = new CommDialog(getActivity());
-                    dlog.CreateDialogOnlyOk("系统提示", "确定", "网络已连接", new CallBack() {
-                        @Override
-                        public void isConfirm(boolean flag) {
-                            if (netstate != -1) {
-                                functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
-                                functionData.get(netstate).put("funDes", "断开网络");
-                            }
-                            ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
-                            ground_tv_buy_des.setText("断开网络");
-                            ground_rl_net.setOnClickListener(new OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    breakNet();//断开网络
-                                }
-                            });
-                            dlog.cancelDialog();
-                            flistAdapter.notifyDataSetChanged();
-                        }
-                    });
-                    break;
-                case 2:
-                    check();//网络异常提示重试或保修
-                    break;
-                case 3:
-                    if (netstate != -1) {
-                        functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
-                        functionData.get(netstate).put("funDes", "断开网络");
-                    }
-                    ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
-                    ground_tv_buy_des.setText("断开网络");
-                    final CommDialog dlog3 = new CommDialog(getActivity());
-                    dlog3.CreateDialogOnlyOk("系统提示", "确定", "网络连接成功", new CallBack() {
-                        @Override
-                        public void isConfirm(boolean flag) {
-                            if (flag) {
-                                ground_rl_net.setOnClickListener(new OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        breakNet();
-                                    }
-                                });
-                                dlog3.cancelDialog();
-                            }
-                        }
-                    });
-                    flistAdapter.notifyDataSetChanged();
-                    break;
-                case 4:
-                    String error = (String) msg.obj;
-                    final CommDialog dlog1 = new CommDialog(getActivity());
-                    dlog1.CreateDialogOnlyOk("系统提示", "确定", error, new CallBack() {
-                        @Override
-                        public void isConfirm(boolean flag) {
-                            if (flag) {
-                                if (netstate != -1) {
-                                    functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
-                                    functionData.get(netstate).put("funDes", "断开网络");
-                                }
-                                ground_iv_buy.setImageResource(R.mipmap.btn_dis_network);
-                                ground_tv_buy_des.setText("断开网络");
-                                ground_rl_net.setOnClickListener(new OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        breakNet();
-                                    }
-                                });
-                                dlog1.cancelDialog();
-                                flistAdapter.notifyDataSetChanged();
-                            }
-                        }
-                    });
-                    break;
-                case 5:
-                    final CommDialog dlog2 = new CommDialog(getActivity());
-                    dlog2.CreateDialogOnlyOk("系统提示", "确定", "网络已断开", new CallBack() {
-                        @Override
-                        public void isConfirm(boolean flag) {
-                            if (netstate != -1) {
-                                functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
-                                functionData.get(netstate).put("funDes", "一键上网");
-                            }
-                            ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
-                            ground_tv_buy_des.setText("一键上网");
-                            isShow = true;
-                            ground_rl_net.setOnClickListener(new OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    showConn();//重新设置点击事件
-                                }
-                            });
-                            dlog2.cancelDialog();
-                            flistAdapter.notifyDataSetChanged();
-                        }
-                    });
-                    break;
-                case 6:
-                    String errorStr = (String) msg.obj;
-                    final CommDialog dlog4 = new CommDialog(getActivity());
-                    dlog4.CreateDialogOnlyOk("系统提示", "确定", errorStr, new CallBack() {
-                        @Override
-                        public void isConfirm(boolean flag) {
-                            dlog4.cancelDialog();
-                        }
-                    });
-                    break;
-            }
-        }
-    };
 
     /**
      * 旧版
@@ -1439,19 +1455,18 @@ public class PlayGroundFragment extends Fragment {
                 functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
                 functionData.get(netstate).put("funDes", "一键上网");
             }
-            //ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
-            //ground_tv_buy_des.setText("一键上网");
+            netFlag = false;
             final CommDialog dog = new CommDialog(getActivity());
             dog.CreateDialogOnlyOk("系统提示", "确定", Constants.NOT_WIFI, new CallBack() {
                 @Override
                 public void isConfirm(boolean flag) {
-                    ground_rl_net.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            isShow = true;
-                            showConn();
-                        }
-                    });
+//                    ground_rl_net.setOnClickListener(new OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            isShow = true;
+//                            showConn();
+//                        }
+//                    });
                     dog.cancelDialog();
                 }
             });
@@ -1522,13 +1537,13 @@ public class PlayGroundFragment extends Fragment {
                 @Override
                 public void isConfirm(boolean flag) {
                     dia.cancelDialog();
-                    ground_rl_net.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            isShow = true;
-                            showConn();
-                        }
-                    });
+//                    ground_rl_net.setOnClickListener(new OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            isShow = true;
+//                            showConn();
+//                        }
+//                    });
                 }
             });
         }
@@ -1557,13 +1572,13 @@ public class PlayGroundFragment extends Fragment {
                 @Override
                 public void isConfirm(boolean flag) {
                     dia.cancelDialog();
-                    ground_rl_net.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            isShow = true;
-                            showConn();
-                        }
-                    });
+//                    ground_rl_net.setOnClickListener(new OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            isShow = true;
+//                            showConn();
+//                        }
+//                    });
                 }
             });
         } else {
@@ -1583,8 +1598,8 @@ public class PlayGroundFragment extends Fragment {
                                     functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
                                     functionData.get(netstate).put("funDes", "一键上网");
                                 }
-                                ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
-                                ground_tv_buy_des.setText("一键上网");
+//                                ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
+//                                ground_tv_buy_des.setText("一键上网");
                                 ToastManager.getInstance().showToast(BaseApplication.getInstance(), "已断开连接");
                                 flistAdapter.notifyDataSetChanged();
                             } else {
@@ -1820,22 +1835,24 @@ public class PlayGroundFragment extends Fragment {
                 @Override
                 public void isConfirm(boolean flag) {
                     if (flag) {
+                        Intent intent = new Intent(getActivity(), RepairQuestionListActivity.class);
+                        startActivity(intent);
                         // 报修
-                        final CommDialog dlog = new CommDialog(getActivity());
-                        dlog.CreateDialog("拨打", "确认拨打维修电话?", Constants.HELP_TRIP, getActivity(), new CallBack() {
-
-                            @Override
-                            public void isConfirm(boolean flag) {
-                                if (flag) {
-                                    Intent intent = new Intent();
-                                    intent.setAction(Intent.ACTION_CALL);
-                                    intent.setData(Uri.parse(Constants.HELP_PHONE));
-                                    startActivity(intent);
-                                }
-                                Constants.ISRUN = false;
-                                dlog.cancelDialog();
-                            }
-                        });
+//                        final CommDialog dlog = new CommDialog(getActivity());
+//                        dlog.CreateDialog("拨打", "确认拨打维修电话?", Constants.HELP_TRIP, getActivity(), new CallBack() {
+//
+//                            @Override
+//                            public void isConfirm(boolean flag) {
+//                                if (flag) {
+//                                    Intent intent = new Intent();
+//                                    intent.setAction(Intent.ACTION_CALL);
+//                                    intent.setData(Uri.parse(Constants.HELP_PHONE));
+//                                    startActivity(intent);
+//                                }
+//                                Constants.ISRUN = false;
+//                                dlog.cancelDialog();
+//                            }
+//                        });
                     }
                 }
             });
@@ -1924,8 +1941,8 @@ public class PlayGroundFragment extends Fragment {
                         if (netstate != -1) {
                             functionData.get(netstate).put("funImage", R.mipmap.btn_dis_network);
                             functionData.get(netstate).put("funDes", "断开网络");
+                            netFlag = true;
                         }
-
                     } else {
                         Constants.ISRUN = false;
                         // 已经断网了
@@ -1933,15 +1950,16 @@ public class PlayGroundFragment extends Fragment {
                             functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
                             functionData.get(netstate).put("funDes", "一键上网");
                         }
-                        ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
-                        ground_tv_buy_des.setText("一键上网");
-                        ground_rl_net.setOnClickListener(new OnClickListener() {
-                            @Override
-                            public void onClick(View arg0) {
-                                isShow = true;
-                                showConn();
-                            }
-                        });
+                        netFlag = false;
+//                        ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
+//                        ground_tv_buy_des.setText("一键上网");
+//                        ground_rl_net.setOnClickListener(new OnClickListener() {
+//                            @Override
+//                            public void onClick(View arg0) {
+//                                isShow = true;
+//                                showConn();
+//                            }
+//                        });
                     }
                     flistAdapter.notifyDataSetChanged();
                 }
@@ -1966,15 +1984,16 @@ public class PlayGroundFragment extends Fragment {
                     functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
                     functionData.get(netstate).put("funDes", "一键上网");
                 }
-                ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
-                ground_tv_buy_des.setText("一键上网");
-                ground_rl_net.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        isShow = true;
-                        showConn();
-                    }
-                });
+                netFlag = false;
+//                ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
+//                ground_tv_buy_des.setText("一键上网");
+//                ground_rl_net.setOnClickListener(new OnClickListener() {
+//                    @Override
+//                    public void onClick(View arg0) {
+//                        isShow = true;
+//                        showConn();
+//                    }
+//                });
                 flistAdapter.notifyDataSetChanged();
             }
         });
@@ -2000,7 +2019,6 @@ public class PlayGroundFragment extends Fragment {
             super.handleMessage(msg);
             if (msg.what == 1) {
                 ToastManager.getInstance().showToast(context, Constants.NETWORK_ERROR);
-
             } else if (msg.what == 2) {
                 addFunction();//配置菜单
                 showConn();// 显示一键上网/断开网络
@@ -2123,13 +2141,14 @@ public class PlayGroundFragment extends Fragment {
                     if (Constants.ISRUN) {
                         refresh();
                     }
-                } else {
-                    if (netstate != -1) {
-                        functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
-                        functionData.get(netstate).put("funDes", "一键上网");
-                        flistAdapter.notifyDataSetChanged();
-                    }
                 }
+//                else {
+//                    if (netstate != -1) {
+//                        functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
+//                        functionData.get(netstate).put("funDes", "一键上网");
+//                        flistAdapter.notifyDataSetChanged();
+//                    }
+//                }
             }
         }
     };
@@ -2189,9 +2208,11 @@ public class PlayGroundFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     // 重新登录
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
+//                    Intent intent = new Intent(getActivity(), MainActivity.class);
+//                    startActivity(intent);
+                    CommonUtil.intoLogin(getActivity(), share, "");
+                    Log.e("gogogogogogogogo","Playground");
+
                 }
             }
 
@@ -2199,18 +2220,23 @@ public class PlayGroundFragment extends Fragment {
             public void Get_Result_faile(String errormsg) {
                 super.Get_Result_faile(errormsg);
                 // 重新登录
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+//                Intent intent = new Intent(getActivity(), MainActivity.class);
+//                startActivity(intent);
+//                getActivity().finish();
+                CommonUtil.intoLogin(getActivity(), share, "");
+                Log.e("gogogogogogogogo","Playground");
             }
 
             @Override
             public void onFailure(int statusCode, String content, Throwable error) {
                 super.onFailure(statusCode, content, error);
                 // 重新登录
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+//                Intent intent = new Intent(getActivity(), MainActivity.class);
+//                startActivity(intent);
+//                getActivity().finish();
+
+                CommonUtil.intoLogin(getActivity(), share, "");
+                Log.e("gogogogogogogogo","Playground");
             }
         });
 //        } else {

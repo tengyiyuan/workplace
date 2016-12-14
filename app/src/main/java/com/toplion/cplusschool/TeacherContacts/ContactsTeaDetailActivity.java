@@ -1,7 +1,5 @@
 package com.toplion.cplusschool.TeacherContacts;
 
-import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,12 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.ab.cache.image.AbImageCache;
-import com.ab.http.AbBinaryHttpResponseListener;
 import com.ab.http.AbHttpUtil;
 import com.ab.image.AbImageLoader;
-import com.ab.util.AbImageUtil;
 import com.toplion.cplusschool.Activity.BaseActivity;
 import com.toplion.cplusschool.Bean.CommonBean;
 import com.toplion.cplusschool.Common.Constants;
@@ -24,8 +18,10 @@ import com.toplion.cplusschool.Utils.EmailUtil;
 import com.toplion.cplusschool.Utils.Function;
 import com.toplion.cplusschool.Utils.ReturnUtils;
 import com.toplion.cplusschool.Utils.SharePreferenceUtils;
+import com.toplion.cplusschool.Utils.TelephoneUtils;
 import com.toplion.cplusschool.dao.CallBackParent;
 import com.toplion.cplusschool.widget.CustomDialogListview;
+import com.toplion.cplusschool.widget.Util;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,33 +88,33 @@ public class ContactsTeaDetailActivity extends BaseActivity {
             if(jsonObject!=null){
                 String url = jsonObject.getString("SDS_LOGO");
                 AbImageLoader.getInstance(this).display(iv_contacts_logo,url);
-                String bgUrl = jsonObject.getString("SDS_BGIMAGE");
-                abHttpUtil.get(bgUrl, new AbBinaryHttpResponseListener() {
-                    @Override
-                    public void onStart() {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, String content, Throwable error) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(int statusCode, byte[] content) {
-                        Bitmap bitmap = AbImageUtil.bytes2Bimap(content);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            ll_tea_contacts_bg.setBackground(AbImageUtil.bitmapToDrawable(bitmap));
-                        }else{
-                            ll_tea_contacts_bg.setBackgroundDrawable(AbImageUtil.bitmapToDrawable(bitmap));
-                        }
-                    }
-                });
+//                String bgUrl = jsonObject.getString("SDS_BGIMAGE");
+//                abHttpUtil.get(bgUrl, new AbBinaryHttpResponseListener() {
+//                    @Override
+//                    public void onStart() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int statusCode, String content, Throwable error) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(int statusCode, byte[] content) {
+//                        Bitmap bitmap = AbImageUtil.bytes2Bimap(content);
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                            ll_tea_contacts_bg.setBackground(AbImageUtil.bitmapToDrawable(bitmap));
+//                        }else{
+//                            ll_tea_contacts_bg.setBackgroundDrawable(AbImageUtil.bitmapToDrawable(bitmap));
+//                        }
+//                    }
+//                });
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -151,8 +147,8 @@ public class ContactsTeaDetailActivity extends BaseActivity {
                     tv_contacts_detail_title.setText(Function.getInstance().getString(jsonObject,"XM"));
                     tv_contacts_depart.setText(Function.getInstance().getString(jsonObject,"DEPARTMENTNAME"));
                     tv_contacts_job.setText(Function.getInstance().getString(jsonObject,"DNAME"));
-                    tv_contacts_qq.setText((jsonObject.getLong("QQ") == 0?"":jsonObject.getLong("QQ"))+"");
-                    tv_contacts_wx.setText(Function.getInstance().getString(jsonObject,"WXH"));
+                    tv_contacts_qq.setText((jsonObject.getLong("QQ") == 0?"无":jsonObject.getLong("QQ"))+"");
+                    tv_contacts_wx.setText(Function.getInstance().getString(jsonObject,"WXH").equals("")?"无":Function.getInstance().getString(jsonObject,"WXH"));
                     tv_contacts_email.setText(Function.getInstance().getString(jsonObject,"DZXX"));
                     tv_contacts_zgphone.setText(Function.getInstance().getString(jsonObject,"GZDH"));
                     tv_contacts_phone.setText(Function.getInstance().getString(jsonObject,"SJ"));
@@ -206,7 +202,7 @@ public class ContactsTeaDetailActivity extends BaseActivity {
                 plist.add(new CommonBean("0", tv_contacts_zgphone.getText().toString()));
                 plist.add(new CommonBean("1", tv_contacts_phone.getText().toString()));
                 final CustomDialogListview dialog_sex = new CustomDialogListview(ContactsTeaDetailActivity.this, "选择要拨打的电话", plist,"");
-                dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                CustomDialogListview.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         CallUtil.CallPhone(ContactsTeaDetailActivity.this, plist.get(position).getDes());

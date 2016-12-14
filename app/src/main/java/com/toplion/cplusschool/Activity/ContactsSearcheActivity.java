@@ -3,9 +3,11 @@ package com.toplion.cplusschool.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.toplion.cplusschool.Bean.ContactsBean;
 import com.toplion.cplusschool.Bean.ContactsListBean;
 import com.toplion.cplusschool.Common.Constants;
 import com.toplion.cplusschool.R;
+import com.toplion.cplusschool.TeacherContacts.ContactsTeaSearcheActivity;
 import com.toplion.cplusschool.Utils.Function;
 import com.toplion.cplusschool.Utils.PinYinUtils;
 import com.toplion.cplusschool.Utils.ReturnUtils;
@@ -50,7 +53,7 @@ public class ContactsSearcheActivity extends BaseActivity {
     private MyExpandableListViewAdapter expandableListViewAdapter;
     private List<ContactsBean> plist;//结果列表
     private AbHttpUtil abHttpUtil;
-    private ContactsDao contactsDao;
+//    private ContactsDao contactsDao;
     private String searcheContet = "";//搜索的关键字
     private SharePreferenceUtils share;
 
@@ -66,7 +69,7 @@ public class ContactsSearcheActivity extends BaseActivity {
         super.init();
         abHttpUtil = AbHttpUtil.getInstance(this);
         share = new SharePreferenceUtils(this);
-        contactsDao = new ContactsDao(this);
+//        contactsDao = new ContactsDao(this);
         iv_search_contants_return = (ImageView) findViewById(R.id.iv_search_contants_return);
         et_search_contants_content = (EditText) findViewById(R.id.et_search_contants_content);
         tv_search_title = (TextView) findViewById(R.id.tv_search_title);
@@ -89,14 +92,14 @@ public class ContactsSearcheActivity extends BaseActivity {
             @Override
             public void get() {
                 super.get();
-                contactsDao.startReadableDatabase();
+//                contactsDao.startReadableDatabase();
                 String py = PinYinUtils.getPinYin(searcheContet);
                 //输入关键字 从缓存中查找
                 String[] selectionArgs = {"%" + searcheContet + "%", "%" + py + "%","%" + py + "%", "%" + searcheContet + "%"};
                 String sql = null;
                 sql = "SJH like ? or XMPY like ? or PinYinHeadChar like ? or XH like ?";
-                plist = contactsDao.queryList(sql, selectionArgs);
-                contactsDao.closeDatabase();
+//                plist = contactsDao.queryList(sql, selectionArgs);
+//                contactsDao.closeDatabase();
             }
 
             @Override
@@ -111,37 +114,6 @@ public class ContactsSearcheActivity extends BaseActivity {
                     tv_contants_nodata.setVisibility(View.VISIBLE);
                     elv_contacts_search_list.setVisibility(View.GONE);
                 }
-            }
-        });
-        abTask.execute(abTaskItem);
-    }
-
-    private void getDate() {
-        AbTask abTask = AbTask.newInstance();
-        AbTaskItem abTaskItem = new AbTaskItem();
-        abTaskItem.setListener(new AbTaskListener() {
-            @Override
-            public void get() {
-                super.get();
-                AbDialogUtil.showProgressDialog(ContactsSearcheActivity.this, 0, "正在加载");
-                contactsDao.startReadableDatabase();
-                plist = contactsDao.queryList();
-                contactsDao.closeDatabase();
-            }
-
-            @Override
-            public void update() {
-                super.update();
-                if (plist.size() > 0) {
-                    tv_contants_nodata.setVisibility(View.GONE);
-                    elv_contacts_search_list.setVisibility(View.VISIBLE);
-                    expandableListViewAdapter.setMlist(plist);
-                    expandableListViewAdapter.notifyDataSetChanged();
-                } else {
-                    tv_contants_nodata.setVisibility(View.VISIBLE);
-                    elv_contacts_search_list.setVisibility(View.GONE);
-                }
-                AbDialogUtil.removeDialog(ContactsSearcheActivity.this);
             }
         });
         abTask.execute(abTaskItem);
@@ -164,21 +136,29 @@ public class ContactsSearcheActivity extends BaseActivity {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             cbean.setXH(Function.getInstance().getString(jsonObject, "XH"));
                             cbean.setXM(Function.getInstance().getString(jsonObject, "XM"));
-                            cbean.setXMPY(PinYinUtils.getPinYin(jsonObject.getString("XM").trim()));
+                            String pinyin = PinYinUtils.getPingYin(Function.getInstance().getString(jsonObject,"XM"));
+                            String Fpinyin = pinyin.substring(0, 1).toUpperCase();
+                            cbean.setXMPY(pinyin);
                             cbean.setLXDH(Function.getInstance().getString(jsonObject, "LXDH"));
                             cbean.setSJH(Function.getInstance().getString(jsonObject, "SJH"));
                             cbean.setJTDH(Function.getInstance().getString(jsonObject, "JTDH"));
                             cbean.setJTDZ(Function.getInstance().getString(jsonObject, "JTDZ"));
                             String hearPinYin = PinYinUtils.getPinYinHeadChar(Function.getInstance().getString(jsonObject,"XM"));
                             cbean.setPinYinHeadChar(hearPinYin);
+                            // 正则表达式，判断首字母是否是英文字母
+                            if (Fpinyin.matches("[A-Z]")) {
+                                cbean.setFirstPinYin(Fpinyin);
+                            } else {
+                                cbean.setFirstPinYin("#");
+                            }
                             plist.add(cbean);
                         }
                         expandableListViewAdapter.setMlist(plist);
                         expandableListViewAdapter.notifyDataSetChanged();
-                        contactsDao.startWritableDatabase(true);
-                        contactsDao.deleteAll();
-                        contactsDao.insertList(plist);
-                        contactsDao.closeDatabase();
+//                        contactsDao.startWritableDatabase(true);
+//                        contactsDao.deleteAll();
+//                        contactsDao.insertList(plist);
+//                        contactsDao.closeDatabase();
                     } else {
                         tv_contants_nodata.setVisibility(View.VISIBLE);
                         elv_contacts_search_list.setVisibility(View.GONE);
@@ -221,14 +201,63 @@ public class ContactsSearcheActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                getFilter().filter(PinYinUtils.getPingYin(s.toString()));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                searcheContet = s.toString();
-                searchr();
+//                searcheContet = s.toString();
+
+//                searchr();
             }
         });
+    }
+
+    private MyFilter myFilter;
+    public Filter getFilter() {
+        if (myFilter == null) {
+            myFilter = new MyFilter();
+        }
+        return myFilter;
+    }
+
+
+    /**
+     * 过滤搜索条件
+     */
+    class MyFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults filterResults = new FilterResults();
+            if (constraint == null || constraint.length() == 0) {
+                filterResults.values = plist;
+            } else {
+                List<ContactsBean> mFilteredArrayList = new ArrayList<ContactsBean>();
+
+                for (ContactsBean cbean : plist) {
+                    if (constraint.length() > 1) {
+                        if (cbean.getSJH().contains(constraint) || cbean.getFirstPinYin().contains(constraint)
+                                || cbean.getPinYinHeadChar().contains(constraint)||cbean.getXMPY().contains(constraint)) {
+                            mFilteredArrayList.add(cbean);
+                        }
+                    } else {
+                        if (cbean.getSJH().contains(constraint) || cbean.getFirstPinYin().contains(constraint)
+                                || cbean.getPinYinHeadChar().contains(constraint)) {
+                            mFilteredArrayList.add(cbean);
+                        }
+                    }
+                }
+                filterResults.values = mFilteredArrayList;
+            }
+
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            List<ContactsBean> mArrayList = (List<ContactsBean>) results.values;
+            expandableListViewAdapter.updateListView(mArrayList);
+        }
     }
 }

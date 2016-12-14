@@ -15,15 +15,20 @@ public class MarketBean implements Serializable {
     private ArrayList<String>IRIURL;
     private ArrayList<String>ID;
     private String  AUIADDRESS;
-    private int  AUIPRICE;
+    private double  AUIPRICE;
     private String AUIID;
     private String AUIRELEASETIME;
     private int AUISTATUS;
+    private int CIID;
     private String CINAME;
     private String AUICONTACTNAME;
     private String AUIPHONE;
     private String AUIQQ;
     private String AUIWEIXIN;
+    private String UINAME;//工资结算-单位名称
+    private int UIID;//单位id
+    private String NC;//昵称
+    private String TXDZ;//头像
 
     public String getAUIWEIXIN() {
         return AUIWEIXIN;
@@ -99,11 +104,11 @@ public class MarketBean implements Serializable {
 
 
 
-    public int getAUIPRICE() {
+    public double getAUIPRICE() {
         return AUIPRICE;
     }
 
-    public void setAUIPRICE(int AUIPRICE) {
+    public void setAUIPRICE(double AUIPRICE) {
         this.AUIPRICE = AUIPRICE;
     }
 
@@ -153,5 +158,45 @@ public class MarketBean implements Serializable {
 
     public void setAUICONTACTNAME(String AUICONTACTNAME) {
         this.AUICONTACTNAME = AUICONTACTNAME;
+    }
+
+    public String getUINAME() {
+        return UINAME;
+    }
+
+    public void setUINAME(String UINAME) {
+        this.UINAME = UINAME;
+    }
+
+    public int getUIID() {
+        return UIID;
+    }
+
+    public void setUIID(int UIID) {
+        this.UIID = UIID;
+    }
+
+    public String getNC() {
+        return NC;
+    }
+
+    public void setNC(String NC) {
+        this.NC = NC;
+    }
+
+    public String getTXDZ() {
+        return TXDZ;
+    }
+
+    public void setTXDZ(String TXDZ) {
+        this.TXDZ = TXDZ;
+    }
+
+    public int getCIID() {
+        return CIID;
+    }
+
+    public void setCIID(int CIID) {
+        this.CIID = CIID;
     }
 }

@@ -476,7 +476,7 @@ public class BanshiActivity extends BaseActivity {
         AbRequestParams params = new AbRequestParams();
         params.put("schoolCode", Constants.SCHOOL_CODE);
         params.put("type",intCode);
-        String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("getGuideInfo") + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getGuideInfo") + Constants.BASEPARAMS;
         abHttpUtil.post(url, params, new CallBackParent(this, "正在加载,请稍后...", "") {
             @Override
             public void Get_Result(String result) {

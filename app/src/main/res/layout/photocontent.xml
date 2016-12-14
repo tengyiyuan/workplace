@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
@@ -46,20 +47,42 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/bottom"
         android:layout_below="@+id/toptitle">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_margin="10dp"
-                android:id="@+id/myphoto"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerInside"
-                android:src="@mipmap/zhanwei" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/myphoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/zhanwei"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/card_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/photo_flowbg_yin"
+                    android:drawableLeft="@mipmap/flower"
+                    android:drawablePadding="22dp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/logo_color"
+                    android:textSize="15sp" />
+            </FrameLayout>
 
             <RelativeLayout
                 android:id="@+id/card_bottom_layout"
@@ -74,61 +97,53 @@
                     android:layout_marginLeft="10dp"
                     android:src="@mipmap/rentou" />
 
-                <TextView
-                    android:id="@+id/card_user_name"
+
+                <LinearLayout
+                    android:id="@+id/ll_card_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/rentou"
-                    android:drawableRight="@mipmap/girl"
-                    android:text="叶琪琪 "
-                    android:textColor="#111"
-                    android:textSize="18sp" />
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/card_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/rentou"
+                        android:text=""
+                        android:textColor="#111"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/card_other_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_user_name"
+                    android:layout_below="@+id/ll_card_user_name"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/rentou"
-                    android:paddingBottom="16dp"
-                    android:text="山东建筑大学"
+                    android:paddingBottom="15dp"
+                    android:text=""
+                    android:textSize="15sp"
                     android:textColor="#888" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Button
+                    android:id="@+id/btn_song"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="3dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/card_left1"
-                        android:drawablePadding="2dp"
-                        android:gravity="center_horizontal"
-                        android:text="0"
-                        android:textColor="#999"
-                        android:textSize="15sp"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/card_like"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/photo_flowbg_yin"
-                        android:drawableLeft="@mipmap/flower"
-                        android:drawablePadding="2dp"
-                        android:gravity="center"
-                        android:text="      2"
-                        android:textColor="@color/logo_color"
-                        android:textSize="15sp" />
-                </LinearLayout>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ignore_button" />
             </RelativeLayout>
 
             <TextView
@@ -142,7 +157,10 @@
             <com.toplion.cplusschool.widget.ListViewInScrollView
                 android:id="@+id/liuyanlist"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:listSelector="@null"
+                android:divider="@null" />
         </LinearLayout>
     </ScrollView>
 
@@ -151,7 +169,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#F5F5F5">
+        android:background="@color/gray"
+        android:padding="5dp">
 
         <EditText
             android:id="@+id/liuyan"
@@ -163,7 +182,9 @@
             android:layout_marginTop="5dp"
             android:layout_toLeftOf="@+id/fayan"
             android:background="@drawable/button_channel_dia"
-            android:padding="5dp" />
+            android:hint="说些什么吧"
+            android:padding="10dp"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/fayan"

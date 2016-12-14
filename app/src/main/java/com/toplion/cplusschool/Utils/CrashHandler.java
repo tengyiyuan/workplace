@@ -5,6 +5,8 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ab.global.AbActivityManager;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -73,8 +75,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 Log.e(TAG, "error : ", e);
             }
             // 退出程序
+            AbActivityManager.getInstance().finishAllActivity(null);
             android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
+            System.exit(0);
         }
     }
 

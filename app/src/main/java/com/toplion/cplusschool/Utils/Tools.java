@@ -25,6 +25,8 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class Tools {
 	private static final String FILE_PATH_HEADER = Environment
@@ -438,4 +440,24 @@ public class Tools {
 		return packageNames.contains(packageName);
 	}
 
+	/**
+	 * 关闭软键盘
+	 * @param v
+     */
+	public static void HideKeyboard(View v) {
+		InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		if (imm.isActive()) {
+			imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+		}
+	}
+	/**
+	 * 打开软键盘
+	 * @param v
+	 */
+	public static void OpenKeyboard(View v) {
+		InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		if (imm.isActive()) {
+			imm.showSoftInput(v,0);
+		}
+	}
 }

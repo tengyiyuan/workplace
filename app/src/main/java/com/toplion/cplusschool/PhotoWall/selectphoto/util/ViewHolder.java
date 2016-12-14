@@ -1,4 +1,4 @@
-package com.toplion.cplusschool.PhotoWall.selectphoto.util;
+package com.toplion.cplusschool.PhotoWall.SelectPhoto.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -62,7 +62,14 @@ public class CallUtil {
             ToastManager.getInstance().showToast(context, "已复制到剪贴板");
         }
     }
-
+    //复制
+    public static void copyStrNoToast(Context context, String str) {
+        // 得到剪贴板管理器
+        ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            cmb.setPrimaryClip(ClipData.newPlainText("text", str));
+        }
+    }
     //保存电话号码
     public static void toContacts(Context context, String nameStr,String jobStr, String phoneStr) {
         Intent it = new Intent(Intent.ACTION_INSERT, Uri.withAppendedPath(Uri.parse("content://com.android.contacts"), "contacts"));

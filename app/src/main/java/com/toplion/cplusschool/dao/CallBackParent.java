@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbDialogUtil;
 import com.toplion.cplusschool.Common.CacheConstants;
+import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.CommonUtil;
 import com.toplion.cplusschool.Utils.SharePreferenceUtils;
 import com.toplion.cplusschool.Utils.ToastManager;
@@ -88,6 +89,9 @@ public abstract class CallBackParent extends AbStringHttpResponseListener {
             if (!TextUtils.isEmpty(tag)) {
                 AbDialogUtil.showProgressDialog(context, 0, tostmsg, tag);
             } else {
+                if(tostmsg == ""){
+                    tostmsg = context.getString(R.string.loading);
+                }
                 AbDialogUtil.showProgressDialog(context, 0, tostmsg);
             }
         }

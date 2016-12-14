@@ -108,7 +108,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@color/actionBarText" />
+            <LinearLayout
+                android:id="@+id/ll_release_danwei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="5dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="结算方式"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_release_danwei"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:paddingLeft="15dp"
+                    android:drawableRight="@mipmap/jiantou_right"
+                    android:hint="请选择结算方式"
+                    android:textColor="@color/black"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/v_release_dw_line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/line_color" />
             <LinearLayout
                 android:id="@+id/ll_release_price"
                 android:layout_width="match_parent"
@@ -291,7 +327,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:padding="5dp"
-                android:text="*至少填写一种联系方式"
+                android:text="*手机号必填"
                 android:textColor="@color/logo_color" />
 
 

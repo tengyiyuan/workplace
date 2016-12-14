@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.toplion.cplusschool"
-    android:versionCode="1"
+    android:versionCode="210"
     android:versionName="2.1.0">
 
     <uses-sdk
@@ -680,6 +680,12 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 教职工通讯录新版 2016-11-30 -->
+        <activity
+            android:name=".TeacherContacts.TeacherContactsListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 教职工通讯录搜索-->
         <activity
             android:name=".TeacherContacts.ContactsTeaSearcheActivity"
@@ -741,14 +747,14 @@
             android:theme="@android:style/Theme.Black.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustPan"></activity>
         <activity
-            android:name=".QianDao.FlowerRankListActivity"
+            android:name=".PhotoWall.FlowerRankListActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustPan">
 
         </activity>
         <activity
-            android:name=".QianDao.MyReleaseActivity"
+            android:name=".PhotoWall.MyHomeActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustPan">
@@ -769,18 +775,30 @@
             android:name=".Activity.ModifyUserInfoActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateUnspecified|adjustPan" />
         <activity
             android:name=".PhotoWall.PhotoReleaseActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".PhotoWall.selectphoto.SelectPhotoActivity"
+            android:name=".PhotoWall.SelectPhoto.SelectPhotoActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustPan">
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".PhotoWall.PhotoContent"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".Activity.LocalSelectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
     </application>
     <!-- 屏幕自适应 -->
     <supports-screens

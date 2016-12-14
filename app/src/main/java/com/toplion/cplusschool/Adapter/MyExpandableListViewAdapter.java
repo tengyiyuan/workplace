@@ -35,13 +35,19 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     public void setMlist(List<ContactsBean> mlist) {
         this.clist = mlist;
-        share = new SharePreferenceUtils(mcontext);
+
 
     }
 
-    public MyExpandableListViewAdapter(Context context,int type) {
+    public void updateListView(List<ContactsBean> mlist) {
+        this.clist = mlist;
+        notifyDataSetChanged();
+    }
+
+    public MyExpandableListViewAdapter(Context context, int type) {
         this.mcontext = context;
         this.mtype = type;
+        share = new SharePreferenceUtils(mcontext);
     }
 
     /**
@@ -155,50 +161,51 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
         } else {
             groupHolder = (GroupHolder) convertView.getTag();
         }
-        if(mtype == 1){
+        if (mtype == 1) {
             groupHolder.tv_contacts_number_str.setText("学号:");
-        }else if(mtype == 2){
+        } else if (mtype == 2) {
             groupHolder.tv_contacts_number_str.setText("工号:");
         }
         groupHolder.tv_contacts_number.setText(clist.get(groupPosition).getXH());
         groupHolder.tv_contacts_phone.setText(clist.get(groupPosition).getSJH());
         groupHolder.tv_contacts_name.setText(clist.get(groupPosition).getXM());
-        if(share.getInt("ROLE_TYPE",0) == 1){
+        if (share.getInt("ROLE_TYPE", 0) == 1) {
             groupHolder.iv_call_detail.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             groupHolder.iv_call_detail.setVisibility(View.GONE);
         }
         final String phoneNumber = clist.get(groupPosition).getSJH();
         groupHolder.iv_call_phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(phoneNumber)){
-                    CallUtil.CallPhone(mcontext,phoneNumber);
-                }else{
-                    ToastManager.getInstance().showToast(mcontext,"暂无电话号码");
+                if (!TextUtils.isEmpty(phoneNumber)) {
+                    CallUtil.CallPhone(mcontext, phoneNumber);
+                } else {
+                    ToastManager.getInstance().showToast(mcontext, "暂无电话号码");
                 }
             }
         });
         groupHolder.iv_call_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if(mtype == 1){
-                        Intent intent = new Intent(mcontext, ContactsDetailActivity.class);
-                        intent.putExtra("stuNo",clist.get(groupPosition).getXH());
-                        mcontext.startActivity(intent);
-                    }else if(mtype == 2){
-                        Intent intent = new Intent(mcontext, ContactsTeaDetailActivity.class);
-                        intent.putExtra("teaNo",clist.get(groupPosition).getXH());
-                        mcontext.startActivity(intent);
-                    }
+                if (mtype == 1) {
+                    Intent intent = new Intent(mcontext, ContactsDetailActivity.class);
+                    intent.putExtra("stuNo", clist.get(groupPosition).getXH());
+                    mcontext.startActivity(intent);
+                } else if (mtype == 2) {
+                    Intent intent = new Intent(mcontext, ContactsTeaDetailActivity.class);
+                    intent.putExtra("teaNo", clist.get(groupPosition).getXH());
+                    mcontext.startActivity(intent);
+                }
             }
         });
-        convertView.setPadding(mcontext.getResources().getDimensionPixelOffset( R.dimen.weekItemWidth),0,0,0);
+        convertView.setPadding(mcontext.getResources().getDimensionPixelOffset(R.dimen.weekItemWidth), 0, 0, 0);
         return convertView;
     }
 
     /**
      * 获取一个视图对象，显示指定组中的指定子元素数据。
+     *
      * @param groupPosition 组位置
      * @param childPosition 子元素位置
      * @param isLastChild   子元素是否处于组中的最后一个
@@ -226,10 +233,10 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
         itemHolder.ll_contacts_child_message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(phoneNumber)) {
+                if (!TextUtils.isEmpty(phoneNumber)) {
                     CallUtil.sendMessage(mcontext, phoneNumber, "");
-                }else{
-                    ToastManager.getInstance().showToast(mcontext,"暂无电话号码");
+                } else {
+                    ToastManager.getInstance().showToast(mcontext, "暂无电话号码");
                 }
             }
         });
@@ -238,10 +245,10 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 // 得到剪贴板管理器
-                if(!TextUtils.isEmpty(phoneNumber)) {
+                if (!TextUtils.isEmpty(phoneNumber)) {
                     CallUtil.copyPhone(mcontext, phoneNumber);
-                }else{
-                    ToastManager.getInstance().showToast(mcontext,"暂无电话号码");
+                } else {
+                    ToastManager.getInstance().showToast(mcontext, "暂无电话号码");
                 }
             }
         });
@@ -250,10 +257,10 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
         itemHolder.ll_contacts_child_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(phoneNumber)) {
+                if (!TextUtils.isEmpty(phoneNumber)) {
                     CallUtil.toContacts(mcontext, name, "", phoneNumber);
-                }else{
-                    ToastManager.getInstance().showToast(mcontext,"暂无电话号码");
+                } else {
+                    ToastManager.getInstance().showToast(mcontext, "暂无电话号码");
                 }
             }
         });

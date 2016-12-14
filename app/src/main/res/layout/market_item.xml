@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/rentou"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@mipmap/rentou" />
 
@@ -67,15 +67,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/biaoqian_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/biaoqian_purple"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="@color/holo_purple"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/biaoqian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/biaoqian"
                 android:layout_marginBottom="5dp"
+                android:background="@drawable/biaoqian"
+                android:layout_marginLeft="5dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:text="电子产品"
@@ -97,6 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:scrollbars="none"
             android:layout_marginTop="10dp">
 
             <LinearLayout

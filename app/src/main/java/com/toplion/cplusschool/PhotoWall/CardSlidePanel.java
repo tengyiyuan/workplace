@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 
+import com.toplion.cplusschool.PhotoWall.bean.PhotoInfoBean;
 import com.toplion.cplusschool.R;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class CardSlidePanel extends ViewGroup {
     private Object obj1 = new Object();
 
     private CardSwitchListener cardSwitchListener; // 回调接口
-    private List<CardDataItem> dataList; // 存储的数据链表
+    private List<PhotoInfoBean> dataList; // 存储的数据链表
     private int isShowing = 0; // 当前正在显示的小项
     private View leftBtn, rightBtn;
     private boolean btnLock = false;
@@ -132,6 +133,7 @@ public class CardSlidePanel extends ViewGroup {
                 CardItemView viewItem = (CardItemView) childView;
                 viewItem.setParentView(this);
                 viewItem.setTag(i + 1);
+                viewItem.setVisibility(INVISIBLE);
                 viewItem.maskView.setOnClickListener(btnListener);
                 viewList.add(viewItem);
             }
@@ -265,7 +267,7 @@ public class CardSlidePanel extends ViewGroup {
             // 3. changedView填充新数据
             int newIndex = isShowing + 4;
             if (newIndex < dataList.size()) {
-                CardDataItem dataItem = dataList.get(newIndex);
+                PhotoInfoBean dataItem = dataList.get(newIndex);
                 changedView.fillData(dataItem);
             } else {
                 changedView.setVisibility(View.INVISIBLE);
@@ -331,8 +333,7 @@ public class CardSlidePanel extends ViewGroup {
         float scale = initScale + (nextScale - initScale) * rate;
 
         View ajustView = viewList.get(changeIndex + index);
-        ajustView.offsetTopAndBottom(offset - ajustView.getTop()
-                + initCenterViewY);
+        ajustView.offsetTopAndBottom(offset - ajustView.getTop() + initCenterViewY);
         ajustView.setScaleX(scale);
         ajustView.setScaleY(scale);
     }
@@ -539,19 +540,33 @@ public class CardSlidePanel extends ViewGroup {
     /**
      * 本来想写成Adapter适配，想想还是算了，这种比较简单
      */
-    public void fillData(List<CardDataItem> dataList) {
+    public void fillData(List<PhotoInfoBean> dataList) {
         this.dataList = dataList;
 
         int num = viewList.size();
         for (int i = 0; i < num; i++) {
-            CardItemView itemView = viewList.get(i);
-            itemView.fillData(dataList.get(i));
-            itemView.setVisibility(View.VISIBLE);
+            if (i <= dataList.size() - 1) {
+                CardItemView itemView = viewList.get(i);
+                itemView.fillData(dataList.get(i));
+                itemView.setVisibility(View.VISIBLE);
+            }
+
         }
 
         if (null != cardSwitchListener) {
             cardSwitchListener.onShow(0);
         }
+    }
+
+    /**
+     * 刷新当前显示的界面
+     *
+     * @param position
+     */
+    public void notifyData(int position) {
+        CardItemView itemView = viewList.get(0);
+        itemView.fillData(dataList.get(position));
+        itemView.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -570,7 +585,7 @@ public class CardSlidePanel extends ViewGroup {
          *
          * @param index 最顶层显示的卡片的index
          */
-        public void onShow(int index);
+        void onShow(int index);
 
         /**
          * 卡片飞向两侧回调
@@ -578,7 +593,7 @@ public class CardSlidePanel extends ViewGroup {
          * @param index 飞向两侧的卡片数据index
          * @param type  飞向哪一侧{@link #VANISH_TYPE_LEFT}或{@link #VANISH_TYPE_RIGHT}
          */
-        public void onCardVanish(int index, int type);
+        void onCardVanish(int index, int type);
 
         /**
          * 卡片点击事件
@@ -586,6 +601,6 @@ public class CardSlidePanel extends ViewGroup {
          * @param cardImageView 卡片上的图片view
          * @param index         点击到的index
          */
-        public void onItemClick(View cardImageView, int index);
+        void onItemClick(View cardImageView, int index);
     }
 }

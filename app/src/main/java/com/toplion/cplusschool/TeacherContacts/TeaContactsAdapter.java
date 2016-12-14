@@ -1,16 +1,27 @@
 package com.toplion.cplusschool.TeacherContacts;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.toplion.cplusschool.Bean.CommonBean;
 import com.toplion.cplusschool.Bean.ContactsBean;
 import com.toplion.cplusschool.Bean.GradeInfoBean;
 import com.toplion.cplusschool.R;
+import com.toplion.cplusschool.Utils.CallUtil;
+import com.toplion.cplusschool.Utils.ToastManager;
+import com.toplion.cplusschool.widget.CustomDialogListview;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -26,9 +37,11 @@ public class TeaContactsAdapter extends BaseAdapter {
         this.mcontext = context;
         this.persons = list;
     }
+
     public void setMlist(List<ContactsBean> persons) {
         this.persons = persons;
     }
+
     @Override
     public int getCount() {
         return persons.size();
@@ -47,13 +60,14 @@ public class TeaContactsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
-        ContactsBean person = persons.get(position);
+        final ContactsBean person = persons.get(position);
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = View.inflate(mcontext, R.layout.tea_contacts_list_item, null);
             viewHolder.tv_tag = (TextView) convertView.findViewById(R.id.tv_lv_item_tag);
             viewHolder.tv_name = (TextView) convertView.findViewById(R.id.tv_lv_item_name);
-            viewHolder.tv_tea_contacts_phone=(TextView)convertView.findViewById(R.id.tv_tea_contacts_phone);
+            viewHolder.iv_tea_contacts_call = (ImageView) convertView.findViewById(R.id.iv_tea_contacts_call);
+            viewHolder.tv_tea_contacts_phone = (TextView) convertView.findViewById(R.id.tv_tea_contacts_phone);
             viewHolder.rl_tea_contacts_play = (RelativeLayout) convertView.findViewById(R.id.rl_tea_contacts_play);
             convertView.setTag(viewHolder);
         } else {
@@ -70,7 +84,32 @@ public class TeaContactsAdapter extends BaseAdapter {
 
         }
         viewHolder.tv_name.setText(person.getXM());
-        viewHolder.tv_tea_contacts_phone.setText(person.getSJH()+"/"+person.getJTDH());
+        viewHolder.tv_tea_contacts_phone.setText(person.getSJH() + "/" + person.getJTDH());
+        viewHolder.iv_tea_contacts_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(person.getSJH()) && TextUtils.isEmpty(person.getJTDH())) {
+                    ToastManager.getInstance().showToast(mcontext, "暂无电话号码");
+                } else {
+                    final List<CommonBean> plist = new ArrayList<CommonBean>();
+                    if (!TextUtils.isEmpty(person.getJTDH())) {
+                        plist.add(new CommonBean("0", person.getJTDH()));
+                    }
+                    if (!TextUtils.isEmpty(person.getSJH())) {
+                        plist.add(new CommonBean("1", person.getSJH()));
+                    }
+                    final CustomDialogListview dialog_sex = new CustomDialogListview(mcontext, "选择要拨打的电话", plist, "");
+                    CustomDialogListview.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            CallUtil.CallPhone(mcontext, plist.get(position).getDes());
+                            dialog_sex.dismiss();
+                        }
+                    });
+                    dialog_sex.show();
+                }
+            }
+        });
         return convertView;
     }
 
@@ -89,6 +128,18 @@ public class TeaContactsAdapter extends BaseAdapter {
         RelativeLayout rl_tea_contacts_play;
         TextView tv_tag;
         TextView tv_name;
+        ImageView iv_tea_contacts_call;
         TextView tv_tea_contacts_phone;
     }
+
+    /**
+     * 当ListView数据发生变化时,调用此方法来更新ListView
+     *
+     * @param list
+     */
+    public void updateListView(List<ContactsBean> list) {
+        this.persons = list;
+        notifyDataSetChanged();
+    }
+
 }

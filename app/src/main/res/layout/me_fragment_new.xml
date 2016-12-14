@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/my_default_head" />
 
             <LinearLayout
@@ -53,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="我的昵称不能超过十个"
+                        android:text=""
                         android:padding="5dp"
                         android:maxLength="10"
                         android:textColor="@color/white"
@@ -63,8 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@mipmap/girl"/>
+                        android:scaleType="fitXY"/>
                 </LinearLayout>
 
                 <TextView
@@ -180,6 +180,7 @@
                 android:id="@+id/rl_my_reimburse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/bg_table_yes"
                 android:padding="10dp">
 

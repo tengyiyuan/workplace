@@ -153,16 +153,4 @@
         <item name="android:windowExitAnimation">@anim/push_top_out</item>
     </style>
 
-    <!-- photoPicker style -->
-    <style name="actionBarTheme" parent="android:Theme.DeviceDefault.Light.DarkActionBar">
-        <item name="android:textColorPrimary">@android:color/primary_text_light</item>
-        <item name="actionBarSize">16sp</item>
-    </style>
-
-    <style name="customTheme" parent="android:Theme.Holo.Light.NoActionBar">
-        <item name="actionBarTheme">@style/actionBarTheme</item>
-        <item name="colorPrimary">#FFA500</item>
-        <item name="actionBarSize">16sp</item>
-        <item name="colorPrimaryDark">#CCa500</item>
-    </style>
 </resources>

@@ -75,6 +75,9 @@ public class ReleaseActivity extends BaseActivity {
     private ImageView iv_release_addimg;//添加图片按钮
     private EditText et_release_price;//价格
     private TextView tv_release_price_des;
+    private LinearLayout ll_release_danwei;//结算方式
+    private TextView tv_release_danwei;//单位
+    private View v_release_dw_line;
     private LinearLayout rl_release_type;//选择分类
     private TextView tv_release_type;//类别
     private EditText et_release_phone;//手机号
@@ -99,7 +102,8 @@ public class ReleaseActivity extends BaseActivity {
     private String result;   //上传图片返回结果
     private AbHttpUtil abHttpUtil;
     private List<Map<String, String>> typeList;
-    private String typeId = "";
+    private String typeId = "";//类型id
+    private String danweiId = "0";//工资单位id
     private SharePreferenceUtils share;
     private MarketBean markbean;//
 
@@ -129,6 +133,9 @@ public class ReleaseActivity extends BaseActivity {
         v_release_line = findViewById(R.id.v_release_line);
         iv_release_addimg = (ImageView) findViewById(R.id.iv_release_addimg);
         et_release_price = (EditText) findViewById(R.id.et_release_price);
+        ll_release_danwei = (LinearLayout) findViewById(R.id.ll_release_danwei);
+        tv_release_danwei = (TextView) findViewById(R.id.tv_release_danwei);
+        v_release_dw_line = findViewById(R.id.v_release_dw_line);
         rl_release_type = (LinearLayout) findViewById(R.id.rl_release_type);
         tv_release_type = (TextView) findViewById(R.id.tv_release_type);
         et_release_phone = (EditText) findViewById(R.id.et_release_phone);
@@ -160,6 +167,11 @@ public class ReleaseActivity extends BaseActivity {
                     addImagView(imgId, url);
                 }
             }
+            if (module == 2) {
+                typeId = markbean.getCIID()+"";
+            }else if(module == 3){
+                danweiId = markbean.getUIID()+"";
+            }
             et_release_title.setText(markbean.getAUITITLE());
             et_release_describe.setText(markbean.getAUICONTENT());
             et_release_price.setText(markbean.getAUIPRICE() + "");
@@ -169,11 +181,14 @@ public class ReleaseActivity extends BaseActivity {
             if (markbean.getCINAME() != null) {
                 tv_release_type.setText(markbean.getCINAME());
             }
+            if (markbean.getUINAME() != null) {
+                tv_release_danwei.setText(markbean.getUINAME());
+            }
         } else {
             btn_release_confirm.setText("确认发布");
         }
         setListener();
-        if (module == 2) {
+        if (module == 2 || module == 3) {
             getData();
         }
     }
@@ -191,12 +206,16 @@ public class ReleaseActivity extends BaseActivity {
             ll_release_price.setVisibility(View.GONE);
             v_release_line.setVisibility(View.GONE);
             rl_release_type.setVisibility(View.GONE);
+            ll_release_danwei.setVisibility(View.GONE);
+
         } else if (module == 2) {
             if (reltype == 1) {
                 str = "商品发布";
             } else if (reltype == 2) {
                 str = "求购发布";
             }
+            rl_release_type.setVisibility(View.VISIBLE);
+            ll_release_danwei.setVisibility(View.GONE);
         } else if (module == 3) {
             if (reltype == 1) {
                 str = "招聘发布";
@@ -209,6 +228,7 @@ public class ReleaseActivity extends BaseActivity {
             et_release_price.setHint("请输入具体金额");
             v_release_line.setVisibility(View.GONE);
             rl_release_type.setVisibility(View.GONE);
+            ll_release_danwei.setVisibility(View.VISIBLE);
         }
         tv_release_title.setText(str);
     }
@@ -216,9 +236,14 @@ public class ReleaseActivity extends BaseActivity {
     @Override
     protected void getData() {
         super.getData();
-        String url = Constants.BASE_URLCS + "?rid=" + ReturnUtils.encode("getTypeByModule") + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getTypeByModule") + Constants.BASEPARAMS;
         AbRequestParams params = new AbRequestParams();
         params.put("module", module);
+        if (module == 2) {
+            params.put("type", 1);
+        } else if (module == 3) {
+            params.put("type", 2);
+        }
         abHttpUtil.post(url, params, new CallBackParent(this, getResources().getString(R.string.loading)) {
             @Override
             public void Get_Result(String result) {
@@ -232,11 +257,6 @@ public class ReleaseActivity extends BaseActivity {
                         map.put("id", json.getInt("CIID") + "");
                         map.put("des", json.getString("CINAME"));
                         typeList.add(map);
-                        if (markbean != null && markbean.getCINAME() != null) {//编辑页面传递过来的 如果有分类 设置初始值
-                            if (markbean.getCINAME().equals(json.getString("CINAME"))) {
-                                typeId = json.getInt("CIID") + "";
-                            }
-                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -263,7 +283,7 @@ public class ReleaseActivity extends BaseActivity {
         } else {
             rid = "addReleaseInfo";
         }
-        String url = Constants.BASE_URLCS + "?rid=" + ReturnUtils.encode(rid) + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode(rid) + Constants.BASEPARAMS;
         AbRequestParams params = new AbRequestParams();
         if (markbean != null) {
             params.put("relid", markbean.getAUIID() + "");
@@ -272,7 +292,7 @@ public class ReleaseActivity extends BaseActivity {
         params.put("reltitle", et_release_title.getText().toString().trim());
         params.put("relcontent", et_release_describe.getText().toString());
         params.put("relprice", et_release_price.getText().toString().trim());
-        params.put("relcontacts", share.getString("ROLE_USERNAME", "某某某"));
+        params.put("relcontacts", share.getString("ROLE_USERNAME", ""));
         params.put("reladdress", share.getString("schoolName", ""));
         params.put("relstatus", 2);
         params.put("reltype", reltype);
@@ -281,6 +301,7 @@ public class ReleaseActivity extends BaseActivity {
         params.put("relqq", et_release_qq.getText().toString().trim());
         params.put("relwechat", et_release_wx.getText().toString().trim());
         params.put("photourls", photourls);
+        params.put("priceUnit", danweiId);
         params.put("module", module);
         abHttpUtil.post(url, params, new CallBackParent(this, getResources().getString(R.string.loading), "addReleaseInfo") {
             @Override
@@ -330,6 +351,36 @@ public class ReleaseActivity extends BaseActivity {
                 finish();
             }
         });
+        //结算方式--兼职招聘
+        ll_release_danwei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (typeList != null && typeList.size() > 0) {
+                    final ListPopWindow listPopWindow = new ListPopWindow(ReleaseActivity.this, typeList, ll_parentview);
+                    listPopWindow.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                            listPopWindow.setSelect(position);
+                            listPopWindow.tv_pop_confirm.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    danweiId = typeList.get(position).get("id");
+                                    listPopWindow.dismiss();
+                                    tv_release_danwei.setText(typeList.get(position).get("des"));
+                                    if (typeList.get(position).get("des").equals("面议")) {
+                                        ll_release_price.setVisibility(View.GONE);
+                                        v_release_dw_line.setVisibility(View.GONE);
+                                    } else {
+                                        ll_release_price.setVisibility(View.VISIBLE);
+                                        v_release_dw_line.setVisibility(View.VISIBLE);
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
         //选择分类
         rl_release_type.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -350,6 +401,8 @@ public class ReleaseActivity extends BaseActivity {
                             });
                         }
                     });
+                }else{
+                    ToastManager.getInstance().showToast(ReleaseActivity.this,"暂无分类信息");
                 }
             }
         });
@@ -361,7 +414,7 @@ public class ReleaseActivity extends BaseActivity {
                 cameraPopWindow.setBtnCameraOnlickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        SelectPicUtil.getByCamera(ReleaseActivity.this);
+                        SelectPicUtil.getByCamera(ReleaseActivity.this, true);
                         overridePendingTransition(R.anim.activity_translate_in, R.anim.activity_translate_out);
                         cameraPopWindow.dismiss();
                     }
@@ -380,12 +433,19 @@ public class ReleaseActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(et_release_title.getText().toString().trim())) {
-                    if (module == 2 || module == 3) {
-                        if (!TextUtils.isEmpty(et_release_price.getText().toString().trim())) {
-                        } else {
+                    if (module == 2 || (module == 3 && !tv_release_danwei.getText().equals("面议"))) {
+                        if (TextUtils.isEmpty(et_release_price.getText().toString().trim())) {
+                            ToastManager.getInstance().showToast(ReleaseActivity.this, "请输入金额");
+                            return;
+                        }
+                        if (et_release_price.getText().toString().trim().equals(".")) {
                             ToastManager.getInstance().showToast(ReleaseActivity.this, "请输入价格");
                             return;
                         }
+                    }
+                    if (module == 3 && TextUtils.isEmpty(tv_release_danwei.getText().toString())) {
+                        ToastManager.getInstance().showToast(ReleaseActivity.this, "请选择结算方式");
+                        return;
                     }
                     if (module == 2) {
                         if (TextUtils.isEmpty(tv_release_type.getText().toString().trim())) {
@@ -394,19 +454,24 @@ public class ReleaseActivity extends BaseActivity {
                         }
                     }
 
-                    if (TextUtils.isEmpty(et_release_phone.getText().toString().trim())
-                            && TextUtils.isEmpty(et_release_wx.getText().toString().trim())
-                            && TextUtils.isEmpty(et_release_qq.getText().toString().trim())) {
-                        ToastManager.getInstance().showToast(ReleaseActivity.this, "至少填写一种联系方式");
+                    if (TextUtils.isEmpty(et_release_phone.getText().toString().trim())) {
+                        ToastManager.getInstance().showToast(ReleaseActivity.this, "手机号不能为空");
                         return;
                     } else {
-                        if (!TextUtils.isEmpty(et_release_phone.getText().toString().trim())) {
-                            if (!StringUtils.isMobile(et_release_phone.getText().toString().trim())) {
-                                ToastManager.getInstance().showToast(ReleaseActivity.this, "请输入正确手机号");
-                                return;
-                            }
+                        if (!StringUtils.isMobile(et_release_phone.getText().toString().trim())) {
+                            ToastManager.getInstance().showToast(ReleaseActivity.this, "请输入正确手机号");
+                            return;
                         }
-                        release();
+                        final CommDialog commDialog = new CommDialog(ReleaseActivity.this);
+                        commDialog.CreateDialog("发布", "警告", getResources().getString(R.string.release_tishi), ReleaseActivity.this, new CommDialog.CallBack() {
+                            @Override
+                            public void isConfirm(boolean flag) {
+                                commDialog.cancelDialog();
+                                if (flag) {
+                                    release();
+                                }
+                            }
+                        });
                     }
                 } else {
                     ToastManager.getInstance().showToast(ReleaseActivity.this, "标题不能为空");
@@ -418,8 +483,8 @@ public class ReleaseActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ReleaseActivity.this, CommonWebViewActivity.class);
-                intent.putExtra("url","http://123.233.121.17:15100/help/PublisherAgreement.html");
-                intent.putExtra("title","发布者相关协议");
+                intent.putExtra("url", "http://123.233.121.17:12100/help/PublisherAgreement.html");
+                intent.putExtra("title", "发布者相关协议");
                 startActivity(intent);
             }
         });
@@ -431,8 +496,8 @@ public class ReleaseActivity extends BaseActivity {
         final Uri uri = SelectPicUtil.onActivityResultUri(this, requestCode, resultCode, data, outputX, outputY, 1, 1);
         if (uri != null && uri.getPath() != null) {
             try {
-                double size = (double)new File(uri.getPath()).length()/1024/1024;
-                Log.e("fileSize",size+"");
+                double size = (double) new File(uri.getPath()).length() / 1024 / 1024;
+                Log.e("fileSize", size + "");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -450,7 +515,7 @@ public class ReleaseActivity extends BaseActivity {
             public void get() {
                 super.get();
 //                String url = share.getString("uploadUrl","")+"upload_image.php?schoolCode=sdjzu"+Constants.BASEPARAMS;
-                String url = "http://123.233.121.17:15100/upload_image.php?ss=ss"+Constants.BASEPARAMS;
+                String url = share.getString("uploadUrl", "") + "upload_image.php?ss=ss" + Constants.BASEPARAMS;
                 result = HttpUtils.uploadFile(url, file);
                 Log.e("result", result + ":" + file.getName());
             }
@@ -503,6 +568,7 @@ public class ReleaseActivity extends BaseActivity {
                             Intent intent = new Intent(ReleaseActivity.this, ImagePagerActivity.class);
                             intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, (Serializable) imgList);
                             intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, i);
+                            intent.putExtra("isShowSave", "0");
                             startActivity(intent);
                             break;
                         }

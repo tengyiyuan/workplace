@@ -1,23 +1,22 @@
 package com.toplion.cplusschool.Utils;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.ImageView;
 
-import java.io.File;
+import com.ab.image.AbImageLoader;
+import com.ab.util.AbImageUtil;
+import com.toplion.cplusschool.R;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by wang
@@ -78,7 +77,52 @@ public class ImageUtil {
             return null;
         }
     }
+    /**
+     * 以最省内存的方式读取本地资源的图片
+     * @param context
+     * @param resId
+     * @return
+     */
+    public static Bitmap readBitMap(Context context, int resId){
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inPreferredConfig = Bitmap.Config.RGB_565;
+        opt.inPurgeable = true;
+        opt.inInputShareable = true;
+        //获取资源图片
+        InputStream is = context.getResources().openRawResource(resId);
+        return BitmapFactory.decodeStream(is,null,opt);
+    }
 
+    /**
+     * 加载圆形图片
+     * @param context
+     * @param url
+     * @param img
+     * @param roundPx 半径
+     */
+    public static void loadHead(Context context, String url, final ImageView img, int imgWidth, int imgHeight, final int roundPx) {
+        AbImageLoader.getInstance(context).download(url,imgWidth,imgHeight, new AbImageLoader.OnImageListener2() {
+            @Override
+            public void onEmpty() {
 
+            }
+
+            @Override
+            public void onLoading() {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+
+            @Override
+            public void onSuccess(Bitmap bitmap) {
+                bitmap = AbImageUtil.toRoundBitmap(bitmap, roundPx);
+                img.setImageBitmap(bitmap);
+            }
+        });
+    }
 
 }

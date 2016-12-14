@@ -24,7 +24,7 @@ import java.util.Date;
  * 选择本地图片工具类
  * <br>
  * 因为直接获取图片容易崩溃，所以直接存入SD卡，再获取
- *
+ * <p>
  * 使用方法：
  * <br>
  * 1、调用getByAlbum、getByCamera去获取图片
@@ -41,43 +41,52 @@ import java.util.Date;
  */
 public class SelectPicUtil {
     public static final int GET_BY_ALBUM = 801;//如果有冲突，记得修改
-    public static final int GET_BY_CAMERA = 802;//如果有冲突，记得修改
-    public static final int CROP = 803;//如果有冲突，记得修改
+    public static final int GET_BY_CAMERA = 802;//拍完照裁剪
+     public static final int GET_BY_CAMERANOCROP = 803;//拍完照不裁剪
+    public static final int CROP = 804;//如果有冲突，记得修改
+    public static final int IMGCROP = 805;
 
     private static Uri requestUri;
     private static String ImageName;//图片名称
     public static final String IMAGE_UNSPECIFIED = "image/*";
+
     /**
      * 从相册获取图片
      */
     public static void getByAlbum(Activity act) {
         // 选择照片
-        Intent getAlbum = new Intent(Intent.ACTION_PICK,null);
+        Intent getAlbum = new Intent(Intent.ACTION_PICK, null);
         getAlbum.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_UNSPECIFIED);
         act.startActivityForResult(getAlbum, GET_BY_ALBUM);
+    }
+
+    public static Intent goImgCrop(Uri uri, int w, int h, int aspectX, int aspectY) {
+        return crop(uri, w, h, aspectX, aspectY);
     }
 
     /**
      * 通过拍照获取图片
      */
-    public static void getByCamera(Activity act) {
+    public static void  getByCamera(Activity act, boolean isCrop) {
         String state = Environment.getExternalStorageState();
         if (state.equals(Environment.MEDIA_MOUNTED)) {
             ImageName = "/" + getNowDate() + ".jpg";
             Intent getImageByCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(new File(Environment.getExternalStorageDirectory(), ImageName)));
+            getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory(), ImageName)));
             getImageByCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
-            act.startActivityForResult(getImageByCamera, GET_BY_CAMERA);
+            act.startActivityForResult(getImageByCamera,isCrop?GET_BY_CAMERA:GET_BY_CAMERANOCROP);
         } else {
             Log.e("error", "请确认已经插入SD卡");
         }
     }
-    private static String getNowDate(){
+
+    private static String getNowDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         Calendar cld = Calendar.getInstance();
         cld.setTime(new Date());
         return sdf.format(cld.getTime());
     }
+
     /**
      * 处理获取的图片，注意判断空指针
      */
@@ -98,12 +107,13 @@ public class SelectPicUtil {
                     act.startActivityForResult(crop(uri, w, h, aspectX, aspectY), CROP);
                     break;
                 case CROP:
-                    bm = dealCrop(act,requestUri);
+                    bm = dealCrop(act, requestUri);
                     break;
             }
         }
         return bm;
     }
+
     /**
      * 处理获取的图片，注意判断空指针
      */
@@ -129,16 +139,42 @@ public class SelectPicUtil {
         }
         return u;
     }
+
+    /**
+     * 不裁剪回调
+     * @param act
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     * @return
+     */
+    public static Uri onActivityResultUri(int requestCode, int resultCode){
+        Uri u = null;
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case GET_BY_CAMERANOCROP:
+                    // 设置文件保存路径这里放在跟目录下
+                    File picture = new File(Environment.getExternalStorageDirectory() + ImageName);
+                    u = Uri.fromFile(picture);
+                    break;
+                case IMGCROP:
+                     u = requestUri;
+                break;
+            }
+        }
+        return u;
+    }
+
     /**
      * 处理获取的图片，注意判断空指针 不需要裁剪图片
      */
-    public static Uri onActivityResultUriNoCut(Activity act, int requestCode, int resultCode, Intent data) {
+    public  Uri onActivityResultUriNoCut(Activity act, int requestCode, int resultCode, Intent data) {
         Uri u = null;
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case GET_BY_ALBUM:
                     u = data.getData();
-                    act.startActivityForResult(data,CROP);
+                    act.startActivityForResult(data, CROP);
                     break;
                 case GET_BY_CAMERA:
                     // 设置文件保存路径这里放在跟目录下
@@ -149,12 +185,6 @@ public class SelectPicUtil {
             }
         }
         return u;
-    }
-    /**
-     * 默认裁剪输出480*480，比例1:1
-     */
-    public static Intent crop(Uri uri) {
-        return crop(uri, 480, 480, 1, 1);
     }
 
     /**
@@ -187,7 +217,7 @@ public class SelectPicUtil {
             requestUri = Tools.getCropImageUri(new File(uri.getPath()).getName() + ".jpg");
         }
         // 输出路径
-        intent.putExtra(MediaStore.EXTRA_OUTPUT,requestUri);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, requestUri);
         // 输出格式
 //        intent.putExtra("outputFormat","jpg");
         // 不启用人脸识别
@@ -199,7 +229,7 @@ public class SelectPicUtil {
     /**
      * 处理裁剪，获取裁剪后的图片
      */
-    public static Bitmap dealCrop(Context context,Uri uri) {
+    public static Bitmap dealCrop(Context context, Uri uri) {
         Bitmap bitmap = null;
         try {
             bitmap = BitmapFactory.decodeStream(context.getContentResolver().openInputStream(uri));
@@ -212,7 +242,7 @@ public class SelectPicUtil {
     /**
      * 适配4.4系统
      */
-    public static Uri dealUri(Activity act, Uri uri) {
+    public  Uri dealUri(Activity act, Uri uri) {
         String filePath = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (DocumentsContract.isDocumentUri(act, uri)) {

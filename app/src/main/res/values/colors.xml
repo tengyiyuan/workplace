@@ -117,4 +117,8 @@
     <color name="biaoqian_shenghuo">#ff7753</color>
     <color name="biaoqian_dianzi">#16b0f7</color>
     <color name="bantouming">#e0000000</color>
+    <color name="holo_purple">#ffaa66cc</color>
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
+    <color name="bgColor_overlay">#60000000</color>
 </resources>

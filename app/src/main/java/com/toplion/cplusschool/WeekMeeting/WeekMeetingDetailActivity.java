@@ -178,7 +178,6 @@ public class WeekMeetingDetailActivity extends BaseActivity {
                 viewHolder.btn_wm_detail_closeoropen = (ImageButton) convertView.findViewById(R.id.btn_wm_detail_closeoropen);
                 viewHolder.rl_weekmeeting_tixing = (RelativeLayout) convertView.findViewById(R.id.rl_weekmeeting_tixing);
                 viewHolder.v_weekmeeting_line = convertView.findViewById(R.id.v_weekmeeting_line);
-                cld = Calendar.getInstance();
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
@@ -216,6 +215,11 @@ public class WeekMeetingDetailActivity extends BaseActivity {
                 }else{
                     viewHolder.rl_weekmeeting_tixing.setVisibility(View.GONE);
                     viewHolder.v_weekmeeting_line.setVisibility(View.GONE);
+                    if(!TextUtils.isEmpty(evenId)&&CalendarUtils.queryCalendarById(mcontext,evenId)){
+                        CalendarUtils.deleteCalendar(mcontext,share.getString(mlist.get(position).getLogId(), ""));
+                        mbean.setRemind(false);
+                        share.put(mlist.get(position).getLogId(), "");
+                    }
                 }
             }
             viewHolder.btn_wm_detail_closeoropen.setOnClickListener(new View.OnClickListener() {
@@ -233,12 +237,16 @@ public class WeekMeetingDetailActivity extends BaseActivity {
                             @Override
                             public void onClick(View arg0) {
                                 if(!TextUtils.isEmpty(share.getString(mlist.get(position).getLogId(), ""))){
-                                    CalendarUtils.deleteCalendar(mcontext,share.getString(mlist.get(position).getLogId(), ""));
+                                    int rows = CalendarUtils.deleteCalendar(mcontext,share.getString(mlist.get(position).getLogId(), ""));
+                                    if(rows!=-1){
+                                        mbean.setRemind(false);
+                                        share.put(mlist.get(position).getLogId(), "");
+                                        showDialog("当前日历提醒已删除");
+                                    }else{
+                                        showDialog("当前日历提醒删除失败");
+                                    }
+                                    dialog.dismiss();
                                 }
-                                mbean.setRemind(false);
-                                share.put(mlist.get(position).getLogId(), "");
-                                showDialog("当前日历提醒已删除");
-                                dialog.dismiss();
                             }
                         });
                         dialog.setRightOnClick(new View.OnClickListener() {
@@ -253,7 +261,13 @@ public class WeekMeetingDetailActivity extends BaseActivity {
                         String des = mlist.get(position).getLogName() + "\n" + "会议时间：" + mlist.get(position).getLogTime()
                                 + "\n" + "会议地点：" + mlist.get(position).getLogAddress();
                         String time = mlist.get(position).getLogDate() + " " + mlist.get(position).getLogTime();
-                        long evenId = CalendarUtils.addCalendar(mcontext, mlist.get(position).getLogId(), title, time, mlist.get(position).getLogAddress(), des);
+                        long evenId = -1;
+                        try{
+                            evenId = CalendarUtils.addCalendar(mcontext, mlist.get(position).getLogId(), title, time, mlist.get(position).getLogAddress(), des);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            evenId = -1;
+                        }
                         Log.e("evenId", evenId + "");
                         if (evenId != -1) {
                             showDialog("提醒服务已成功加入手机日历");

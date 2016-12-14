@@ -30,6 +30,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -56,8 +57,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
                         android:layout_marginRight="10dp"
-                        android:background="@mipmap/my_default_head"
-                        android:scaleType="fitXY" />
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/my_default_head" />
 
                     <ImageView
                         android:id="@+id/tv_my_nickname"
@@ -88,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="10dp"
+                        android:padding="8dp"
                         android:text="昵称"
                         android:textColor="@color/gray666"
                         android:textSize="15sp" />
@@ -99,9 +100,9 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv_pinfo_nicheng"
                         android:hint="未填写"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="35dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="45dp"
+                        android:paddingTop="8dp"
                         android:text="顶联信息"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -131,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="10dp"
+                        android:padding="8dp"
                         android:text="性别"
                         android:textColor="@color/gray666"
                         android:textSize="15sp" />
@@ -142,18 +143,89 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv_pinfo_xingbie"
                         android:hint="未填写"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="35dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="45dp"
+                        android:paddingTop="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
                     <ImageView
+                        android:id="@+id/iv_pinfo_sex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:src="@mipmap/jiantou_right" />
+                        android:src="@mipmap/jiantou_right"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/actionBarText" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_pinfo_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_table_yes"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_nianling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="8dp"
+                        android:text="年龄"
+                        android:textColor="@color/gray666"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_pinfo_nianling"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="45dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/actionBarText" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_pinfo_xingzuo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_table_yes"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_xingzuo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="8dp"
+                        android:text="星座"
+                        android:textColor="@color/gray666"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_xz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_pinfo_xingzuo"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="45dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
                 </RelativeLayout>
 
                 <View
@@ -173,7 +245,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="10dp"
+                        android:padding="8dp"
                         android:text="手机号"
                         android:textColor="@color/gray666"
                         android:textSize="15sp" />
@@ -184,9 +256,9 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv_pinfo_shoujihao"
                         android:hint="未填写"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -215,7 +287,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="10dp"
+                        android:padding="8dp"
                         android:text="专业"
                         android:textColor="@color/gray666"
                         android:textSize="15sp" />
@@ -225,10 +297,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv_pinfo_zhuanye"
-                        android:hint="未填写"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="35dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="45dp"
+                        android:paddingTop="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -237,8 +308,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:visibility="gone"
-                        android:src="@mipmap/jiantou_right" />
+                        android:src="@mipmap/jiantou_right"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <View
@@ -258,7 +329,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="10dp"
+                        android:padding="8dp"
                         android:text="生日"
                         android:textColor="@color/gray666"
                         android:textSize="15sp" />
@@ -269,9 +340,54 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv_pinfo_shengri"
                         android:hint="未填写"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="35dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="45dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_pinfo_brithday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/jiantou_right"
+                        android:visibility="gone"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/actionBarText" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_pinfo_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_table_yes"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_gx"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="8dp"
+                        android:text="故乡"
+                        android:textColor="@color/gray666"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_toRightOf="@+id/tv_pinfo_gx"
+                        android:hint="未填写"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="45dp"
+                        android:paddingTop="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -289,32 +405,75 @@
                     android:background="@color/actionBarText" />
 
                 <RelativeLayout
-                    android:id="@+id/rl_pinfo_address"
+                    android:id="@+id/rl_pinfo_suozaidi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_table_yes"
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/tv_pinfo_jiaxiang"
+                        android:id="@+id/tv_pinfo_szd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:padding="10dp"
-                        android:text="家乡"
+                        android:padding="8dp"
+                        android:text="所在地"
                         android:textColor="@color/gray666"
                         android:textSize="15sp" />
 
                     <TextView
-                        android:id="@+id/tv_pinfo_address"
+                        android:id="@+id/tv_pinfo_nowaddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
-                        android:layout_toRightOf="@+id/tv_pinfo_jiaxiang"
+                        android:layout_toRightOf="@+id/tv_pinfo_szd"
                         android:hint="未填写"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="35dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/jiantou_right" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/actionBarText" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_pinfo_grsm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_table_yes"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_gerenshuoming"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="8dp"
+                        android:text="个人说明"
+                        android:textColor="@color/gray666"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_pinfo_grsm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_toRightOf="@+id/tv_pinfo_gerenshuoming"
+                        android:hint="未填写"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="8dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 

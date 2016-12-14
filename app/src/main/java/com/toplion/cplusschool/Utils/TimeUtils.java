@@ -2,6 +2,7 @@ package com.toplion.cplusschool.Utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -200,7 +201,64 @@ public class TimeUtils {
         return (afterTime - beforeTime) / (1000 * 60 * 60 * 24);
     }
 
+    /**
+     * 由出生日期获得年龄
+      * @param birthDayStr
+     * @return
+     * @throws Exception
+     */
+    public static int getAge(String birthDayStr) throws Exception {
 
+        Date birthDay = stringToDate(birthDayStr,"yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        if (cal.before(birthDay)) {
+            throw new IllegalArgumentException("The birthDay is before Now.It's unbelievable!");
+        }
+        int yearNow = cal.get(Calendar.YEAR);
+        int monthNow = cal.get(Calendar.MONTH);
+        int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH);
+        cal.setTime(birthDay);
+
+        int yearBirth = cal.get(Calendar.YEAR);
+        int monthBirth = cal.get(Calendar.MONTH);
+        int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
+
+        int age = yearNow - yearBirth;
+
+        if (monthNow <= monthBirth) {
+            if (monthNow == monthBirth) {
+                if (dayOfMonthNow < dayOfMonthBirth) age--;
+            }else{
+                age--;
+            }
+        }
+        return age;
+    }
+    private final static int[] dayArr = new int[] { 20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22 };
+    private final static String[] constellationArr = new String[] {  "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"};
+
+    /**
+     * 根据日期获取星座
+     * @return
+     */
+    public static String getConstellation(String birthDayStr) throws Exception {
+        if (birthDayStr == null) {
+            return "";
+        }
+        Date birthDay = stringToDate(birthDayStr,"yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(birthDay);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        if (day < dayArr[month]) {
+            month = month - 1;
+        }
+        if (month >= 0) {
+            return constellationArr[month];
+        }
+        // default to return 魔羯
+        return constellationArr[11];
+    }
     /**
      * 将字符串型日期转换成日期
      *

@@ -1,6 +1,7 @@
 package com.toplion.cplusschool.Utils;
 
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -105,6 +106,19 @@ public class Function {
                     return 0;
                 }
                 return jo.getInt(key);
+            } catch (JSONException e) {
+
+            }
+        else return 0;
+        return 0;
+    }
+    public double getDouble(JSONObject jo, String key) {
+        if (jo.has(key))
+            try {
+                if ("null".equals(jo.getString(key))) {
+                    return 0;
+                }
+                return Double.parseDouble(String.format("%.2f",jo.getDouble(key)));
             } catch (JSONException e) {
 
             }

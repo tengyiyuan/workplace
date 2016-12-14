@@ -37,6 +37,7 @@
             android:paddingBottom="7dp"
             android:paddingLeft="10dp"
             android:paddingTop="7dp"
+            android:singleLine="true"
             android:textColorHint="@color/gray_pressed"
             android:textSize="14sp" />
 
@@ -51,14 +52,16 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
     </RelativeLayout>
-<TextView
-    android:visibility="gone"
-    android:id="@+id/noresult"
-    android:textSize="18sp"
-    android:text="没有相关的内容,试试别的关键字吧~~"
-    android:layout_width="match_parent"
-    android:gravity="center"
-    android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/noresult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="没有相关的内容,试试别的关键字吧~~"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
     <ListView
         android:id="@+id/lv_search_market"
         android:layout_width="match_parent"

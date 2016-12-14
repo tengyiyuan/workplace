@@ -37,10 +37,12 @@
             android:id="@+id/lv_flower_rank_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:listSelector="@drawable/list_item_back"
-            android:dividerHeight="1px"
             android:divider="@color/line_color"
+            android:dividerHeight="1px"
+            android:listSelector="@drawable/list_item_back"
             android:overScrollMode="never"
             android:scrollbars="none" />
     </com.ab.view.pullview.AbPullToRefreshView>
+
+    <include layout="@layout/no_data" />
 </LinearLayout>

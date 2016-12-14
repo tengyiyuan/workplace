@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.DownloadListener;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -46,6 +47,7 @@ public class MukeWebview extends BaseActivity {
         //自适应屏幕
         webSettings.setUseWideViewPort(true);//设置此属性，可任意比例缩放
         webSettings.setLoadWithOverviewMode(true);
+//        webview.setWebChromeClient(new WebChromeClient());
         // 设置Web视图
         webview.setWebViewClient(new webViewClient());
         // 加载需要显示的网页

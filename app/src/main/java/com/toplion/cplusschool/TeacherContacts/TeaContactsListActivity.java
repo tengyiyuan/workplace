@@ -44,11 +44,9 @@ import java.util.List;
 /**
  * Created by wangshengbo
  * on 2016/9/13.
- *
  * @教职工通讯录
  */
 public class TeaContactsListActivity extends BaseActivity {
-    private ContactsDao contactsDao;
    private  ArrayList<ContactsBean> colplist;
     private ArrayList<ContactsBean> newplist;
     private ImageView iv_tea_contacts_return;//返回
@@ -83,7 +81,7 @@ public class TeaContactsListActivity extends BaseActivity {
         tv_tea_contacts_dialog = (TextView) findViewById(R.id.tv_tea_contacts_dialog);
         bar_tea_contacts_sidebar = (SideBar) findViewById(R.id.bar_tea_contacts_sidebar);
         bar_tea_contacts_sidebar.setTextView(tv_tea_contacts_dialog);
-        contactsDao = new ContactsDao(this);
+//        contactsDao = new ContactsDao(this);
         newplist = new ArrayList<ContactsBean>();
         glist = new ArrayList<String>();
         //getData();
@@ -198,6 +196,7 @@ public class TeaContactsListActivity extends BaseActivity {
             public void onClick(View v) {
                 if(colplist.size()>0) {
                     Intent intent = new Intent(TeaContactsListActivity.this, ContactsTeaSearcheActivity.class);
+                    intent.putExtra("colplist",colplist);
                     intent.putExtra("type", 2);
                     startActivity(intent);
                 }
@@ -232,7 +231,7 @@ public class TeaContactsListActivity extends BaseActivity {
                                 plist.add(new CommonBean("1",colplist.get(position).getSJH()));
                             }
                             final CustomDialogListview dialog_sex = new CustomDialogListview(TeaContactsListActivity.this, "选择要拨打的电话", plist,"");
-                            dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            CustomDialogListview.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     CallUtil.CallPhone(TeaContactsListActivity.this, plist.get(position).getDes());
@@ -377,10 +376,10 @@ public class TeaContactsListActivity extends BaseActivity {
                     Collections.sort(colplist, new PinyinComparator());
                     tcdapter = new TeaContactsAdapter(TeaContactsListActivity.this, colplist);
                     lv_tea_contacts_list.setAdapter(tcdapter);
-                    contactsDao.startWritableDatabase(true);
-                    contactsDao.deleteAll();
-                    contactsDao.insertList(colplist);
-                    contactsDao.closeDatabase();
+//                    contactsDao.startWritableDatabase(true);
+//                    contactsDao.deleteAll();
+//                    contactsDao.insertList(colplist);
+//                    contactsDao.closeDatabase();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

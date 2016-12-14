@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
@@ -21,9 +22,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.toplion.cplusschool.Activity.BaseActivity;
+import com.toplion.cplusschool.Activity.MainActivity;
+import com.toplion.cplusschool.Activity.MealActivity;
+import com.toplion.cplusschool.Activity.PersonInfoActivity;
 import com.toplion.cplusschool.Bean.StandardInfo;
+import com.toplion.cplusschool.Common.CommDialog;
+import com.toplion.cplusschool.PhotoWall.SelectPhoto.SelectPhotoActivity;
 import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.MyAnimations;
+import com.toplion.cplusschool.Utils.SharePreferenceUtils;
 import com.toplion.cplusschool.Utils.ToastManager;
 
 import java.util.ArrayList;
@@ -51,7 +58,7 @@ public class MainMarket extends BaseActivity {
     private static final int pageSize = 2;
     private ImageView my_order_iv_return;
     View view;
-    private EditText marketserch;
+    private TextView marketserch;
     private int type = 1;
     private int style = 1;
     private myPagerAdapter adapter;
@@ -59,7 +66,8 @@ public class MainMarket extends BaseActivity {
     private TabTwoFrament tabTwoFrament;
     private ImageView composer_button_fabu;
     private ImageView composer_button_qiugou;
-
+    private CommDialog dialog;
+    private SharePreferenceUtils share;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,15 +81,33 @@ public class MainMarket extends BaseActivity {
         super.init();
         MyAnimations.initOffset(this);
         type = getIntent().getIntExtra("module", 1);
-        composer_button_fabu=(ImageView)findViewById(R.id.composer_button_fabu);
-        composer_button_qiugou=(ImageView)findViewById(R.id.composer_button_qiugou);
+        share = new SharePreferenceUtils(MainMarket.this);
+        String nickName = share.getString("NICKNAME", "");
+        String headIcon = share.getString("HEADIMAGE", "");
+        if (TextUtils.isEmpty(nickName) || TextUtils.isEmpty(headIcon)) {
+            String strmsg = "请先设置昵称和头像后使用！";
+            dialog = new CommDialog(MainMarket.this);
+            dialog.CreateDialog("确定", "系统提示", strmsg, MainMarket.this, new CommDialog.CallBack() {
+                @Override
+                public void isConfirm(boolean flag) {
+                    if (flag) {
+                        Intent intent = new Intent(MainMarket.this, PersonInfoActivity.class);
+                        startActivityForResult(intent, 133);
+                    } else {
+                        finish();
+                    }
+                }
+            });
+        }
+        composer_button_fabu = (ImageView) findViewById(R.id.composer_button_fabu);
+        composer_button_qiugou = (ImageView) findViewById(R.id.composer_button_qiugou);
         lefttext = (TextView) findViewById(R.id.lefttext);
         righttext = (TextView) findViewById(R.id.righttext);
         my_order_iv_return = (ImageView) findViewById(R.id.my_order_iv_return);
         myhead = (ImageView) findViewById(R.id.myhead);
         right = (LinearLayout) findViewById(R.id.right);
         left = (LinearLayout) findViewById(R.id.left);
-        marketserch = (EditText) findViewById(R.id.marketserch);
+        marketserch = (TextView) findViewById(R.id.marketserch);
         composer_buttons_show_hide_button = (RelativeLayout) findViewById(R.id.composer_buttons_show_hide_button);
         composerButtonsWrapper = (RelativeLayout) findViewById(R.id.composer_buttons_wrapper);
         composerButtonsShowHideButtonIcon = (ImageView) findViewById(R.id.composer_buttons_show_hide_button_icon);
@@ -111,24 +137,24 @@ public class MainMarket extends BaseActivity {
         voiceAnswer = (TextView) findViewById(R.id.tab_1);
         healthPedia = (TextView) findViewById(R.id.tab_2);
         if (type == 1) {
-            voiceAnswer.setText("失物发布");
-            healthPedia.setText("招领发布");
-            lefttext.setText("失物发布");
-            righttext.setText("招领发布");
+            voiceAnswer.setText("寻物启事");
+            healthPedia.setText("招领启事");
+            lefttext.setText("寻物启事");
+            righttext.setText("招领启事");
             composer_button_fabu.setImageResource(R.mipmap.lost);
             composer_button_qiugou.setImageResource(R.mipmap.found);
         } else if (type == 2) {
-            voiceAnswer.setText("二手发布");
-            healthPedia.setText("二手求购");
-            lefttext.setText("商品发布");
-            righttext.setText("求购发布");
+            voiceAnswer.setText("闲置市场");
+            healthPedia.setText("求购市场");
+            lefttext.setText("闲置市场");
+            righttext.setText("求购市场");
             composer_button_fabu.setImageResource(R.mipmap.fabu);
             composer_button_qiugou.setImageResource(R.mipmap.qiugou);
         } else if (type == 3) {
-            voiceAnswer.setText("招聘发布");
-            healthPedia.setText("求职发布");
-            lefttext.setText("招聘发布");
-            righttext.setText("求职发布");
+            voiceAnswer.setText("招聘专区");
+            healthPedia.setText("求职专区");
+            lefttext.setText("招聘专区");
+            righttext.setText("求职专区");
             composer_button_fabu.setImageResource(R.mipmap.zhaopin);
             composer_button_qiugou.setImageResource(R.mipmap.qiuzhi);
         }
@@ -289,10 +315,10 @@ public class MainMarket extends BaseActivity {
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String flag = data.getExtras().getString("flag");//得到新Activity 关闭后返回的数据
         if (resultCode == RESULT_OK)
             switch (requestCode) {
                 case 1:
+                    String flag = data.getStringExtra("flag");//得到新Activity 关闭后返回的数据
                     if (flag.isEmpty()) {
 
                     } else if (flag.equals("true")) {
@@ -300,10 +326,20 @@ public class MainMarket extends BaseActivity {
                     }
                     break;
                 case 2:
-                    if (flag.isEmpty()) {
+                    String flag2 = data.getStringExtra("flag");//得到新Activity 关闭后返回的数据
+                    if (flag2.isEmpty()) {
 
-                    } else if (flag.equals("true")) {
+                    } else if (flag2.equals("true")) {
                         tabTwoFrament.getData();
+                    }
+                    break;
+                case 133:
+                    String nickName = share.getString("NICKNAME", "");
+                    String headIcon = share.getString("HEADIMAGE", "");
+                    if (!TextUtils.isEmpty(nickName) && !TextUtils.isEmpty(headIcon)) {
+                        if(dialog!=null){
+                            dialog.cancelDialog();
+                        }
                     }
                     break;
                 default:

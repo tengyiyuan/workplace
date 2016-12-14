@@ -49,14 +49,15 @@ public class MarketSearchActivity extends BaseActivity {
     private MarketAdapter adapter;
     private int page = 1;
     private boolean isla = true;
-    private int module=1;
-    private int reltype=1;
-    private String keyword="";
+    private int module = 1;
+    private int reltype = 1;
+    private String keyword = "";
     private View footView;
     private RelativeLayout loadmoremain;
     private LayoutInflater inflater;
     int lastItem;
     private TextView noresult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,28 +68,34 @@ public class MarketSearchActivity extends BaseActivity {
     @Override
     protected void init() {
         super.init();
-        module=getIntent().getIntExtra("module",1);
-        reltype=getIntent().getIntExtra("reltype",1);
+        module = getIntent().getIntExtra("module", 1);
+        reltype = getIntent().getIntExtra("reltype", 1);
         inflater = LayoutInflater.from(this);
         footView = inflater.inflate(R.layout.load_more, null);
         loadmoremain = (RelativeLayout) footView.findViewById(R.id.loadmoremain);
         iv_search_market_return = (ImageView) findViewById(R.id.iv_search_market_return);
         lv_search_market = (ListView) findViewById(R.id.lv_search_market);
         et_search_content = (EditText) findViewById(R.id.et_search_content);
-        noresult=(TextView)findViewById(R.id.noresult);
-        btn_sou=(TextView)findViewById(R.id.sousuo);
-        mlist=new ArrayList<MarketBean>();
-        adapter = new MarketAdapter(this, mlist,module);
+        noresult = (TextView) findViewById(R.id.noresult);
+        btn_sou = (TextView) findViewById(R.id.sousuo);
+        mlist = new ArrayList<MarketBean>();
+        adapter = new MarketAdapter(this, mlist, module);
+        adapter.setFlag("searchFlag");//设置标记是从搜索进入的
         lv_search_market.setAdapter(adapter);
+        if (module == 2) {
+            et_search_content.setHint("标题/学校/标签");
+        } else {
+            et_search_content.setHint("标题/学校");
+        }
         btn_sou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                keyword=et_search_content.getText().toString().trim();
+                keyword = et_search_content.getText().toString().trim();
                 HideKeyboard(et_search_content);
-                if(keyword.equals("")){
-                    ToastManager.getInstance().showToast(MarketSearchActivity.this,"请您正确输入搜索信息");
+                if (keyword.equals("")) {
+                    ToastManager.getInstance().showToast(MarketSearchActivity.this, "请您正确输入搜索信息");
                     return;
-                }else{
+                } else {
                     getData();
                 }
             }
@@ -120,11 +127,11 @@ public class MarketSearchActivity extends BaseActivity {
         AbRequestParams params = new AbRequestParams();
         params.put("schoolCode", Constants.SCHOOL_CODE);
         params.put("module", module);
-        params.put("keyword",keyword);
-        params.put("auitype",reltype);
+        params.put("keyword", keyword);
+        params.put("auitype", 0);
         params.put("page", page);
         params.put("pageCount", 10);
-        String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("searchReleaseInfoByInput") + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("searchReleaseInfoByInput") + Constants.BASEPARAMS;
         abHttpUtil.post(url, params, new CallBackParent(this, "正在查询数据...") {
             @Override
             public void Get_Result(String result) {
@@ -163,6 +170,8 @@ public class MarketSearchActivity extends BaseActivity {
                                 marketBean.setAUISTATUS(Function.getInstance().getInteger(arr_obj, "AUISTATUS"));
                                 marketBean.setCINAME(Function.getInstance().getString(arr_obj, "CINAME"));
                                 marketBean.setAUICONTACTNAME(Function.getInstance().getString(arr_obj, "AUICONTACTNAME"));
+                                marketBean.setNC(Function.getInstance().getString(arr_obj,"NC"));
+                                marketBean.setTXDZ(Function.getInstance().getString(arr_obj,"TXDZ"));
                                 mlist.add(marketBean);
                             }
                             if (mlist.size() < 10) {
@@ -196,17 +205,18 @@ public class MarketSearchActivity extends BaseActivity {
         });
 
     }
+
     private void getMoreData() {
         loadmoremain.setVisibility(View.VISIBLE);
         page++;
         AbRequestParams params = new AbRequestParams();
         params.put("schoolCode", Constants.SCHOOL_CODE);
         params.put("module", module);
-        params.put("keyword",keyword);
-        params.put("auitype",reltype);
+        params.put("keyword", keyword);
+        params.put("auitype", 0);
         params.put("page", page);
         params.put("pageCount", 10);
-        String url = Constants.NEWBASE_URL + "?rid=" + ReturnUtils.encode("searchReleaseInfoByInput") + Constants.BASEPARAMS;
+        String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("searchReleaseInfoByInput") + Constants.BASEPARAMS;
         abHttpUtil.post(url, params, new CallBackParent(this, false) {
             @Override
             public void Get_Result(String result) {
@@ -245,6 +255,8 @@ public class MarketSearchActivity extends BaseActivity {
                                 marketBean.setAUISTATUS(Function.getInstance().getInteger(arr_obj, "AUISTATUS"));
                                 marketBean.setCINAME(Function.getInstance().getString(arr_obj, "CINAME"));
                                 marketBean.setAUICONTACTNAME(Function.getInstance().getString(arr_obj, "AUICONTACTNAME"));
+                                marketBean.setNC(Function.getInstance().getString(arr_obj,"NC"));
+                                marketBean.setTXDZ(Function.getInstance().getString(arr_obj,"TXDZ"));
                                 otherlist.add(marketBean);
                             }
                             if (otherlist.size() > 0) {
@@ -284,6 +296,7 @@ public class MarketSearchActivity extends BaseActivity {
             }
         });
     }
+
     private void addonclicklistenter() {
         lv_search_market.setOnScrollListener(new AbsListView.OnScrollListener() {
             //AbsListView view 这个view对象就是listview
@@ -305,6 +318,7 @@ public class MarketSearchActivity extends BaseActivity {
             }
         });
     }
+
     @Override
     protected void setListener() {
         super.setListener();
@@ -324,6 +338,7 @@ public class MarketSearchActivity extends BaseActivity {
             }
         });
     }
+
     public static void HideKeyboard(View v) {
         InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm.isActive()) {
