@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/logo_color">
+
+        <ImageView
+            android:id="@+id/iv_select_city_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@mipmap/btn_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="选择地区"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_province"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/divider_list"
+        android:background="@color/white"
+        android:scrollbars="none"
+        android:padding="10dp"
+        android:dividerHeight="1px" />
+    <ListView
+        android:id="@+id/lv_city"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/divider_list"
+        android:background="@color/white"
+        android:scrollbars="none"
+        android:padding="10dp"
+        android:dividerHeight="1px" />
+    <ListView
+        android:id="@+id/lv_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/divider_list"
+        android:background="@color/white"
+        android:scrollbars="none"
+        android:padding="10dp"
+        android:dividerHeight="1px" />
+</LinearLayout>
