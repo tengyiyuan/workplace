@@ -1,0 +1,3 @@
+include ':app'
+include ':alipay_lib '
+include ':andBase'

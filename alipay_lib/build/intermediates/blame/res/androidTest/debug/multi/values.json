@@ -1,0 +1,602 @@
+[
+    {
+        "outputFile": "E:\\workplace\\alipay_lib\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 50,
+                    "endOffset": 101
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 50,
+                        "endOffset": 101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 106,
+                    "endColumn": 49,
+                    "endOffset": 151
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 106,
+                        "endColumn": 49,
+                        "endOffset": 151
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 156,
+                    "endColumn": 50,
+                    "endOffset": 202
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 156,
+                        "endColumn": 50,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 207,
+                    "endColumn": 48,
+                    "endOffset": 251
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 207,
+                        "endColumn": 48,
+                        "endOffset": 251
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 256,
+                    "endColumn": 43,
+                    "endOffset": 295
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 256,
+                        "endColumn": 43,
+                        "endOffset": 295
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 300,
+                    "endColumn": 42,
+                    "endOffset": 338
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 300,
+                        "endColumn": 42,
+                        "endOffset": 338
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 343,
+                    "endColumn": 52,
+                    "endOffset": 391
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 343,
+                        "endColumn": 52,
+                        "endOffset": 391
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 396,
+                    "endColumn": 53,
+                    "endOffset": 445
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 396,
+                        "endColumn": 53,
+                        "endOffset": 445
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 450,
+                    "endColumn": 53,
+                    "endOffset": 499
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 450,
+                        "endColumn": 53,
+                        "endOffset": 499
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 504,
+                    "endColumn": 55,
+                    "endOffset": 555
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 504,
+                        "endColumn": 55,
+                        "endOffset": 555
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 560,
+                    "endColumn": 53,
+                    "endOffset": 609
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 560,
+                        "endColumn": 53,
+                        "endOffset": 609
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 614,
+                    "endColumn": 55,
+                    "endOffset": 665
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 614,
+                        "endColumn": 55,
+                        "endOffset": 665
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 670,
+                    "endColumn": 54,
+                    "endOffset": 720
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 670,
+                        "endColumn": 54,
+                        "endOffset": 720
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 725,
+                    "endColumn": 56,
+                    "endOffset": 777
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 725,
+                        "endColumn": 56,
+                        "endOffset": 777
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 782,
+                    "endColumn": 57,
+                    "endOffset": 835
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 782,
+                        "endColumn": 57,
+                        "endOffset": 835
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 840,
+                    "endColumn": 37,
+                    "endOffset": 873
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 840,
+                        "endColumn": 37,
+                        "endOffset": 873
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 878,
+                    "endColumn": 61,
+                    "endOffset": 935
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 878,
+                        "endColumn": 61,
+                        "endOffset": 935
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 940,
+                    "endColumn": 61,
+                    "endOffset": 997
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 940,
+                        "endColumn": 61,
+                        "endOffset": 997
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1002,
+                    "endColumn": 44,
+                    "endOffset": 1042
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1002,
+                        "endColumn": 44,
+                        "endOffset": 1042
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1047,
+                    "endColumn": 57,
+                    "endOffset": 1100
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1047,
+                        "endColumn": 57,
+                        "endOffset": 1100
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1105,
+                    "endColumn": 39,
+                    "endOffset": 1140
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1105,
+                        "endColumn": 39,
+                        "endOffset": 1140
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1145,
+                    "endColumn": 49,
+                    "endOffset": 1190
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1145,
+                        "endColumn": 49,
+                        "endOffset": 1190
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1195,
+                    "endColumn": 37,
+                    "endOffset": 1228
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1195,
+                        "endColumn": 37,
+                        "endOffset": 1228
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1233,
+                    "endColumn": 59,
+                    "endOffset": 1288
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1233,
+                        "endColumn": 59,
+                        "endOffset": 1288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1293,
+                    "endColumn": 62,
+                    "endOffset": 1351
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1293,
+                        "endColumn": 62,
+                        "endOffset": 1351
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1356,
+                    "endColumn": 42,
+                    "endOffset": 1394
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1356,
+                        "endColumn": 42,
+                        "endOffset": 1394
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1399,
+                    "endColumn": 35,
+                    "endOffset": 1430
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1399,
+                        "endColumn": 35,
+                        "endOffset": 1430
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1435,
+                    "endColumn": 38,
+                    "endOffset": 1469
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1435,
+                        "endColumn": 38,
+                        "endOffset": 1469
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1474,
+                    "endLine": 33,
+                    "endColumn": 12,
+                    "endOffset": 1670
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1474,
+                        "endLine": 33,
+                        "endColumn": 12,
+                        "endOffset": 1670
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 1675,
+                    "endLine": 40,
+                    "endColumn": 12,
+                    "endOffset": 1961
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 1675,
+                        "endLine": 40,
+                        "endColumn": 12,
+                        "endOffset": 1961
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 1966,
+                    "endLine": 43,
+                    "endColumn": 12,
+                    "endOffset": 2121
+                },
+                "from": {
+                    "file": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 1966,
+                        "endLine": 43,
+                        "endColumn": 12,
+                        "endOffset": 2121
+                    }
+                }
+            }
+        ]
+    }
+]

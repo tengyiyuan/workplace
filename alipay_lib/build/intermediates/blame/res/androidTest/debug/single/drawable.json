@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\workplace\\alipay_lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\refresh_button.xml",
+        "source": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\refresh_button.xml"
+    },
+    {
+        "merged": "E:\\workplace\\alipay_lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\dialog_button_submit.xml",
+        "source": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\dialog_button_submit.xml"
+    },
+    {
+        "merged": "E:\\workplace\\alipay_lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\dialog_button_colorlist.xml",
+        "source": "E:\\workplace\\alipay_lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\dialog_button_colorlist.xml"
+    }
+]
