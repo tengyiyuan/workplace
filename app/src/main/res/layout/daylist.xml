@@ -39,7 +39,7 @@
             android:gravity="center"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
-            android:text="日/周"
+            android:text="周/日"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </RelativeLayout>
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="星期五"
-            android:textColor="@color/logo_color" />
+            android:textColor="@color/black" />
 
         <ImageView
             android:id="@+id/rightweek"

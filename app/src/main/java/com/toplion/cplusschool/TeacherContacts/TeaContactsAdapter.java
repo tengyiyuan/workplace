@@ -1,6 +1,7 @@
 package com.toplion.cplusschool.TeacherContacts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -83,6 +84,14 @@ public class TeaContactsAdapter extends BaseAdapter {
             viewHolder.tv_tag.setVisibility(View.GONE);
 
         }
+        viewHolder.rl_tea_contacts_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext, ContactsTeaDetailActivity.class);
+                intent.putExtra("teaNo", person.getXH());
+                mcontext.startActivity(intent);
+            }
+        });
         viewHolder.tv_name.setText(person.getXM());
         viewHolder.tv_tea_contacts_phone.setText(person.getSJH() + "/" + person.getJTDH());
         viewHolder.iv_tea_contacts_call.setOnClickListener(new View.OnClickListener() {

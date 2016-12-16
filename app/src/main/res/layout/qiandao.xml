@@ -35,6 +35,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="规则"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </RelativeLayout>

@@ -85,13 +85,17 @@ public class TypeListActivity extends BaseActivity {
         gostart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (standardInfo != null && standardInfo.size() > 0) {
-                    Intent intent = new Intent(TypeListActivity.this, ReimbursementOrderTimeActivity.class);
-                    intent.putExtra("infolist", standardInfo);
-                    intent.putExtra("maxtime", maxtime);
-                    startActivity(intent);
+                if (maxtime < 120) {
+                    if (standardInfo != null && standardInfo.size() > 0) {
+                        Intent intent = new Intent(TypeListActivity.this, ReimbursementOrderTimeActivity.class);
+                        intent.putExtra("infolist", standardInfo);
+                        intent.putExtra("maxtime", maxtime);
+                        startActivity(intent);
+                    } else {
+                        ToastManager.getInstance().showToast(TypeListActivity.this, "请选择要报销的单据");
+                    }
                 } else {
-                    ToastManager.getInstance().showToast(TypeListActivity.this, "请选择要报销的单据");
+                    ToastManager.getInstance().showToast(TypeListActivity.this, "当前票据数量过多，请到窗口进行办理。");
                 }
             }
         });

@@ -498,23 +498,23 @@ public class LoginActivity extends BaseActivity {
                             if (code.equals(CacheConstants.USR_SUCESS)) {
                                 // 登录成功，执行操作
                                 String token = updResult.getString("token");   // 获取token
-//                                if (jsonArray != null && jsonArray.length() > 0) {
-//                                    JSONObject obj = (JSONObject) jsonArray.get(0);
-//                                    if (account.getText().toString().equals("wzw")) {
-//                                        share.put("ROLE_TYPE", 1);
-//                                    } else {
-//                                        share.put("ROLE_TYPE", obj.getInt("ROLE_TYPE"));
-//                                    }
-//                                    share.put("ROLE_ID", obj.getString("ROLE_ID"));
-//                                    Log.e("ROLE_ID", obj.getString("ROLE_ID"));
-//                                    share.put("ROLE_USERNAME", obj.getString("ROLE_USERNAME"));
-//                                } else {
-//                                    if (account.getText().toString().equals("wzw")) {
-//                                        share.put("ROLE_TYPE", 1);
-//                                    } else {
-//                                        share.put("ROLE_TYPE", 2);
-//                                    }
-//                                }
+                                if (jsonArray != null && jsonArray.length() > 0) {
+                                    JSONObject obj = (JSONObject) jsonArray.get(0);
+                                    if (account.getText().toString().equals("wzw")) {
+                                        share.put("ROLE_TYPE", 1);
+                                    } else {
+                                        share.put("ROLE_TYPE", Function.getInstance().getInteger(obj,"ROLE_TYPE"));
+                                    }
+                                    share.put("ROLE_ID",  Function.getInstance().getString(obj,"ROLE_ID"));
+                                    Log.e("ROLE_ID", obj.getString("ROLE_ID"));
+                                    share.put("ROLE_USERNAME", Function.getInstance().getString(obj,"ROLE_USERNAME"));
+                                } else {
+                                    if (account.getText().toString().equals("wzw")) {
+                                        share.put("ROLE_TYPE", 1);
+                                    } else {
+                                        share.put("ROLE_TYPE", 2);
+                                    }
+                                }
 //								Long tokenTim = Long.parseLong(updResult.getString("tokenExpTime").toString());
 //                                String tokenTim = updResult.getString("tokenExpTime").toString();.
                                 // 更换值,保存数据到本地，密码进行加密

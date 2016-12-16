@@ -154,14 +154,14 @@ public class PlayGroundFragment extends Fragment {
     private JSONArray bannerArray; // banner 图片列表
     private String messageStr = null;//提示
     private AbHttpUtil abHttpUtil;//网络请求工具
-//    private boolean isShow = false; // 是否显示 "是不是规定wifi"或者是不是从本页面登录的提示
+    //    private boolean isShow = false; // 是否显示 "是不是规定wifi"或者是不是从本页面登录的提示
     private JSONObject breakJson = null;//断开连接返回数据
 
     private GridView gv_pgf_function;//首页功能 2016-6-28
     private List<Map<String, Object>> functionData;//功能列表
     private FunctionListAdapter flistAdapter;
     private int netstate = -1;//一键上网的位置记录
-    private boolean  netFlag = false;//是否连接网络
+    private boolean netFlag = false;//是否连接网络
 
     // 定义公共方法
     private static PlayGroundFragment play;
@@ -175,8 +175,11 @@ public class PlayGroundFragment extends Fragment {
 //||||||| .r984
 //    private int[] icons = new int[]{R.mipmap.btn_network_pay, R.mipmap.btn_repair, R.mipmap.btn_dis_network, R.mipmap.btn_week, R.mipmap.btn_grade, R.mipmap.btn_test, R.mipmap.btn_classroom, R.mipmap.school_bus, R.mipmap.xiaoli, R.mipmap.news, R.mipmap.jiangzuoyuyue, R.mipmap.postcard, R.mipmap.calssphone, R.mipmap.tongxun, R.mipmap.map, R.mipmap.baoxiao, R.mipmap.baoxiao, R.mipmap.shuihua, R.mipmap.kaolaimg, R.mipmap.yuedu, R.mipmap.manhuaimg};
 //=======
-    private int[] icons = new int[]{R.mipmap.btn_network_pay, R.mipmap.btn_repair, R.mipmap.btn_dis_network, R.mipmap.btn_week, R.mipmap.btn_grade, R.mipmap.btn_test, R.mipmap.btn_classroom, R.mipmap.school_bus, R.mipmap.xiaoli, R.mipmap.news, R.mipmap.jiangzuoyuyue, R.mipmap.postcard, R.mipmap.calssphone, R.mipmap.tongxun, R.mipmap.map, R.mipmap.baoxiao, R.mipmap.gongzichaxun, R.mipmap.shuihua, R.mipmap.kaolaimg, R.mipmap.yunyuedu, R.mipmap.manhuaimg, R.mipmap.jstxl,
-            R.mipmap.banshi, R.mipmap.xinxi, R.mipmap.gongwen, R.mipmap.weekmeeting, R.mipmap.baogaoting, R.mipmap.zhongdian, R.mipmap.market, R.mipmap.lost_and_found, R.mipmap.parttime, R.mipmap.muke};
+    private int[] icons = new int[]{R.mipmap.btn_network_pay, R.mipmap.btn_repair, R.mipmap.btn_dis_network, R.mipmap.btn_week, R.mipmap.btn_grade, R.mipmap.btn_test,
+            R.mipmap.btn_classroom, R.mipmap.school_bus, R.mipmap.xiaoli, R.mipmap.news, R.mipmap.jiangzuoyuyue, R.mipmap.postcard, R.mipmap.calssphone, R.mipmap.tongxun,
+            R.mipmap.map, R.mipmap.baoxiao, R.mipmap.gongzichaxun, R.mipmap.shuihua, R.mipmap.kaolaimg, R.mipmap.yunyuedu, R.mipmap.manhuaimg, R.mipmap.jstxl,
+            R.mipmap.banshi, R.mipmap.xinxi, R.mipmap.gongwen, R.mipmap.weekmeeting, R.mipmap.baogaoting, R.mipmap.zhongdian, R.mipmap.market, R.mipmap.lost_and_found,
+            R.mipmap.parttime, R.mipmap.muke, R.mipmap.rule, R.mipmap.photo_wall};
     private List<Map<String, String>> dataListAd = new ArrayList<Map<String, String>>();
 
     /**
@@ -352,15 +355,14 @@ public class PlayGroundFragment extends Fragment {
             functionMap.put("flag", true);
             functionData.add(functionMap);
 
-
             //一键上网
             functionMap = new HashMap<String, Object>();
-            functionMap.put("funImage", R.mipmap.btn_dis_network);
+            functionMap.put("funImage", R.mipmap.btn_key_intenet);
             functionMap.put("mid", Constants.YIJIANNET);
             functionMap.put("funDes", "一键上网");
             functionMap.put("flag", true);
             functionData.add(functionMap);
-
+            netstate = 2;
             //课程表
             functionMap = new HashMap<String, Object>();
             functionMap.put("funImage", R.mipmap.btn_week);
@@ -439,6 +441,7 @@ public class PlayGroundFragment extends Fragment {
             functionMap.put("funDes", "一卡通");
             functionMap.put("flag", true);
             functionData.add(functionMap);
+
             //添加办公电话功能
             functionMap = new HashMap<String, Object>();
             functionMap.put("funImage", R.mipmap.calssphone);
@@ -598,7 +601,7 @@ public class PlayGroundFragment extends Fragment {
             functionMap.put("funDes", "照片墙");
             functionMap.put("flag", true);
             functionData.add(functionMap);
-
+            flistAdapter.notifyDataSetChanged();
         } else {
             for (int i = 0; i < menulist.size(); i++) {
                 Map<String, Object> functionMap = new HashMap<String, Object>();
@@ -609,7 +612,7 @@ public class PlayGroundFragment extends Fragment {
                     functionMap.put("funDes", menu.getAI_NAME());
                     functionMap.put("flag", menu.isRSA_ENABLE());
                     functionData.add(functionMap);
-                    if (menu.getAI_ID()==3) {
+                    if (menu.getAI_ID() == 3) {
                         netstate = i;
                     }
                 }
@@ -727,9 +730,9 @@ public class PlayGroundFragment extends Fragment {
                     }
                 } else if (functionType.equals(Constants.YIJIANNET)) {
                     if (flag) {
-                        if(netFlag){//已经连接网络
+                        if (netFlag) {//已经连接网络
                             breakNet();
-                        }else{//未连接网络
+                        } else {//未连接网络
                             EportalValidate();
                         }
                     } else {
@@ -813,7 +816,7 @@ public class PlayGroundFragment extends Fragment {
                 } else if (functionType.equals(Constants.BANSHI)) {
                     if (flag) {
                         Intent intent = new Intent(getActivity(), BanshiActivity.class);
-                        intent.putExtra("type",1);
+                        intent.putExtra("type", 1);
                         startActivity(intent);
                     } else {
                         ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
@@ -821,7 +824,7 @@ public class PlayGroundFragment extends Fragment {
                 } else if (functionType.equals(Constants.GUIZHANGZHIDU)) {
                     if (flag) {
                         Intent intent = new Intent(getActivity(), BanshiActivity.class);
-                        intent.putExtra("type",2);
+                        intent.putExtra("type", 2);
                         startActivity(intent);
                     } else {
                         ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
@@ -897,7 +900,7 @@ public class PlayGroundFragment extends Fragment {
                     } else {
                         ToastManager.getInstance().showToast(getActivity(), "敬请期待!");
                     }
-                }else if (functionType.equals(Constants.ZHAOPIANQIANG)) {//照片墙
+                } else if (functionType.equals(Constants.ZHAOPIANQIANG)) {//照片墙
                     if (flag) {
                         Intent intent = new Intent(getActivity(), PhotoMainActivity.class);
                         startActivity(intent);
@@ -1278,10 +1281,10 @@ public class PlayGroundFragment extends Fragment {
 //                        if (isShow) {
 //                            EportalValidate();
 //                        } else {
-                            if (netstate != -1) {
-                                functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
-                                functionData.get(netstate).put("funDes", "一键上网");
-                            }
+                        if (netstate != -1) {
+                            functionData.get(netstate).put("funImage", R.mipmap.btn_key_intenet);
+                            functionData.get(netstate).put("funDes", "一键上网");
+                        }
 //                            ground_iv_buy.setImageResource(R.mipmap.btn_key_intenet);
 //                            ground_tv_buy_des.setText("一键上网");
 //                            ground_rl_net.setOnClickListener(new OnClickListener() {
@@ -2211,7 +2214,7 @@ public class PlayGroundFragment extends Fragment {
 //                    Intent intent = new Intent(getActivity(), MainActivity.class);
 //                    startActivity(intent);
                     CommonUtil.intoLogin(getActivity(), share, "");
-                    Log.e("gogogogogogogogo","Playground");
+                    Log.e("gogogogogogogogo", "Playground");
 
                 }
             }
@@ -2224,7 +2227,7 @@ public class PlayGroundFragment extends Fragment {
 //                startActivity(intent);
 //                getActivity().finish();
                 CommonUtil.intoLogin(getActivity(), share, "");
-                Log.e("gogogogogogogogo","Playground");
+                Log.e("gogogogogogogogo", "Playground");
             }
 
             @Override
@@ -2236,7 +2239,7 @@ public class PlayGroundFragment extends Fragment {
 //                getActivity().finish();
 
                 CommonUtil.intoLogin(getActivity(), share, "");
-                Log.e("gogogogogogogogo","Playground");
+                Log.e("gogogogogogogogo", "Playground");
             }
         });
 //        } else {

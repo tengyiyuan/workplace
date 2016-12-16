@@ -70,7 +70,7 @@
                 android:background="@drawable/bg_table_no"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text=" 通过/未通过"
+                android:text="全部"
                 android:textColor="@color/gray666"
                 android:textSize="16sp" />
         </LinearLayout>

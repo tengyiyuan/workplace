@@ -207,84 +207,84 @@ public class ContactsTeaSearcheActivity extends BaseActivity {
     @Override
     protected void setListener() {
         super.setListener();
-        elv_contacts_search_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                Intent intent = new Intent(ContactsTeaSearcheActivity.this, ContactsTeaDetailActivity.class);
-                        intent.putExtra("teaNo", clist.get(position).getXH());
-                        startActivity(intent);
-//                final MenuPopupWindow menuWindow = new MenuPopupWindow(ContactsTeaSearcheActivity.this);
-//                menuWindow.showAtLocation(ContactsTeaSearcheActivity.this.findViewById(R.id.ll_pop),Gravity.BOTTOM , 0, 0);
-//                menuWindow.setCallOnClick(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        menuWindow.dismiss();
-//                        if(!TextUtils.isEmpty(clist.get(position).getSJH())){
-//                            final List<CommonBean> plist = new ArrayList<CommonBean>();
-//                            plist.add(new CommonBean("0", clist.get(position).getJTDH()));
-//                            if(!TextUtils.isEmpty(clist.get(position).getSJH())){
-//                                plist.add(new CommonBean("1",clist.get(position).getSJH()));
-//                            }
-//                            final CustomDialogListview dialog_sex = new CustomDialogListview(ContactsTeaSearcheActivity.this, "选择要拨打的电话", plist,"");
-//                            dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                                @Override
-//                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                                    CallUtil.CallPhone(ContactsTeaSearcheActivity.this, plist.get(position).getDes());
-//                                    dialog_sex.dismiss();
-//                                }
-//                            });
-//                            dialog_sex.show();
-////                            CallUtil.CallPhone(TeaContactsListActivity.this,colplist.get(position).getSJH());
-//                        }else{
-//                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
-//                        }
-//                    }
-//                });
-//                menuWindow.setCopyOnClick(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        menuWindow.dismiss();
-//                        // 得到剪贴板管理器
-//                        if(!TextUtils.isEmpty(clist.get(position).getSJH())) {
-//                            CallUtil.copyPhone(ContactsTeaSearcheActivity.this, clist.get(position).getSJH());
-//                        }else{
-//                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
-//                        }
-//                    }
-//                });
-//                menuWindow.setsaveOnClick(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        menuWindow.dismiss();
-//                        if(!TextUtils.isEmpty(clist.get(position).getSJH())) {
-//                            CallUtil.toContacts(ContactsTeaSearcheActivity.this, clist.get(position).getXM(), "", clist.get(position).getSJH());
-//                        }else{
-//                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
-//                        }
-//                    }
-//                });
-//                menuWindow.setMessageOnClick(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        menuWindow.dismiss();
-//                        if(!TextUtils.isEmpty(clist.get(position).getSJH())) {
-//                            CallUtil.sendMessage(ContactsTeaSearcheActivity.this, clist.get(position).getSJH(), "");
-//                        }else{
-//                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
-//                        }
-//                    }
-//                });
-//                menuWindow.setDetailOnClick(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        menuWindow.dismiss();
-//                        Intent intent = new Intent(ContactsTeaSearcheActivity.this, ContactsTeaDetailActivity.class);
+//        elv_contacts_search_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+//                Intent intent = new Intent(ContactsTeaSearcheActivity.this, ContactsTeaDetailActivity.class);
 //                        intent.putExtra("teaNo", clist.get(position).getXH());
 //                        startActivity(intent);
-//                    }
-//                });
-            }
-        });
+////                final MenuPopupWindow menuWindow = new MenuPopupWindow(ContactsTeaSearcheActivity.this);
+////                menuWindow.showAtLocation(ContactsTeaSearcheActivity.this.findViewById(R.id.ll_pop),Gravity.BOTTOM , 0, 0);
+////                menuWindow.setCallOnClick(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        menuWindow.dismiss();
+////                        if(!TextUtils.isEmpty(clist.get(position).getSJH())){
+////                            final List<CommonBean> plist = new ArrayList<CommonBean>();
+////                            plist.add(new CommonBean("0", clist.get(position).getJTDH()));
+////                            if(!TextUtils.isEmpty(clist.get(position).getSJH())){
+////                                plist.add(new CommonBean("1",clist.get(position).getSJH()));
+////                            }
+////                            final CustomDialogListview dialog_sex = new CustomDialogListview(ContactsTeaSearcheActivity.this, "选择要拨打的电话", plist,"");
+////                            dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+////                                @Override
+////                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+////                                    CallUtil.CallPhone(ContactsTeaSearcheActivity.this, plist.get(position).getDes());
+////                                    dialog_sex.dismiss();
+////                                }
+////                            });
+////                            dialog_sex.show();
+//////                            CallUtil.CallPhone(TeaContactsListActivity.this,colplist.get(position).getSJH());
+////                        }else{
+////                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
+////                        }
+////                    }
+////                });
+////                menuWindow.setCopyOnClick(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        menuWindow.dismiss();
+////                        // 得到剪贴板管理器
+////                        if(!TextUtils.isEmpty(clist.get(position).getSJH())) {
+////                            CallUtil.copyPhone(ContactsTeaSearcheActivity.this, clist.get(position).getSJH());
+////                        }else{
+////                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
+////                        }
+////                    }
+////                });
+////                menuWindow.setsaveOnClick(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        menuWindow.dismiss();
+////                        if(!TextUtils.isEmpty(clist.get(position).getSJH())) {
+////                            CallUtil.toContacts(ContactsTeaSearcheActivity.this, clist.get(position).getXM(), "", clist.get(position).getSJH());
+////                        }else{
+////                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
+////                        }
+////                    }
+////                });
+////                menuWindow.setMessageOnClick(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        menuWindow.dismiss();
+////                        if(!TextUtils.isEmpty(clist.get(position).getSJH())) {
+////                            CallUtil.sendMessage(ContactsTeaSearcheActivity.this, clist.get(position).getSJH(), "");
+////                        }else{
+////                            ToastManager.getInstance().showToast(ContactsTeaSearcheActivity.this,"暂无电话号码");
+////                        }
+////                    }
+////                });
+////                menuWindow.setDetailOnClick(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        menuWindow.dismiss();
+////                        Intent intent = new Intent(ContactsTeaSearcheActivity.this, ContactsTeaDetailActivity.class);
+////                        intent.putExtra("teaNo", clist.get(position).getXH());
+////                        startActivity(intent);
+////                    }
+////                });
+//            }
+//        });
         //返回监听
         iv_search_contants_return.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -103,15 +103,15 @@ public class SelectTimeActivity extends BaseActivity {
                     list1 = new ArrayList<CommonBean>();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        list1.add(new CommonBean(i+"",AbDateUtil.getWeekNumber(jsonObject1.getString("DAYS"),"yyyy-MM-dd"),jsonObject1.getString("DAYS")));
+                        list1.add(new CommonBean(i + "", AbDateUtil.getWeekNumber(jsonObject1.getString("DAYS"), "yyyy-MM-dd"), jsonObject1.getString("DAYS")));
                     }
                     if (list1 != null && list1.size() > 0) {
                         selectDate = list1.get(0).getDes();
-                        tv_select_time_title.setText(selectDate+"  "+list1.get(0).getOther());
+                        tv_select_time_title.setText(selectDate + "  " + list1.get(0).getOther());
                         getIsAvailableTime(selectDate);
                         rl_data.setVisibility(View.VISIBLE);
                         rl_nodata.setVisibility(View.GONE);
-                    }else{
+                    } else {
                         rl_data.setVisibility(View.GONE);
                         rl_nodata.setVisibility(View.VISIBLE);
                     }
@@ -128,6 +128,7 @@ public class SelectTimeActivity extends BaseActivity {
                 rl_data.setVisibility(View.GONE);
                 rl_nodata.setVisibility(View.VISIBLE);
             }
+
             @Override
             public void onFailure(int statusCode, String content, Throwable error) {
                 super.onFailure(statusCode, content, error);
@@ -136,6 +137,7 @@ public class SelectTimeActivity extends BaseActivity {
             }
         });
     }
+
     //根据日期获取可用时间范围
     private void getIsAvailableTime(String timedate) {
         String url = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getBooktimeWithdate") + Constants.BASEPARAMS;
@@ -196,12 +198,12 @@ public class SelectTimeActivity extends BaseActivity {
     private void setStartAndEndTime() {
         String datetime = selectDate + " " + selectTime;
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(TimeUtils.stringToDate(datetime,"yyyy-MM-dd HH:mm"));
+        calendar.setTime(TimeUtils.stringToDate(datetime, "yyyy-MM-dd HH:mm"));
         calendar.add(Calendar.MINUTE, totalTime);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);// 当前时
         int minute = calendar.get(Calendar.MINUTE); // 当前分
         String time = hour + ":" + (minute == 0 ? "00" : minute);
-        tv_select_datetime.setText("您已经选择了"+datetime+"-"+time+"作为您的报销时间");
+        tv_select_datetime.setText("您已经选择了" + datetime + "-" + time + "作为您的报销时间");
         tv_select_confirm_time.setEnabled(true);
         tv_select_confirm_time.setText("就选它了");
     }
@@ -222,22 +224,25 @@ public class SelectTimeActivity extends BaseActivity {
         tv_select_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final CustomDialogListview dialog_sex = new CustomDialogListview(SelectTimeActivity.this, "选择学期", list1, tv_select_time_title.getText().toString());
-                dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        tv_select_datetime.setText("您还未选择预约报销时间，赶紧点击选择吧!");
-                        tv_select_confirm_time.setEnabled(false);
-                        tv_select_confirm_time.setText("请选择时间");
-                        timeAdapter.setSelectItem(-1);
-                        timeAdapter.notifyDataSetChanged();
-                        tv_select_time_title.setText(list1.get(position).getDes()+"  "+list1.get(position).getOther());
-                        selectDate = list1.get(position).getDes();
-                        getIsAvailableTime(selectDate);
-                        dialog_sex.dismiss();
-                    }
-                });
-                dialog_sex.show();
+                if (list1 != null && list1.size() > 0) {
+                    final CustomDialogListview dialog_sex = new CustomDialogListview(SelectTimeActivity.this, "选择学期", list1, tv_select_time_title.getText().toString());
+                    CustomDialogListview.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            tv_select_datetime.setText("您还未选择预约报销时间，赶紧点击选择吧!");
+                            tv_select_confirm_time.setEnabled(false);
+                            tv_select_confirm_time.setText("请选择时间");
+                            timeAdapter.setSelectItem(-1);
+                            timeAdapter.notifyDataSetChanged();
+                            tv_select_time_title.setText(list1.get(position).getDes() + "  " + list1.get(position).getOther());
+                            selectDate = list1.get(position).getDes();
+                            getIsAvailableTime(selectDate);
+                            dialog_sex.dismiss();
+                        }
+                    });
+                    dialog_sex.show();
+                }
+
             }
         });
 
@@ -246,9 +251,9 @@ public class SelectTimeActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("datetime",selectTime);
-                intent.putExtra("dateweek",selectDate);
-                setResult(RESULT_OK,intent);
+                intent.putExtra("datetime", selectTime);
+                intent.putExtra("dateweek", selectDate);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });

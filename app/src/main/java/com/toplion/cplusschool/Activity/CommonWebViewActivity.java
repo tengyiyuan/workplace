@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.MyWebChromeClient;
+import com.toplion.cplusschool.Utils.ToastManager;
 
 /**
  * 公用WebView
@@ -124,7 +125,13 @@ public class CommonWebViewActivity extends BaseActivity{
 			view.loadUrl(url);
 			return true;
 		}
-
+		@Override
+		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+			super.onReceivedError(view, errorCode, description, failingUrl);
+			view.loadUrl("file:///android_asset/error.html");
+			ToastManager.getInstance().showToast(CommonWebViewActivity.this,"网络异常");
+			return;
+		}
 		@Override
 		public void onPageFinished(WebView view, String url) {
 			//tv_webview_title.setText(view.getTitle());

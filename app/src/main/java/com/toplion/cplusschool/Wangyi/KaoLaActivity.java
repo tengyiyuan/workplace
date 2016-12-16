@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 
 import com.toplion.cplusschool.Activity.BaseActivity;
 import com.toplion.cplusschool.R;
+import com.toplion.cplusschool.Utils.ToastManager;
 
 /**
  * 加载网易云阅读及漫画的页面
@@ -72,6 +73,13 @@ public class KaoLaActivity extends BaseActivity {
                 view.loadUrl(url);
             }
             return true;
+        }
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            super.onReceivedError(view, errorCode, description, failingUrl);
+            view.loadUrl("file:///android_asset/error.html");
+            ToastManager.getInstance().showToast(KaoLaActivity.this,"网络异常");
+            return;
         }
         @Override
         public void onPageFinished(WebView view, String url) {

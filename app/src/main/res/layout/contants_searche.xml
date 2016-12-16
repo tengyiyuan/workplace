@@ -48,6 +48,7 @@
             android:background="@drawable/bg_yuanjiao_dioa_your"
             android:drawableLeft="@mipmap/seacher"
             android:drawablePadding="10dp"
+            android:singleLine="true"
             android:hint="搜索"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"

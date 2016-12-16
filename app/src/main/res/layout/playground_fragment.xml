@@ -537,7 +537,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/gray"
                         android:padding="10dp"
-                        android:text="C+动态"
+                        android:text="菁彩校园操作说明"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 

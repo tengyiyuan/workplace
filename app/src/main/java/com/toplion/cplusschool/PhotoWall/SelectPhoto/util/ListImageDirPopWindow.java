@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -44,7 +45,7 @@ public class ListImageDirPopWindow extends PopupWindow {
         parentView = inflater.inflate(R.layout.list_dir, null);
         this.setContentView(parentView);
         mListDir = (ListView) parentView.findViewById(R.id.id_list_dir);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,popupHeight);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,popupHeight);
         mListDir.setLayoutParams(params);
         setPopConfig();
         initData(context);

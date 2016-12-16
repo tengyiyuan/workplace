@@ -130,7 +130,7 @@ public class WeekListActivity extends BaseActivity {
             address = getIntent().getStringExtra("address");
             about_iv_Title.setText(address + "的课程表");
         } else {
-            about_iv_Title.setText(share.getString("userTrueName", "测试") + "的课程表");
+            about_iv_Title.setText(share.getString("ROLE_USERNAME", "测试") + "的课程表");
             juese=share.getInt("ROLE_TYPE",2);
         }
         mAbHttpUtil = AbHttpUtil.getInstance(this);
@@ -192,6 +192,12 @@ public class WeekListActivity extends BaseActivity {
             }
         });
         ToastManager.getInstance().getTvTitle(tv_test_title,"");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        weektoday.setText("日/周");
     }
 
     public void getData() {
@@ -297,6 +303,7 @@ public class WeekListActivity extends BaseActivity {
                 public void onClick(View v) {
                     if (courseData[sum] != null && courseData[sum].size() > 0) {
                         Intent intent = new Intent(WeekListActivity.this, DayListActivity.class);
+                        intent.putExtra("title",about_iv_Title.getText().toString());
                         intent.putCharSequenceArrayListExtra("week", (ArrayList) courseData[sum]);
                         intent.putExtra("count", count);
                         if (style == 1) {
@@ -311,6 +318,7 @@ public class WeekListActivity extends BaseActivity {
                 public void onClick(View v) {
                     if (courseData[getDayintweek(cal.get(Calendar.DAY_OF_WEEK))].size() > 0) {
                         Intent intent = new Intent(WeekListActivity.this, DayListActivity.class);
+                        intent.putExtra("title",about_iv_Title.getText().toString());
                         intent.putCharSequenceArrayListExtra("week", (ArrayList) courseData[getDayintweek(cal.get(Calendar.DAY_OF_WEEK))]);
                         intent.putExtra("count", count);
                         if (style == 1) {
@@ -676,6 +684,7 @@ public class WeekListActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(WeekListActivity.this, DayListActivity.class);
+                    intent.putExtra("title",about_iv_Title.getText().toString());
                     intent.putCharSequenceArrayListExtra("week", (ArrayList) courseData[Integer.parseInt(c.getDays()) - 1]);
                     intent.putExtra("count", count);
                     if (style == 1) {

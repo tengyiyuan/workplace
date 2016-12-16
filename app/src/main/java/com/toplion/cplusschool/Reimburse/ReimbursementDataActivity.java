@@ -171,23 +171,22 @@ public class ReimbursementDataActivity extends BaseActivity {
         tv_reimbursement_cancle.setVisibility(View.VISIBLE);
         if (style == 0) {
             tv_reimbursement_finish.setText("材料齐全,添加");
-        }else{
+        } else {
             tv_reimbursement_finish.setText("完  成");
         }
         tv_reimbursement_finish.setVisibility(View.VISIBLE);
         tv_reimbursement_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(style==0) {
+                if (style == 0) {
                     showDialog();
-                }else{
+                } else {
                     finish();
                 }
             }
         });
 
     }
-
 
 
     @Override
@@ -224,19 +223,24 @@ public class ReimbursementDataActivity extends BaseActivity {
                 String content = dialog.getEditText();
                 HideKeyboard(dialog.getEdit());
                 if (!TextUtils.isEmpty(content)) {
-                    standardInfo.setRRNUMBER(Integer.parseInt(content));
-                    if (intCode == 0) {
-                        Intent intent = new Intent(ReimbursementDataActivity.this, TypeListActivity.class);
-                        intent.putExtra("style", 0);
-                        intent.putExtra("standardInfo", standardInfo);
-                        startActivity(intent);
-                    } else {
-                        Intent intent = new Intent();
-                        intent.putExtra("standardInfo", standardInfo);
-                        setResult(RESULT_OK, intent);
+                    int totalTime = Integer.parseInt(content) * standardInfo.getRTPROCESSINGTIME();
+                    if (totalTime < 120) {
+                        standardInfo.setRRNUMBER(Integer.parseInt(content));
+                        if (intCode == 0) {
+                            Intent intent = new Intent(ReimbursementDataActivity.this, TypeListActivity.class);
+                            intent.putExtra("style", 0);
+                            intent.putExtra("standardInfo", standardInfo);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent();
+                            intent.putExtra("standardInfo", standardInfo);
+                            setResult(RESULT_OK, intent);
+                        }
+                        dialog.dismiss();
+                        finish();
+                    }else{
+                        ToastManager.getInstance().showToast(ReimbursementDataActivity.this, "当前票据数量过多，请到窗口进行办理。");
                     }
-                    dialog.dismiss();
-                    finish();
                 } else {
                     ToastManager.getInstance().showToast(ReimbursementDataActivity.this, "请输入单据数量");
                 }

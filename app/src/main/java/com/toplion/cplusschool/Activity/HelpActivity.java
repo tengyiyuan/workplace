@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.SharePreferenceUtils;
+import com.toplion.cplusschool.Utils.ToastManager;
 
 /**
  * 帮助界面界面
@@ -25,6 +26,7 @@ public class HelpActivity extends BaseActivity{
 	private ImageView about_iv_return;      // 返回
 	private SharePreferenceUtils share;
 	private TextView about_iv_Title;        // 标题
+	private boolean bln = false;//
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,11 +55,16 @@ public class HelpActivity extends BaseActivity{
 
 			@Override
 			public void onClick(View arg0) {
-				if(webview.canGoBack()){
-					webview.goBack();
-				}else{
+				if(bln){
 					// 关闭当前Activity
 					finish();
+				}else{
+					if(webview.canGoBack()){
+						webview.goBack();
+					}else{
+						// 关闭当前Activity
+						finish();
+					}
 				}
 			}
 		});
@@ -68,6 +75,13 @@ public class HelpActivity extends BaseActivity{
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			view.loadUrl(url);
 			return true;
+		}
+		@Override
+		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+			super.onReceivedError(view, errorCode, description, failingUrl);
+			view.loadUrl("file:///android_asset/error.html");
+			ToastManager.getInstance().showToast(HelpActivity.this,"网络异常");
+			bln = true;
 		}
 	}
 	@Override

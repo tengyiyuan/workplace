@@ -8,7 +8,7 @@ import java.util.Timer;
  * @author wang
  */
 public class Constants {
-    public static boolean isShowAllFunction = true;
+//    public static boolean isShowAllFunction = true;
 //    public static String NEWBASE_URL = "http://123.233.121.17:15100/index.php"; //建大测试地址
     public static String BASE_URL = "http://111.14.210.46:12100/index.php"; //移动地址
     public static String BASE_URLB = "http://123.233.121.17:12100/index.php"; //联通地址
@@ -17,7 +17,7 @@ public class Constants {
     public static String ISBIND = "";                                     // 是否强制更新
     public static int STATUSCODE = 200;                                      //成功状态码
     //学校配置参数----start
-    public static String SCHOOL_CODE = "sdjzu";                               // 学校Code
+    public static String SCHOOL_CODE = "";                               // 学校Code
     //学校配置参数----end
     public static String PHPSESSID = "PHPSESSID";                       //会话ID
 

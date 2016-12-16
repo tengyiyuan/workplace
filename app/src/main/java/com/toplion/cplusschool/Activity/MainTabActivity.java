@@ -130,10 +130,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                 String islogo = getIntent().getStringExtra("islogo");
 //                String serverIp = share.getString("serverIp", "");
                 Constants.BASE_URL = share.getString("BASE_URL", "");  //默认请求路径
-                if ("".equals(Constants.SCHOOL_CODE)) {
-                    String school_code = share.getString("schoolCode", "");
-                    Constants.SCHOOL_CODE = school_code;
-                }
+                Constants.SCHOOL_CODE = share.getString("schoolCode", "");
                 Constants.BASEPARAMS = "&schoolCode=" + Constants.SCHOOL_CODE + "&clientOSType=android" + "&clientVerNum=" + Constants.SYSVERSION
                         + "&deviceId=" + deviceId + "&role=" + share.getInt("ROLE_TYPE", 2);
 //                        + "&userToken=" + token;
@@ -416,7 +413,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
 //                        startActivity(intent);
 //                        finish();
                         CommonUtil.intoLogin(MainTabActivity.this, share, "");
-                        Log.e("gogogogogogogogo","MainTabActivity");
+                        Log.e("gogogogogogogogo", "MainTabActivity");
                     }
                 }
 
@@ -425,7 +422,7 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                     super.Get_Result_faile(errormsg);
                     // 重新登录
                     CommonUtil.intoLogin(MainTabActivity.this, share, "");
-                    Log.e("gogogogogogogogo","MainTabActivity");
+                    Log.e("gogogogogogogogo", "MainTabActivity");
                 }
 
                 @Override
@@ -433,13 +430,13 @@ public class MainTabActivity extends FragmentActivity implements View.OnClickLis
                     super.onFailure(statusCode, content, error);
                     // 重新登录
                     CommonUtil.intoLogin(MainTabActivity.this, share, "");
-                    Log.e("gogogogogogogogo","MainTabActivity");
+                    Log.e("gogogogogogogogo", "MainTabActivity");
                 }
             });
         } else {
             // 重新登录
             CommonUtil.intoLogin(MainTabActivity.this, share, "");
-            Log.e("gogogogogogogogo","MainTabActivity");
+            Log.e("gogogogogogogogo", "MainTabActivity");
         }
     }
 

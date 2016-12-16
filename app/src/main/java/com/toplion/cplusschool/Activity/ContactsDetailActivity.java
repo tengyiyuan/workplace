@@ -122,7 +122,7 @@ public class ContactsDetailActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if(!TextUtils.isEmpty(tv_contacts_family_phone.getText().toString())){
-                    if(StringUtils.isMobile(tv_contacts_family_phone.getText().toString())){
+                    if(!tv_contacts_family_phone.getText().toString().equals(";")&&!tv_contacts_family_phone.getText().toString().equals("；")){
                         CallUtil.CallPhone(ContactsDetailActivity.this,tv_contacts_family_phone.getText().toString());
                     }else{
                         String [] phones = tv_contacts_family_phone.getText().toString().trim().replace("；",";").split(";");
@@ -135,7 +135,7 @@ public class ContactsDetailActivity extends BaseActivity {
                             }
                             if(phonelist!=null&&phonelist.size()>0){
                                 final CustomDialogListview dialog_sex = new CustomDialogListview(ContactsDetailActivity.this, "选择要拨打的电话", phonelist,"");
-                                dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                CustomDialogListview.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                         if(StringUtils.isMobile(phonelist.get(position).getDes())){
@@ -184,7 +184,7 @@ public class ContactsDetailActivity extends BaseActivity {
                         }
                     }
                     final CustomDialogListview dialog_sex = new CustomDialogListview(ContactsDetailActivity.this, "选择要拨打的电话", plist,"");
-                    dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    CustomDialogListview.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             if(StringUtils.isMobile(plist.get(position).getDes())){

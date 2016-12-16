@@ -61,6 +61,8 @@ public class DayListActivity extends BaseActivity {
     //某节课的背景图,用于随机获取
     private int[] bg = {R.drawable.kb1};
     private List<CourseDate> listtime;
+    private String todayweek;
+    private TextView about_iv_Title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +74,12 @@ public class DayListActivity extends BaseActivity {
     @Override
     protected void init() {
         super.init();
+        about_iv_Title=(TextView)findViewById(R.id.about_iv_Title);
         mAbHttpUtil = AbHttpUtil.getInstance(this);
         dao = new UserInsideDao(this);
         timesDao = new TimesDao(this);
         weeks = (ArrayList) getIntent().getCharSequenceArrayListExtra("week");
+        about_iv_Title.setText(getIntent().getStringExtra("title"));
         count = getIntent().getIntExtra("count", 0);
         roomno = getIntent().getStringExtra("roomno");
         textweek = (TextView) findViewById(R.id.textweek);
@@ -91,9 +95,18 @@ public class DayListActivity extends BaseActivity {
         cal = Calendar.getInstance();
         cal.setTime(new Date());
         textweek.setText(getDayintweek(Integer.parseInt(weeks.get(0).getDays())));
-        if(textweek.getText().equals("星期一")){
+        todayweek = getDayintweek(cal.get(Calendar.DAY_OF_WEEK) - 1);
+        if (textweek.getText().equals(todayweek)) {
+            textweek.setTextColor(Color.rgb(238, 120, 12));
+            textweek.setText(getDayintweek(Integer.parseInt(weeks.get(0).getDays())));
+        } else {
+            textweek.setTextColor(Color.BLACK);
+            textweek.setText(getDayintweek(Integer.parseInt(weeks.get(0).getDays())));
+        }
+
+        if (textweek.getText().equals("星期一")) {
             leftweek.setVisibility(View.INVISIBLE);
-        }else if(textweek.getText().equals("星期天")){
+        } else if (textweek.getText().equals("星期天")) {
             rightweek.setVisibility(View.INVISIBLE);
         }
         zhouji = Integer.parseInt(weeks.get(0).getDays());
@@ -157,6 +170,12 @@ public class DayListActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        daytoweek.setText("周/日");
+    }
+
+    @Override
     protected void getData() {
         super.getData();
         for (int i = 1; i < count; i++) {
@@ -187,13 +206,17 @@ public class DayListActivity extends BaseActivity {
                 if (cour.getStart() == i) {
                     String time = "";
                     for (int k = i; k < i + cour.getStep(); k++) {
-                        time = time + " " + listtime.get(k - 1).getBz() + ":" + listtime.get(k - 1).getKssj() + " 到 " + listtime.get(k - 1).getJssj();
+                        if (k != i) {
+                            time = time + "         " + listtime.get(k - 1).getBz() + ":" + listtime.get(k - 1).getKssj() + " - " + listtime.get(k - 1).getJssj() + "\n";
+                        } else {
+                            time = time + listtime.get(k - 1).getBz() + ":" + listtime.get(k - 1).getKssj() + " - " + listtime.get(k - 1).getJssj() + "\n";
+                        }
                     }
                     LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (marTop * cour.getStep()) + itemHeight * cour.getStep());
                     tv.setLayoutParams(lp2);
                     int bgRes = bg[0];
                     tv.setBackgroundResource(bgRes);
-                    tv.setText("课程:" + cour.getName() + "      老师:" + cour.getTeach() + "\n时间:" + time + "\n上课周数:" + getWeeks(cour.getByone()) + " \n地点:(" + cour.getRoomname() + ")");
+                    tv.setText("课程:" + cour.getName() + "      老师:" + cour.getTeach() + "\n时间:" + time + "上课周数:" + getWeeks(cour.getByone()) + " \n地点:(" + cour.getRoomname() + ")");
                     i = i + cour.getStep() - 1;
                 }
             }
@@ -251,7 +274,13 @@ public class DayListActivity extends BaseActivity {
                         weeks.addAll(courseData[days - 1]);
                         getData();
                     }
-                    textweek.setText(getDayintweek(days));
+                    if (getDayintweek(days).equals(todayweek)) {
+                        textweek.setTextColor(Color.rgb(238, 120, 12));
+                        textweek.setText(getDayintweek(days));
+                    } else {
+                        textweek.setTextColor(Color.BLACK);
+                        textweek.setText(getDayintweek(days));
+                    }
                     AbDialogUtil.removeDialog(DayListActivity.this);
                 } else {
                     AbDialogUtil.removeDialog(DayListActivity.this);
@@ -306,12 +335,12 @@ public class DayListActivity extends BaseActivity {
             case 7:
                 return "星期天";
         }
-        return "";
+        return "星期天";
     }
 
     private void getWeektime() {
         AbRequestParams params = new AbRequestParams();
-        params.put("schoolCode",  Constants.SCHOOL_CODE);
+        params.put("schoolCode", Constants.SCHOOL_CODE);
         String weekurl = Constants.BASE_URL + "?rid=" + ReturnUtils.encode("getSchoolCalendarByCode");
         mAbHttpUtil.post(weekurl, params, new CallBackParent(DayListActivity.this, "正在查询") {
             @Override

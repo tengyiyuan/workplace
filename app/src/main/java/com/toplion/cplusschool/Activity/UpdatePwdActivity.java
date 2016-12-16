@@ -12,6 +12,7 @@ import com.ab.util.AbDialogUtil;
 import com.toplion.cplusschool.Common.CacheConstants;
 import com.toplion.cplusschool.Common.Constants;
 import com.toplion.cplusschool.R;
+import com.toplion.cplusschool.Utils.AESUtils;
 import com.toplion.cplusschool.Utils.CommonUtil;
 import com.toplion.cplusschool.Utils.ReturnUtils;
 import com.toplion.cplusschool.Utils.SharePreferenceUtils;
@@ -86,6 +87,12 @@ public class UpdatePwdActivity extends BaseActivity {
             public void onClick(View v) {
                 if (!edit_pwd.getText().toString().trim().equals(edit_repwd.getText().toString().trim())) {
                     ToastManager.getInstance().showToast(UpdatePwdActivity.this, "两次密码输入不一致,请重新输入");
+                    edit_pwd.getcontent().setText("");
+                    edit_repwd.getcontent().setText("");
+                    return;
+                }
+                if(edit_pwd.getText().toString().trim().equals(edit_oldpwd.getText().toString().trim())){
+                    ToastManager.getInstance().showToast(UpdatePwdActivity.this, "与原密码相同,请重新输入");
                     edit_pwd.getcontent().setText("");
                     edit_repwd.getcontent().setText("");
                     return;

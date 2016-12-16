@@ -56,7 +56,7 @@ public class NewsListActivity extends BaseActivity {
         style = getIntent().getIntExtra("style", 0);
         newtitle = (TextView) findViewById(R.id.newtitle);
         if (style == 0) {
-            newtitle.setText("建大新闻");
+            newtitle.setText("新闻资讯");
         } else {
             newtitle.setText("最新讲座");
         }

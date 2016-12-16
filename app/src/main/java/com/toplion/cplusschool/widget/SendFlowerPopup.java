@@ -174,6 +174,6 @@ public class SendFlowerPopup extends PopupWindow {
      *         功能描述：弹窗子类项按钮监听事件
      */
     public interface OnItemOnClickListener {
-        public void onItemClick(Map<String,String> item, int position);
+        void onItemClick(Map<String, String> item, int position);
     }
 }

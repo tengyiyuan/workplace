@@ -226,7 +226,6 @@ public class ContactsSearcheActivity extends BaseActivity {
      * 过滤搜索条件
      */
     class MyFilter extends Filter {
-
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults filterResults = new FilterResults();
@@ -236,16 +235,24 @@ public class ContactsSearcheActivity extends BaseActivity {
                 List<ContactsBean> mFilteredArrayList = new ArrayList<ContactsBean>();
 
                 for (ContactsBean cbean : plist) {
-                    if (constraint.length() > 1) {
-                        if (cbean.getSJH().contains(constraint) || cbean.getFirstPinYin().contains(constraint)
-                                || cbean.getPinYinHeadChar().contains(constraint)||cbean.getXMPY().contains(constraint)) {
+                    if (constraint.length() > 0) {
+                        String zimu = PinYinUtils.getPingYin(cbean.getXM());
+                        String tel = "null";
+                        String lxtel = "null";
+                        if (cbean.getSJH() != null) {
+                            tel = cbean.getSJH();
+                        }
+                        if (cbean.getLXDH() != null) {
+                            lxtel = cbean.getLXDH();
+                        }
+                        if (zimu.contains(constraint) || cbean.getXH().contains(constraint) || tel.contains(constraint) || lxtel.contains(constraint)) {
                             mFilteredArrayList.add(cbean);
                         }
                     } else {
-                        if (cbean.getSJH().contains(constraint) || cbean.getFirstPinYin().contains(constraint)
-                                || cbean.getPinYinHeadChar().contains(constraint)) {
-                            mFilteredArrayList.add(cbean);
-                        }
+//                        if (cbean.getSJH().contains(constraint) || cbean.getFirstPinYin().contains(constraint)
+//                                || cbean.getPinYinHeadChar().contains(constraint)) {
+//                            mFilteredArrayList.add(cbean);
+//                        }
                     }
                 }
                 filterResults.values = mFilteredArrayList;

@@ -141,7 +141,7 @@ public class TimePickerView extends BasePickerView implements
 	}
 
 	public interface OnTimeSelectListener {
-		public void onTimeSelect(Date date);
+		void onTimeSelect(Date date);
 	}
 
 	public void setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {

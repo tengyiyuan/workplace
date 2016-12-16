@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -397,7 +398,7 @@ public class AddRepairActivity extends BaseActivity {
     private void setDialog(String showMes, final List<CommonBean> data, final TextView textView) {
         if (data != null && data.size() > 0) {
             final CustomDialogListview dialog_sex = new CustomDialogListview(this, showMes, data, textView.getText().toString());
-            dialog_sex.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            CustomDialogListview.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     textView.setText(data.get(position).getDes());

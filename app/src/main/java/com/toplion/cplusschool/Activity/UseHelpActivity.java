@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.toplion.cplusschool.Common.Constants;
 import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.SharePreferenceUtils;
+import com.toplion.cplusschool.Utils.ToastManager;
 
 /**
  * 使用帮助页面
@@ -24,6 +25,7 @@ public class UseHelpActivity extends BaseActivity{
 	private WebView webview;                // WebView
 	private ImageView usehelp_iv_return;    // 返回
 	private SharePreferenceUtils share;
+	private boolean bln = false;//
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.use_help);
@@ -49,12 +51,17 @@ public class UseHelpActivity extends BaseActivity{
 
 			@Override
 			public void onClick(View arg0) {
-				if(webview.canGoBack()){
-					webview.goBack();
-				}else{
-					// 关闭当前Activity
+				if(bln){
 					finish();
+				}else{
+					if(webview.canGoBack()){
+						webview.goBack();
+					}else{
+						// 关闭当前Activity
+						finish();
+					}
 				}
+
 			}
 		});
 
@@ -66,11 +73,23 @@ public class UseHelpActivity extends BaseActivity{
 			view.loadUrl(url);
 			return true;
 		}
+
+		@Override
+		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+			super.onReceivedError(view, errorCode, description, failingUrl);
+			view.loadUrl("file:///android_asset/error.html");
+			ToastManager.getInstance().showToast(UseHelpActivity.this,"网络异常");
+			bln = true;
+		}
 	}
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK) && webview.canGoBack()) {
-			webview.goBack(); // goBack()表示返回WebView的上一页面
+			if(bln){
+				finish();
+			}else{
+				webview.goBack(); // goBack()表示返回WebView的上一页面
+			}
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);

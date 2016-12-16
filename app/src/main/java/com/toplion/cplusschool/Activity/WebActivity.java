@@ -6,6 +6,7 @@ import com.toplion.cplusschool.Common.Constants;
 import com.toplion.cplusschool.R;
 import com.toplion.cplusschool.Utils.Function;
 import com.toplion.cplusschool.Utils.ReturnUtils;
+import com.toplion.cplusschool.Utils.ToastManager;
 import com.toplion.cplusschool.dao.CallBackParent;
 
 import android.annotation.TargetApi;
@@ -145,6 +146,13 @@ private  String innetsp="    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=e
             public void onPageFinished(WebView view, String url) {
 
                 //AbDialogUtil.removeDialog(WebActivity.this);
+            }
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
+                view.loadUrl("file:///android_asset/error.html");
+                ToastManager.getInstance().showToast(WebActivity.this,"网络异常");
+                return;
             }
         });
 

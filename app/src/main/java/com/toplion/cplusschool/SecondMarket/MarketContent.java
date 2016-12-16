@@ -224,7 +224,7 @@ public class MarketContent extends BaseActivity {
                             ToastManager.getInstance().showToast(MarketContent.this, "未安装微信");
                             return;
                         }
-                        CallUtil.copyStrNoToast(MarketContent.this, market.getAUIQQ());
+                        CallUtil.copyStrNoToast(MarketContent.this, market.getAUIWEIXIN());
                         final CommDialog dialog = new CommDialog(MarketContent.this);
                         dialog.CreateDialog("确定", "复制成功", "点击确定打开微信并添加好友!", MarketContent.this, new CommDialog.CallBack() {
                             @Override

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.toplion.cplusschool.Adapter.LocalSelectAdapter;
 import com.toplion.cplusschool.Bean.CityBean;
@@ -31,7 +30,6 @@ import java.util.Map;
  */
 
 public class LocalSelectActivity extends BaseActivity {
-    private TextView textView;
     private ImageView iv_select_city_return;//返回键
     private ListView lv_province;//省份
     private ListView lv_city;// 市

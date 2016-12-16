@@ -63,12 +63,15 @@ public class NewsListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.newtitle.setText(mlist.get(position).getNews_title());
-        viewHolder.newtime.setText("发布日期:"+ AbDateUtil.getStringByFormat(mlist.get(position).getTime(),"yyyy-MM-dd"));
-        Date beforeDate = TimeUtils.stringToDate(mlist.get(position).getTime(), "yyyy-MM-dd");
+        NewBean newBean = mlist.get(position);
+        viewHolder.newtitle.setText(newBean.getNews_title());
+        viewHolder.newtime.setText("发布日期:"+ AbDateUtil.getStringByFormat(newBean.getTime(),"yyyy-MM-dd"));
+        Date beforeDate = TimeUtils.stringToDate(newBean.getTime(), "yyyy-MM-dd");
         double days = TimeUtils.getDistanceOfTwoDate(beforeDate, new Date());
         if (days == 0) {
             viewHolder.newimg.setVisibility(View.VISIBLE);
+        }else{
+            viewHolder.newimg.setVisibility(View.GONE);
         }
         return convertView;
     }

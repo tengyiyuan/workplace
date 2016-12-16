@@ -355,6 +355,7 @@ public class ReleaseActivity extends BaseActivity {
         ll_release_danwei.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                HideKeyboard(et_release_title);
                 if (typeList != null && typeList.size() > 0) {
                     final ListPopWindow listPopWindow = new ListPopWindow(ReleaseActivity.this, typeList, ll_parentview);
                     listPopWindow.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -385,6 +386,7 @@ public class ReleaseActivity extends BaseActivity {
         rl_release_type.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                HideKeyboard(et_release_title);
                 if (typeList != null && typeList.size() > 0) {
                     final ListPopWindow listPopWindow = new ListPopWindow(ReleaseActivity.this, typeList, ll_parentview);
                     listPopWindow.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -410,6 +412,7 @@ public class ReleaseActivity extends BaseActivity {
         iv_release_addimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                HideKeyboard(et_release_title);
                 final CameraPopWindow cameraPopWindow = new CameraPopWindow(ReleaseActivity.this, ll_parentview);
                 cameraPopWindow.setBtnCameraOnlickListener(new View.OnClickListener() {
                     @Override
